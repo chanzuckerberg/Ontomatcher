@@ -1,0 +1,889 @@
+Full terms,,Synonyms,
+,partial terms,,partial terms
+,,,
+,,,
+,,,
+Image,,"Image set
+Raster image
+Set of images
+Pixel-based image
+Image data
+Voxel-based image
+Digital image",
+2D image,2D,"tile
+tiling",
+3D image,3D,"Image stack
+stack",
+Image time series,time series,"Movie
+Time-series image
+Time-lapse image
+Video sequence","
+Time-series 
+Time-lapse 
+"
+Multi-channel image ,Multi-channel,,
+,,,
+,,,
+Alignment construction,,,
+Image registration,registration,Image alignment, alignment
+Affine registration,,Affine image registration,
+Rigid registration,,Rigid image registration,
+Deformable registration,,Elastic registration,Elastic
+Feature-based registration,,"Shape-based registration
+Object registration",
+Intensity-based registration,,Area-based registration,
+Analysis,,,
+Frequency-domain analysis,Frequency domain ,"Fast Fourier transform
+FFT
+Wavelet transform
+Analysis in the frequency domain",
+Image analysis,,General image analysis,
+"Colocalisation analysis
+","Colocalisation 
+
+","Colocalization analysis
+Co-localisation analysis
+Co-localization analysis","Colocalization 
+Co-localisation 
+Co-localization "
+Object-based colocalisation analysis,Object-based colocalisation,"Object-based co-localisation analysis
+Object-based colocalization analysis",
+"Pixel-based colocalisation analysis
+","Pixel-based colocalisation
+
+","Pixel-based co-localisation analysis
+Manders coefficient
+Voxel-based colocalisation analysis
+Pixel-based colocalization analysis","
+Manders 
+"
+Image classification,classification,Image clustering,
+Image feature detection,feature detection,Image feature extraction,feature extraction
+Edge detection,,Relation with Feature enhancement,Feature enhancement
+Ridge detection,,,
+Spot detection,,Seed point detection,Seed point
+Image segmentation,segmentation,,
+Cell segmentation,,,
+Connected-component analysis,Connected component ,Instance segmentation,
+"Filament tracing
+",,"Neuron reconstruction
+Biofilament tracing
+Curvilinear structure reconstruction
+Curvilinear structure detection
+Tubular structure extraction","
+Biofilament tracing
+Curvilinear structure 
+
+Tubular structure"
+"Image thresholding
+",,"Clustering-based image thresholding
+Thresholding",
+"Adaptive thresholding
+",,"Local thresholding
+Adaptative thresholding
+Dynamic thresholding",
+Manual segmentation,,,
+Model-based segmentation,Model based,,
+Active contours,contour,"Active contour model
+Snakes
+Active contour models","contour model
+
+"
+"Overlap analysis
+","Overlap
+
+","Overlap quantification
+Jaccard index
+Intersection analysis
+Sørensen-Dice coefficient","
+Jaccard
+
+Sørensen-Dice"
+"Pixel classification
+",,"Voxel classification
+Semantic image segmentation
+Pixel labeling",
+"Region growing
+","Region growing
+",Region-based segmentation,
+"Watershed segmentation
+","Watershed
+
+","Watershed transformation
+Watershed-based segmentation",
+Semi-automatic segmentation,,,
+"Superpixel extraction
+","Superpixel
+
+","Supervoxel extraction
+Super-pixel extraction
+Super-voxel extraction","Supervoxel
+Super-pixel
+Super-voxel"
+"Object classification
+",,"Isolated object classification
+Semantic object classification","Isolated object
+Semantic object"
+Object counting,,,
+"Object detection
+",,"Object localisation
+Object localization
+Isolated object detection
+Particle detection",
+"Single molecule localisation
+","Single molecule
+
+","PAINT image reconstruction
+Single-molecule localization microscopy image reconstruction
+STORM image reconstruction
+SMLM image reconstruction
+Single molecule localization
+Single-molecule localisation microscopy image reconstruction
+PALM image reconstruction","PAINT image 
+
+
+STORM
+SMLM 
+
+
+
+
+PALM "
+"Object feature extraction
+","Object feature
+
+","Feature detection
+SIFT
+scale-invariant feature transform
+Image labeling
+SURF","
+SIFT
+scale-invariant feature
+
+SURF"
+"Homogeneity extraction
+","Homogeneity
+
+",,
+"Shape features extraction
+
+","Shape features
+
+","Shape feature extraction
+Area",
+Stereology,,,
+"Texture extraction
+","Texture 
+","Texture feature extraction
+Inverse Difference Moment","Texture feature
+Inverse Difference Moment"
+Velocity extraction,Velocity ,,
+Object tracking,,"Tracking
+Trajectory extraction",
+Cell lineage extraction,Cell lineage ,,
+"Collective object tracking
+","Collective object 
+
+","Wound healing analysis
+Wound-healing assay
+Scratch assay analysis
+Scratch assay",
+Isolated object tracking,Isolated object,,
+Cell tracking,,,
+Particle tracking,Particle ,,
+"Trajectory analysis
+","Trajectory 
+
+","Displacement analysis
+Motility analysis","Displacement 
+Motility "
+"Wound-healing analysis
+","Wound healing
+
+","Wound-healing assay
+Scratch assay","Wound healing 
+Scratch"
+"Optical flow analysis
+","Optical flow 
+
+",,
+Annotation,,,
+"Image annotation
+",,,
+Dense image annotation,Dense image,,
+Sparse image annotation,Sparse image ,,
+"Landmark assignment
+
+",,"Reference point assignment
+Seed point selection
+Fiducial placement","Reference point 
+Seed point
+"
+Classification,,,
+Clustering,,"Cluster analysis
+",
+"Centroid-based clustering
+","Centroid-based
+
+","k-means clustering
+Fuzzy c-means clustering",
+Density-based clustering,Density-based ,DBSCAN,
+Distribution-based clustering,Distribution-based ,Gaussian mixture model (GMM),"Gaussian mixture
+GMM"
+Hierarchical clustering,,Connectivity-based clustering,Connectivity based
+Data generation,,Data synthesis,
+"Data augmentation
+",,,
+Image generation,,Image synthesis,
+Image reconstruction,reconstruction,Image restoration,restoration
+"Image deconvolution
+","deconvolution
+
+",,
+Image denoising,denoising,Noise reduction,
+Image stitching,stitching,"Tiling
+Tile
+Mosaic",
+Selective plane illumination microscopy reconstruction,plane illumination ,,
+Structured illumination reconstruction,Structured illumination,,
+"Tomographic reconstruction
+","Tomographic 
+
+","Filtered back projection
+Tomography reconstruction","
+Tomography "
+"Synthetic image generation
+","Synthetic image 
+
+","Image simulation
+Simulated image generation","simulation
+Simulated image"
+Machine learning-based data generation,Machine learning,Generative adversarial network (GAN),"Generative adversarial network 
+GAN"
+Data handling,,,
+Conversion,,,
+Editing,,,
+"Image processing
+",,"Image filtering
+Image pre-processing
+Image post-processing
+Image transformation
+Image postprocessing
+Image preprocessing
+Image manipulation","filtering
+pre-processing
+post-processing
+transformation
+postprocessing
+preprocessing
+manipulation"
+"Frequency-domain transformation
+","Frequency domain
+
+","Fast Fourier transform
+FFT
+Transformation into frequency domain
+Wavelet transform","Fast Fourier
+FFT
+Transformation into frequency domain
+Wavelet "
+Geometrical transformation,,,
+Affine transformation,,Orthographic projection,
+Linear transformation,,Image resampling,resampling
+Rotation,,,
+Warping,,,
+Image convolution,convolution,Linear shift invariant image filtering,Linear shift
+"Image correction
+
+","correction
+
+","Instrument aberration correction
+Image pre-processing
+Image preprocessing","aberration correction
+"
+Chromatic aberration correction,Chromatic aberration ,Channel shift correction,Channel shift
+Detector bias correction,Detector bias ,Camera bias correction,Camera bias
+Detector gain correction,Detector gain,,
+Drift correction,Drift,,
+Geometric distortion correction,Geometric distortion ,Lens distortion correction,Lens distortion
+Illumination correction,,"Flat field correction
+Background subtraction","field correction
+"
+Spectral unmixing,,Color deconvolution,
+Image crop,crop,,
+"Image enhancement
+","enhancement
+
+","Image restoration
+",
+Contrast enhancement,,,
+"Feature enhancement
+",,"Edge enhancement
+Steerable filter
+Matching filter",
+Smoothing,,"Gaussian filtering
+Blurring
+Gaussian blurring
+Gaussian smoothing","Gaussian
+Blurring
+"
+Image fusion,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+Image-to-image translation,Image-to-image ,"Style transfer
+Neural style transfer",
+"Morphological operation
+",,"Mathematical morphology
+Morphological image processing",
+Closing,,,
+Dilation,,Dilatation,
+"Distance transform
+",,,
+Erosion,,,
+Opening,,,
+"Skeletonisation
+",,"Medial axis transform
+",
+"Top-hat transform
+","Top-hat 
+
+","Hat transform
+Black top-hat transform
+White top-hat transform
+Bottom-hat transform",
+Optimisation or refinement,Optimisation ,,
+"Parameter optimisation
+",,"Model optimisation
+Model training
+Parameter optimization",
+"Pattern recognition
+",,,
+Regression,,,
+Validation,,,
+Image validation,validation,,
+Visualisation,,Plotting,
+Image visualisation,,"Lookup table
+Rendering",
+Anaglyph,,,
+"Image projection
+",,"Maximum intensity projection
+Minimum projection
+Maximum projection
+Mean projection",Maximum intensity 
+Montage,,,
+Overlay,,,
+"Slice rendering
+",,"Slice viewing
+Cut plane rendering",
+Surface rendering,,,
+Volume rendering,,,
+Plotting,,,
+,,,
+Bioluminescence imaging,Bioluminescence ,BLI,
+Fixed sample imaging,Fixed sample ,,
+High-content analysis,High-content ,"HCA
+High-content imaging
+High-content screening (HCS)",
+Imaging flow cytometry, flow cytometry,IFC,
+Live sample imaging,Live sample,Dynamic imaging,
+Ex-vivo imaging,Ex-vivo ,,
+"Fluorescence recovery after photobleaching
+","
+","Inverse fluorescence recovery after photobleaching (iFRAP)
+Fluorescence localization after photobleaching (FLAP)
+FRAP
+Fluorescence loss in photobleaching (FLIP)","Inverse fluorescence recovery after photobleaching
+iFRAP)
+Fluorescence localization after photobleaching
+FLAP
+FRAP
+Fluorescence loss in photobleaching 
+FLIP"
+In-vitro imaging,In-vitro ,,
+In-vivo imaging,In-vivo ,,
+Intravital imaging,Intravital ,,
+Photoablation,,"Laser microsurgery
+Laser nanosurgery
+Laser ablation","microsurgery
+nanosurgery
+"
+Magnetic resonance imaging,Magnetic resonance ,,
+Medical imaging,Medical ,,
+Molecular imaging,Molecular ,,
+Positron emission tomography,Positron emission ,"Computerized tomography
+microPET
+PET",
+Microscopy,,Slide scanner,
+Adaptive microscopy,,"Intelligent microscopy
+Adaptive optics
+Smart microscopy",
+Electron microscopy,,"EM
+Electron microscope",
+"Correlative light and electron microscopy
+",,"CLEM
+Integrated light and electron microscopy (ILEM)
+Correlative light-electron microscopy
+Integrated light-electron microscopy","Integrated light and electron microscopy 
+ILEM
+Correlative light-electron
+Integrated light-electron"
+Cryo electron microscopy,Cryo electron ,,
+Electron cryotomography,cryotomography,"CryoET
+Cryogenic transmission electron microscopy
+CET
+Cryo-transmission electron microscopy
+CryoTEM
+Cryo-electron tomography","CryoET
+Cryogenic transmission electron
+CET
+Cryo-transmission electron 
+CryoTEM
+Cryo-electron tomography"
+Scanning electron cryomicroscopy, cryomicroscopy,"Cryogenic scanning electron microscopy
+Cryo-scanning electron microscopy
+CryoSEM","Cryogenic scanning electron 
+Cryo-scanning electron 
+CryoSEM"
+"Sample thinning
+","Sample thinning
+",,
+Ablation,Ablation,"FIB
+Focused ion beam",
+Blotting,Blotting,,
+"Microtomy
+","Microtomy
+","Cryo-ultramicrotomy
+Cryo-microtomy
+Ultra-microtomy
+Oscilating knife
+Vibrate",
+"Scanning electron microscopy
+","Scanning electron
+
+","SEM
+Scanning electron microscope",
+Focused ion beam scanning electron microscopy,,"FIBSEM
+FIB-SEM",
+,,,
+Serial block-face scanning electron microscopy, block-face scanning ,,
+Transmission electron microscopy,Transmission electron ,"Transmission electron microscope
+TEM","Transmission electron 
+TEM"
+Electron tomography,,Electron Microscopy Array Tomography,Array Tomography
+,,,
+"Scanning transmission electron microscopy
+","Scanning transmission 
+
+",STEM,
+Single particle cryo-electron microscopy,Single particle cryo-electron,"SPA
+Single particle analysis",
+Force microscopy,,,
+Atomic force microscopy,Atomic force ,"Scanning force microscopy
+SFM
+AFM
+Force spectroscopy",
+"Photonic force microscopy
+","Photonic force 
+
+","Force measurement microscopy
+PFM
+Force sensing optical tweezers","Force measurement 
+"
+"Traction force microscopy
+","Traction force 
+
+",,
+"Light microscopy
+",,"Optical microscopy
+Light microscope
+Optical microscope",
+"Array-based detection microscopy
+","Array-based detection 
+
+","Area-capturing microscopy
+Array based detection
+Camera based microscopy
+Controlled light exposure microscopy (CLEM)","Area-capturing 
+Array based 
+Camera based 
+Controlled light exposure 
+CLEM"
+Bright-field microscopy,Bright-field ,,
+Dark-field microscopy,Dark-field ,,
+"DIC microscopy
+",,"Differential interference contrast microscopy
+Nomarski interferential contrast (NIC)
+Nomarski microscopy","Differential interference contrast
+Nomarski interferential contrast 
+NIC
+Nomarski "
+"Image scanning microscopy
+","Image scanning 
+
+","ISM
+",
+"Airyscan
+",,,
+"Re-scan confocal microscopy
+","Re-scan confocal 
+
+","RCM
+Rescan
+Re-Scan",
+"Light-sheet microscopy
+","Light-sheet
+
+","Light-sheet fluorescence microscopy (LSFM)
+Lattice Light-sheet Microscopy (LLSM)
+Spherical aberrations assisted Extended Depth-of-field Lightsheet Microscopy
+Bessel Beam Lightsheet Microscopy
+single objective Selective Plane Illumination Microscopy
+Orthogonal-plane fluorescence optical sectioning (OPFOS)
+Selective plane illumination microscopy (SPIM)
+OCPI
+Dual-View inverted SPIM (diSPIM)
+inverted SPIM (iSPIM)
+Thin Sheet Laser Imaging Microscopy (TSLIM)
+Multidirectional SPIM
+Objective-Coupled Planar Illumination Microscopy
+LLS
+OPTiSPIM
+Multiview selective plane illumination microscopy (MuViSPIM)
+DSLM
+mesoSPIM
+Oblique Plane Microscopy (OPM)
+Digitally scanned Laser Light-sheet Microscopy
+Swept confocally-aligned planar excitation microscopy (SCAPE)
+soSPIM
+COLM
+SPED
+Clarity Optimized Light-sheet Microscopy
+eSPIM
+mSPIM","Light-sheet fluorescence 
+LSFM
+Lattice Light-sheet
+LLSM
+Spherical aberrations assisted Extended Depth-of-field Lightsheet
+Bessel Beam Lightsheet
+single objective Selective Plane Illumination
+Orthogonal-plane fluorescence optical sectioning
+OPFOS
+Selective plane illumination
+SPIM
+Dual-View inverted SPIM
+diSPIM
+inverted SPIM
+iSPIM
+Thin Sheet Laser Imaging Microscopy
+TSLIM
+Objective-Coupled Planar Illumination
+Multiview selective plane illumination
+MuViSPIM
+Oblique Plane
+OPM
+Digitally scanned Laser Light-sheet
+Swept confocally-aligned planar excitation
+SCAPE
+Clarity Optimized Light-sheet"
+Phase-contrast microscopy,Phase-contrast ,"Quantitative phase-contrast imaging
+Phase imaging",Quantitative phase-contrast
+Polarized light microscopy,Polarized light ,,
+Total internal reflection fluorescence microscopy,Total internal reflection ,"TIRF
+highly inclined and laminated optical sheet (HiLo)
+HiLo microscopy
+TIRFM","highly inclined and laminated optical sheet
+HiLo"
+Transmission light microscopy,Transmission light ,"Widefield transmission light microscopy
+","Widefield transmission
+
+"
+,,,
+,,,
+,,,
+"Phase imaging
+",,"Label free
+Digital Holography
+Holographic microscopy
+Ptychography
+Holographic tomography",
+"Quantitative phase imaging
+","Quantitative phase 
+
+",,
+,,,
+,,,
+Widefield fluorescence microscopy,Widefield fluorescence ,"Epi-fluorescence microscopy
+Epifluorescence microscopy","Epi-fluorescence 
+Epifluorescence "
+Deconvolution widefield microscopy,Deconvolution widefield ,,
+,,,
+"Fluorescence microscopy
+",,,
+"Confocal fluorescence microscopy
+
+","Confocal fluorescence
+
+","Nipkow disk microscopy
+Laser scanning microscopy (LSM)
+Spinning disk confocal microscopy (SDCM)","Nipkow disk 
+Laser scanning
+LSM
+Spinning disk confocal
+SDCM"
+Fluctuation based microscopy,Fluctuation based ,"Super resolution radial fluctuations (SRRF)
+Super resolution optical fluctuation imaging (SOFI)
+Photobleaching microscopy with non-linear processing
+PiMP","Super resolution radial fluctuations
+SRRF
+Super resolution optical fluctuation
+SOFI"
+Fluorescence,,,
+"Fluorescence correlation spectroscopy
+",,"Fluorescence cross-correlation spectroscopy (FCCS)
+FCS
+Fluorescence Lifetime Correlation Microscopy (FLCS)","Fluorescence cross-correlation spectroscopy
+FCCS
+Fluorescence Lifetime Correlation
+FLCS"
+"Fluorescence lifetime imaging microscopy
+",Fluorescence lifetime ,FLIM,
+,,,
+Förster resonance energy transfer,Förster,"Fluorescence cross-correlation spectroscopy (FCCS)
+FCS
+Fluorescence Lifetime Correlation Microscopy (FLCS)",
+Image correlation spectroscopy, correlation spectroscopy,"Particle Image Correlation Spectroscopy (PICS)
+ICS
+Raster Image Correlation Spectroscopy (RICS)","PICS
+
+RICS"
+,,,
+,,,
+,,,
+,,,
+"Ratiometric imaging
+","Ratiometric 
+
+",,
+Super-resolution microscopy,Super-resolution,"Nanoscopy
+SR microscopy
+High resolution microscopy
+SRM","
+
+High resolution"
+,,,
+Stimulated emission depletion microscopy,Stimulated emission depletion ,"STED
+Reversible saturable optical linear fluorescence transitions microscopy (RESOLFT)
+MinFlux
+STED-4Pi
+gated-STED","
+Reversible saturable optical linear fluorescence transitions
+RESOLFT"
+Structured illumination microscopy,Structured illumination ,"Saturated structured illumination microscopy (SSIM)
+Multifocal Structured Illumination Microscopy (MSIM)
+SIM
+Instant linear structured Illumination Microscopy
+iSIM","Saturated structured illumination
+SSIM
+Multifocal Structured Illumination
+MSIM"
+,,,
+,,,
+,,,
+Interferometric microscopy,Interferometric ,Interference reflection microscopy,Interference reflection 
+Light field microscopy,Light field ,,
+Non-linear microscopy,Non-linear ,,
+Multi-photon microscopy,Multi-photon ,"Two-photon excitation microscopy (TPEM)
+2PEM
+Three-photon excitation microscopy
+3PEM","Two-photon excitation
+TPEM
+Three-photon excitation"
+Second-harmonic imaging microscopy,Second-harmonic,"Third harmonic generation (THG)
+SHIM
+Second harmonic generation (SHG)","Third harmonic generation
+THG
+Second harmonic generation
+SHG"
+"Photomanipulation
+",,,
+,,,
+,,,
+"Laser microdissection
+",,"Laser capture microdissection (LCM)
+Laser capture microscopy
+Laser catapulting
+Laser dissection microscopy","microdissection
+LCM
+
+Laser dissection"
+,,,
+Photoactivation,,"Optogenetics
+Photoconversion
+Photoswitch
+photobleaching",
+Point-scanning microscopy,Point-scanning ,"Laser scanning microscopy
+4Pi microscopy
+Scanning probe microscopy
+Controlled light exposure microscopy (CLEM)","Laser scanning
+4Pi 
+Controlled light exposure
+CLEM"
+Confocal microscopy,Confocal ,"Laser scanning confocal microscopy (LSCM)
+Optical sectioning
+Confocal laser scanning microscopy (CLSM)","LSCM
+
+Confocal laser scanning
+CLSM"
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+Near-field scanning optical microscopy,Near-field scanning,"Scattering-type scanning near-field optical microscopy
+NSOM
+Scanning near-field optical microscopy (SNOM)","Scattering-type scanning
+
+Scanning near-field
+SNOM"
+Stereoscopy,,"Stereo imaging
+Stereoscopics",
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+"X-ray microscopy
+",,"X-ray microscope
+",
+"X-ray microtomography
+",,"High-resolution micro-CT
+Micro-computed tomography
+Computed microtomography
+µCT
+micro-CT
+micro CT
+Micro computed tomography","micro-CT
+Micro-computed
+microtomography
+Micro computed "
+Multimodal imaging,Multimodal ,"Correlative imaging
+Multisensor imaging
+Hybrid imaging",
+,,,
+"Spectroscopy
+",,Spectrometry,
+,,,
+"Fourier-transform infrared spectroscopy
+","Fourier
+
+","	
+FTIR",
+Mass spectrometry imaging,Mass spectrometry ,"Matrix-assisted laser desorption ionization imaging
+MALDI imaging
+MSI
+MALDI imaging mass spectrometry (MALDI-IMS)","Matrix-assisted laser desorption ionization
+MALDI
+imaging mass spectrometry 
+MALDI-IMS"
+"Nuclear magnetic resonance spectroscopy
+
+","Nuclear magnetic resonance 
+
+","Magnetic resonance spectroscopy (MRS)
+NMR","Magnetic resonance spectroscopy
+MRS
+"
+"Raman imaging
+","Raman 
+
+",Coherent anti-Stokes Raman scattering microscopy (CARS),"Coherent anti-Stokes 
+CARS"
+Tomography,,,
+Array tomography,,,
+Computed tomography,,"High-resolution micro-CT
+HRCT
+CAT scan
+Computerised axial tomography
+High-resolution CT
+High-resolution X-ray tomography
+CT scan
+X-ray tomography
+CT
+X-ray computed tomography","micro-CT
+High-res CT
+High-res X-ray tomography
+"
+,,,
+Optical coherence tomography,Optical coherence,,
+Optical projection tomography,Optical projection ,"Optical emission computed tomography
+OPT
+Optical computed tomography
+optical-CT
+optical-ECT
+Optical tomography","Optical emission 
+
+"
+Optical sectioning tomography,Optical sectioning ,"2P-MOST
+Structured illumination
+Two-photon micro-optical sectioning microscopy
+Holography
+MOST
+Micro-optical sectioning tomography","2P-MOST
+
+Two-photon micro-optical sectioning
+
+Micro-optical sectioning"
+Photoacoustic tomography,Photoacoustic ,"Photoacoustic imaging
+PAT",
+,,,
+Single-photon emission computed tomography,Single-photon emission ,SPECT,
+"Soft X-ray tomography
+","X-ray tomography
+
+","Synchrotron X-ray tomographic microscopy
+Cryo-SXT
+Synchrotron X-ray tomography
+Cryo-soft X-ray tomography
+cSXT
+SXT","Synchrotron X-ray 
+Cryo-soft X-ray"
+Ultrasonography,,"microUS
+diagnostic sonography
+Medical ultrasound
+Ultrasound imaging",
+X-ray imaging,X-ray ,,
+Phase-contrast X-ray imaging,Phase-contrast X-ray,"PCI
+",

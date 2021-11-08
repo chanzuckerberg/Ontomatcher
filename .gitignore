@@ -1,0 +1,11 @@
+.idea/
+.DS_Store
+__pycache__/
+
+# Exclude Sample* files under Data/
+/Data/Sample*
+
+# Text files under Python
+/Python/*.txt
+/Python/*.tsv
+

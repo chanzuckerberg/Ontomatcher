@@ -1,0 +1,343 @@
+PluginNbr,Name,Terms,TermMatches
+1,PartSeg,"3D image
+Analysis
+Annotation
+Image
+Image feature detection
+Image segmentation
+Microscopy
+Multi-channel image","3D, stack
+Analysis
+Annotation
+Image set, Image
+feature extraction
+segmentation
+Microscopy
+Multi-channel"
+2,PlatyMatch,"Confocal microscopy
+Image
+Image registration
+Light-sheet microscopy
+Microscopy","Confocal
+Image
+registration
+Light-sheet microscopy
+Microscopy"
+3,affinder,"2D image
+Annotation
+Image
+Image processing
+Image registration
+Rotation","2D, 2D image
+Annotation
+Image
+transformation
+alignment
+Rotation"
+4,bfio,"Image
+Image analysis","Image
+Image analysis"
+5,brainglobe-napari-io,"Classification
+Image
+Image registration
+Super-resolution microscopy","Classification, classification
+Image
+registration
+High resolution"
+6,brainreg-napari,"3D image
+Affine registration
+Image
+Image processing
+Image registration
+Image segmentation
+Microscopy
+Super-resolution microscopy","3D
+Affine registration
+Image
+transformation
+registration
+segmentation
+Microscopy
+High resolution"
+7,brainreg-segment,"3D image
+Analysis
+Image
+Image segmentation
+Manual segmentation
+Microscopy
+Visualisation","3D
+Analysis
+Image
+segmentation
+Manual segmentation
+Microscopy
+Visualisation"
+8,cellfinder-napari,"3D image
+Analysis
+Classification
+Image
+Image analysis
+Image thresholding
+Microscopy","3D
+Analysis
+Classification, classification
+Image
+Image analysis
+Thresholding
+Microscopy"
+9,cellpose-napari,Image segmentation,segmentation
+10,devbio-napari,"Cell segmentation
+Image
+Image registration
+Image segmentation","Cell segmentation
+Image
+Image registration
+Image segmentation"
+11,elastix-napari,"2D image
+3D image
+Image
+Image processing
+Image registration
+Image segmentation
+Medical imaging
+Rotation","2D
+3D
+Image
+transformation
+registration, Image registration
+segmentation
+Medical
+Rotation"
+12,misic-napari-plugin,Image segmentation,segmentation
+13,napari-accelerated-pixel-and-object-classification,"Annotation
+Classification
+Connected-component analysis
+Image
+Image segmentation
+Object classification
+Pixel classification","Annotation
+Classification, classification
+Connected component
+Image
+segmentation
+Object classification
+Pixel classification"
+14,napari-aicsimageio,"Conversion
+Image
+Image stitching
+Microscopy","Conversion
+Image
+Mosaic
+Microscopy"
+15,napari-allencell-segmenter,"3D image
+Fluorescence
+Image
+Image segmentation
+Image visualisation","3D, 3D image
+Fluorescence
+Image data, Image
+segmentation, Image segmentation
+Lookup table"
+16,napari-animation,Shape features extraction,Area
+17,napari-arboretum,"Cell lineage extraction
+Cell tracking
+Image
+Image reconstruction
+Image segmentation","Cell lineage
+Cell tracking
+Image data
+reconstruction
+segmentation"
+18,napari-autolign,"Image
+Multimodal imaging","Image
+Multimodal"
+19,napari-bioformats,,
+20,napari-brightness-contrast,Image,"Image data, Image"
+21,napari-brushsettings,Image segmentation,segmentation
+22,napari-btrack-reader,Object tracking,Tracking
+23,napari-ccp4map,,
+24,napari-checkerboard,,
+25,napari-clemreg,"Image
+Multimodal imaging","Image
+Multimodal"
+26,napari-compressed-labels-io,"3D image
+Image","3D, Image stack, stack
+Image"
+27,napari-console,,
+28,napari-czifile,,
+29,napari-czifile2,Image,Image
+30,napari-deepmeta,"Image
+Image processing
+Image segmentation","Image
+postprocessing
+segmentation"
+31,napari-dexp,,
+32,napari-dv,,
+33,napari-dvid,,
+34,napari-dzi-zarr,"2D image
+Image stitching
+Super-resolution microscopy","Tile, tile
+Tile, tile
+High resolution"
+35,napari-em-reader,,
+36,napari-features,Image feature detection,feature extraction
+37,napari-folder-browser,Image,Image
+38,napari-hdf5-labels-io,"Image segmentation
+Opening","segmentation, Image segmentation
+Opening"
+39,napari-imagecodecs,,
+40,napari-imc,"Image
+Multi-channel image","Image
+Multi-channel"
+41,napari-itk-io,"Confocal fluorescence microscopy
+Image
+Image processing","LSM
+Image
+Image processing"
+42,napari-lazy-openslide,,
+43,napari-lfdfiles,,
+44,napari-live-recording,,
+45,napari-manual-split-and-merge-labels,Image,Image
+46,napari-mat-images,"3D image
+Image","stack
+Image"
+47,napari-medical-image-formats,"Image
+Medical imaging","Image
+Medical"
+48,napari-micromanager,,
+49,napari-mrcfile-handler,,
+50,napari-mrcfile-reader,"Electron microscopy
+Image","EM
+Image"
+51,napari-mri,"3D image
+Magnetic resonance imaging","3D
+Magnetic resonance imaging"
+52,napari-ndtiffs,"Image
+Light-sheet microscopy","Image
+Light-sheet, Lattice Light-sheet"
+53,napari-netpbmfile,,
+54,napari-nikon-nd2,,
+55,napari-nucleaizer,,
+56,napari-oiffile,,
+57,napari-ome-zarr,"Image
+Image visualisation
+Microscopy","Image
+Rendering
+Microscopy"
+58,napari-omero,"Image
+Image visualisation
+Shape features extraction","Image
+Rendering
+Area"
+59,napari-plot-profile,Image,Image
+60,napari-plugin-search,Image,Image
+61,napari-properties-plotter,,
+62,napari-properties-viewer,Opening,Opening
+63,napari-pyclesperanto-assistant,"2D image
+3D image
+Cell segmentation
+Classification
+Closing
+Connected-component analysis
+Conversion
+Dilation
+Erosion
+Illumination correction
+Image
+Image correction
+Image denoising
+Image processing
+Image segmentation
+Image thresholding
+Microscopy
+Opening
+Rotation
+Smoothing
+Top-hat transform","2D
+3D, stack
+Cell segmentation
+Classification, classification
+Closing
+Connected component, Instance segmentation
+Conversion
+Dilation
+Erosion
+Background subtraction
+Image data, Image
+correction
+denoising, Noise reduction
+Image filtering, Image processing, post-processing
+segmentation, Image segmentation
+Thresholding
+Microscopy
+Opening
+Rotation
+Gaussian
+Top-hat"
+64,napari-sdeconv,"2D image
+3D image
+Image deconvolution","2D
+3D
+deconvolution, Image deconvolution"
+65,napari-sdtfile,,
+66,napari-segment-blobs-and-things-with-membranes,"Connected-component analysis
+Image
+Image denoising
+Image thresholding
+Microscopy
+Smoothing
+Watershed segmentation","Connected component
+Image
+denoising
+Thresholding
+Microscopy
+Gaussian
+Watershed"
+67,napari-skimage-regionprops,"Image
+Image feature detection
+Shape features extraction","Image
+feature extraction
+Area"
+68,napari-spacetx-explorer,,
+69,napari-stl-exporter,"3D image
+Image","3D
+Image"
+70,napari-stracking,"2D image
+3D image
+Analysis
+Image processing
+Object tracking","2D
+3D
+Analysis
+filtering
+Tracking"
+71,napari-svg,,
+72,napari-tifffile,,
+73,napari-tissuumaps,,
+74,napari-tracks-reader,"Object tracking
+Particle tracking","Tracking
+Particle, Particle tracking"
+75,napari-webcam,Image,Image
+76,napari-yapic-prediction,Image segmentation,segmentation
+77,napari_video,"3D image
+Image","3D
+Image"
+78,nd2-dask,,
+79,platelet-unet-watershed,Watershed segmentation,Watershed
+80,stardist-napari,"2D image
+3D image
+Image
+Image segmentation
+Object detection","2D
+3D
+Image
+segmentation
+Object detection"
+81,waver,"2D image
+3D image
+Image
+Synthetic image generation","2D
+3D
+Image
+simulation"
+82,zarpaint,,

@@ -1,0 +1,403 @@
+name of plugin,plugin description - text
+"napari-segment-blobs-and-things-with-membranes","napari-segment-blobs-and-things-with-membranes
+A plugin based on scikit-image for segmenting nuclei and cells based on fluorescent microscopy images with high intensity in nuclei and/or membranes
+A plugin based on scikit-image for segmenting nuclei and cells based on fluorescent microscopy images with high intensity in nuclei and/or membranes. The available functions and their user interface based on magicgui are shown below. You can also call these functions as shown in the demo notebook.
+Voronoi-Otsu-Labeling
+This algorithm uses Otsu's thresholding method in combination with Gaussian blur and a Voronoi-Tesselation approach to label bright objects such as nuclei in an intensity image. The alogrithm has two sigma parameters which allow you to fine-tune where objects should be cut (spot_sigma) and how smooth outlines should be (outline_sigma). This implementation aims to be similar to Voronoi-Otsu-Labeling in clesperanto.
+
+Seeded Watershed
+Starting from an image showing high-intensity membranes and a seed-image where objects have been labeled (e.g. using Voronoi-Otsu-Labeling), objects are labeled that are constrained by the membranes.
+
+Gaussian blur
+Applies a Gaussian blur to an image. This might be useful for denoising, e.g. before applying the Threshold-Otsu method.
+
+Subtract background
+Subtracts background using scikit-image's rolling-ball algorithm. This might be useful, for example to make intensity of membranes more similar in different regions of an image.
+
+Threshold Otsu
+Binarizes an image using scikit-image's threshold Otsu algorithm, also known as Otsu's method.
+
+Split touching objects (formerly known as binary watershed).
+In case objects stick together after thresholding, this tool might help. It aims to deliver similar results as ImageJ's watershed implementation.
+
+Connected component labeling
+Takes a binary image and produces a label image with all separated objects labeled differently. Under the hood, it uses scikit-image's label function.
+
+
+This napari plugin was generated with Cookiecutter using with @napari's cookiecutter-napari-plugin template.
+Installation
+Download, unzip and install napari from its github releases page: 
+Afterwards, go to the menu Plugins > Install/uninstall plugins... and click on the install button next to napari-segment-blobs-and-things-with-membranes: 
+You can also install napari-segment-blobs-and-things-with-membranes via pip:
+1
+pip install napari-segment-blobs-and-things-with-membranes
+Contributing
+Contributions are very welcome. Tests can be run with tox, please ensure the coverage at least stays the same before you submit a pull request.
+License
+Distributed under the terms of the BSD-3 license, ""napari-segment-blobs-and-things-with-membranes"" is free and open source software
+Issues
+If you encounter any problems, please create a thread on image.sc along with a detailed description and tag @haesleinhuepf.
+
+"
+,
+"napari-aicsimageio","napari-aicsimageio
+AICSImageIO for napari. Multiple file format reading directly into napari using pure Python.
+Features
+•        Supports reading metadata and imaging data for:
+o        CZI
+o        OME-TIFF
+o        TIFF
+o        Any formats supported by aicsimageio
+o        Any additional format supported by imageio
+Plugin Variants
+
+There are two variants of this plugin that are added during installation:
+•        aicsimageio-in-memory, which reads an image fully into memory
+•        aicsimageio-out-of-memory, which delays reading ZYX chunks until required.
+This allows for incredible large files to be read and displayed.
+Examples of Features
+General Image Reading
+All image file formats supported by aicsimageio will be read and all raw data will be available in the napari viewer.
+In addition, when reading an OME-TIFF, you can view all OME metadata directly in the napari viewer thanks to ome-types.
+
+Mosaic CZI Reading
+When reading CZI images, if the image is a mosaic tiled image, napari-aicsimageio will return the reconstructed image:
+
+Mosaic LIF Reading
+When reading LIF images, if the image is a mosaic tiled image, napari-aicsimageio will return the reconstructed image:
+"
+,
+"napari-allencell-segmenter","napari-allencell-segmenter
+A plugin that enables 3D image segmentation provided by Allen Institute for Cell Science
+A plugin that enables 3D image segmentation provided by Allen Institute for Cell Science
+The Allen Cell & Structure Segmenter plugin for napari provides an intuitive graphical user interface to access the powerful segmentation capabilities of an open source 3D segmentation software package developed and maintained by the Allen Institute for Cell Science (classic workflows only with v1.0). The Allen Cell & Structure Segmenter is a Python-based open source toolkit developed at the Allen Institute for Cell Science for 3D segmentation of intracellular structures in fluorescence microscope images. This toolkit brings together classic image segmentation and iterative deep learning workflows first to generate initial high-quality 3D intracellular structure segmentations and then to easily curate these results to generate the ground truths for building robust and accurate deep learning models. The toolkit takes advantage of the high replicate 3D live cell image data collected at the Allen Institute for Cell Science of over 30 endogenous fluorescently tagged human induced pluripotent stem cell (hiPSC) lines. Each cell line represents a different intracellular structure with one or more distinct localization patterns within undifferentiated hiPS cells and hiPSC-derived cardiomyocytes.
+More details about Segmenter can be found at https://allencell.org/segmenter
+________________________________________
+This napari plugin was generated with Cookiecutter using with @napari's cookiecutter-napari-plugin template.
+Installation
+Option 1 (recommended):
+After you installed the lastest version of napari, you can go to ""Plugins"" --> ""Install/Uninstall Package(s)"". Then, you will be able to see all available napari plugins and you can find us by name napari-allencell-segmenter. Just click the ""install"" button to install the Segmenter plugin.
+Option 2:
+You can also install napari-allencell-segmenter via pip:
+1
+pip install napari-allencell-segmenter
+Quick Start
+In the current version, there are two parts in the plugin: workflow editor and batch processing. The workflow editor allows users adjusting parameters in all the existing workflows in the lookup table, so that the workflow can be optimized on users' data. The adjusted workflow can be saved and then applied to a large batch of files using the batch processing part of the plugin.
+1.        Open a file in napari (the plugin is able to support multi-dimensional data in .tiff, .tif. ome.tif, .ome.tiff, .czi)
+2.        Start the plugin (open napari, go to ""Plugins"" --> ""napari-allencell-segmenter"" --> ""workflow editor"")
+3.        Select the image and channel to work on
+4.        Select a workflow based on the example image and target segmentation based on user's data. Ideally, it is recommend to start with the example with very similar morphology as user's data.
+5.        Click ""Run All"" to execute the whole workflow on the sample data.
+6.        Adjust the parameters of steps, based on the intermediate results. For instruction on the details on each function and the effect of each parameter, click the tooltip button. A complete list of all functions can be found here
+7.        Click ""Run All"" again after adjusting the parameters and repeat step 6 and 7 until the result is satisfactory.
+8.        Save the workflow
+9.        Close the plugin and open the batch processing part by (go to ""Plugins"" --> ""napari-allencell-segmenter"" --> ""batch processing"")
+10.        Load the customized workflow (or an off-the-shelf workflow) json file
+11.        Load the folder with all the images to process
+12.        Click ""Run""
+Contributing
+Contributions are very welcome. Tests can be run with tox, please ensure the coverage at least stays the same before you submit a pull request.
+License
+Distributed under the terms of the BSD-3 license, ""napari-allencell-segmenter"" is free and open source software
+"
+,
+"napari-accelerated-pixel-and-object-classification","napari-accelerated-pixel-and-object-classification
+Pixel and label classification using OpenCL-based Random Forest Classifiers
+         
+clEsperanto meets scikit-learn
+A yet experimental OpenCL-based Random Forest Classifier for pixel and labeled object classification in napari.
+ The processed example image maize_clsm.tif is licensed by David Legland under CC-BY 4.0 license
+For using the accelerated pixel and object classifiers in python, check out apoc.
+________________________________________
+This napari plugin was generated with Cookiecutter using with @napari's cookiecutter-napari-plugin template.
+Installation
+You can install napari-accelerated-pixel-and-object-classification via pip. Note: you also need pyopencl.
+1
+2
+conda install pyopencl
+pip install napari-accelerated-pixel-and-object-classification
+In case of issues in napari, make sure these dependencies are installed properly:
+1
+2
+pip install pyclesperanto_prototype
+pip install apoc
+Usage
+[documentation work in progress]
+Open an image in napari and add a labels layer. Annotate foreground and background with two different label identifiers. You can also add a third, e.g. a membrane-like region in between to improve segmentation quality. 
+Click the menu Plugins > Segmentation (Accelerated Pixel and Object Classification) > Train pixel classifier. Consider changing the featureset. There are three options for selecting small (about 1 pixel sized) objects, medium (about 5 pixel sized) object and large (about 25 pixel sized) objects. Make sure the right image and annotation layers are selected and click on Run.
+
+The classifier was saved as temp.cl to disc. You can later re-use it by clicking the menu Plugins > OpenCL Random Forest Classifiers > Predict pixel classifier
+Optional: Hide the annotation layer.
+Click the menu Plugins > Segmentation (Accelerated Pixel and Object Classification) > Connected Component Labeling. Make sure the right labels layer is selected. It is supposed to be the result layer from the pixel classification. Select the object class identifier you used for annotating objects, that's the intensity you drew on objects in the annotation layer. Hint: If you want to analyse touching neigbors afterwards, activate the fill gaps between labels checkbox. Click on the Run button. 
+Optional: Hide the pixel classification result layer. Change the opacity of the connected component labels layer.
+Add a new labels layer and annotate different object classes by drawing lines through them. In the following example objects with different size and shape were annotated in three classes:
+•        round, small
+•        round, large
+•        elongated
+
+Click the menu Plugins > Segmentation (Accelerated Pixel and Object Classification) > Train object classifier. Select the right layers for training. The labels layer should be the result from connected components labeling. The annotation layer should be the just annotated object classes layer. Select the right features for training. Click on the Run button. After training, the classifier will be stored to disc in the file you specified. You can later re-use it by clicking the menu Plugins > Segmentation (Accelerated Pixel and Object Classification) > Predict label classifier
+
+This is an experimental napari plugin. Feedback is very welcome!
+Contributing
+Contributions are very welcome. Tests can be run with tox, please ensure the coverage at least stays the same before you submit a pull request.
+License
+Distributed under the terms of the BSD-3 license, ""napari-accelerated-pixel-and-object-classification"" is free and open source software
+
+"
+,
+napari-brightness-contrast,"napari-brightness-contrast
+Advanced layer visualization options
+         
+Advanced layer histogram visualization options, e.g. for brightness / contrast 
+Note: This will not work for big image data at the moment. If the user interface feels slow, consider installing pyclesperanto to speed it up.
+________________________________________
+This napari plugin was generated with Cookiecutter using with @napari's cookiecutter-napari-plugin template.
+Installation
+You can install napari-brightness-contrast via pip:
+1
+pip install napari-brightness-contrast
+Contributing
+Contributions are very welcome.
+License
+Distributed under the terms of the BSD-3 license, ""napari-brightness-contrast"" is free and open source software
+
+"
+,
+brainreg-segment,"brainreg-segment
+Manual segmentation of 3D brain structures in a common anatomical space
+
+
+Segmentation of 1/2/3D brain structures in a common anatomical space
+
+brainreg-segment is a companion to brainreg allowing manual segmentation of regions/objects within the brain (e.g. injection sites, probes etc.) allowing for automated analysis of brain region distribution, and visualisation (e.g. in brainrender).
+
+Installation
+brainreg-segment comes bundled with brainreg, so see the brainreg installation instructions.
+
+brainreg-segment can be installed on it's own (pip install brainreg-segment), but you will need to register your data with brainreg first.
+
+Usage
+See user guide.
+
+If you have any questions, head over to the image.sc forum.
+
+Citing brainreg-segment
+If you find brainreg-segment useful, and use it in your research, please let us know and also cite the preprint:
+
+Tyson, A. L., Vélez-Fort, M., Rousseau, C. V., Cossell, L., Tsitoura, C., Obenhaus, H. A., Claudi, F., Lenzi, S. C., Branco, T., Margrie, T. W. (2021) “Tools for accurate post hoc determination of marker location within whole-brain microscopy images’ bioRxiv, doi.org/10.1101/2021.05.21.445133
+Abstract
+To interpret in vivo experiments designed to understand brain function, high-resolution whole-brain microscopy provides a means for post hoc determination of the location of implanted devices and recorded cells in three dimensional brain space that is a critical step for data interrogation. Here we have developed Python-based tools (brainreg and brainreg-segment) to accurately map, in a common coordinate space, the position of dye-labelled probe tracks and two-photon imaged cell populations expressing fluorescent protein. The precise location of probes and cells were validated using physiological recordings and human raters that indicate accuracy levels to less than 70µm. These flexible, open-source methodologies are expected to further evolve with need and to deliver the anatomical precision that is necessary for understanding the functional architecture of the brain."
+,
+,
+brainreg-napari,"brainreg-napari
+Multi-atlas whole-brain microscopy registration
+Installation
+1
+pip install brainreg-napari
+Usage
+Documentation for the plugin is to come, but documentation for the original brainreg can be found here and a tutorial is here.
+For segmentation of bulk structures in 3D space (e.g. injection sites, Neuropixels probes), please see brainreg-segment.
+This software is at a very early stage, and was written with our data in mind. Over time we hope to support other data types/formats. If you have any issues, please get in touch on the forum or by raising an issue.
+If you have any other questions, please send an email.
+Details
+brainreg is an update to amap (itself a port of the original Java software) to include multiple registration backends, and to support the many atlases provided by bg-atlasapi.
+The aim of brainreg is to register the template brain (e.g. from the Allen Reference Atlas) to the sample image. Once this is complete, any other image in the template space can be aligned with the sample (such as region annotations, for segmentation of the sample image). The template to sample transformation can also be inverted, allowing sample images to be aligned in a common coordinate space.
+To do this, the template and sample images are filtered, and then registered in a three step process (reorientation, affine registration, and freeform registration.) The resulting transform from template to standard space is then applied to the atlas.
+Full details of the process are in the original aMAP paper.   Overview of the registration process
+Citing brainreg
+If you find brainreg useful, and use it in your research, please let us know and also cite the preprint:
+Tyson, A. L., Vélez-Fort, M., Rousseau, C. V., Cossell, L., Tsitoura, C., Obenhaus, H. A., Claudi, F., Lenzi, S. C., Branco, T., Margrie, T. W. (2021) “Tools for accurate post hoc determination of marker location within whole-brain microscopy images’ bioRxiv, doi.org/10.1101/2021.05.21.445133
+Please also cite aMAP (the original pipeline from which this software is based):
+Niedworok, C.J., Brown, A.P.Y., Jorge Cardoso, M., Osten, P., Ourselin, S., Modat, M. and Margrie, T.W., (2016). AMAP is a validated pipeline for registration and segmentation of high-resolution mouse brain data. Nature Communications. 7, 1–9. https://doi.org/10.1038/ncomms11879
+Lastly, if you can, please cite the BrainGlobe Atlas API that provided the atlas:
+Claudi, F., Petrucco, L., Tyson, A. L., Branco, T., Margrie, T. W. and Portugues, R. (2020). BrainGlobe Atlas API: a common interface for neuroanatomical atlases. Journal of Open Source Software, 5(54), 2668, https://doi.org/10.21105/joss.02668
+
+"
+,
+napari-skimage-regionprops,"napari-skimage-regionprops
+A regionprops table widget plugin for napari
+ 
+ 
+ 
+A napari plugin for measuring properties of labeled objects based on scikit-image
+
+Features
+The user can select categories of features for feature extraction in the user interface. These categories contain measurements from the scikit-image regionprops list of measurements library:
+•	size:
+o	area
+o	bbox_area
+o	convex_area
+o	equivalent_diameter
+•	intensity:
+o	max_intensity
+o	mean_intensity
+o	min_intensity
+o	standard_deviation_intensity (extra_properties implementation using numpy)
+•	perimeter:
+o	perimeter
+o	perimeter_crofton
+•	shape
+o	major_axis_length
+o	minor_axis_length
+o	orientation
+o	solidity
+o	eccentricity
+o	extent
+o	feret_diameter_max
+o	local_centroid
+•	position:
+o	centroid
+o	bbox
+o	weighted_centroid
+•	moments:
+o	moments
+o	moments_central
+o	moments_hu
+o	moments_normalized
+This napari plugin was generated with Cookiecutter using with @napari's cookiecutter-napari-plugin template.
+Installation
+You can install napari-skimage-regionprops via pip:
+1
+pip install napari-skimage-regionprops
+Or if you plan to develop it:
+1
+2
+3
+4
+5
+git clone https://github.com/haesleinhuepf/napari-skimage-regionprops
+
+cd napari-skimage-regionprops
+
+pip install -e .
+If there is an error message suggesting that git is not installed, run conda install git.
+Contributing
+Contributions are very welcome. Tests can be run with tox, please ensure
+the coverage at least stays the same before you submit a pull request.
+License
+Distributed under the terms of the BSD-3 license,
+""napari-skimage-regionprops"" is free and open source software
+Issues
+If you encounter any problems, please create a thread on image.sc along with a detailed description and tag @haesleinhuepf.
+Install
+Sign up to receive updates
+Subscribe
+AboutFAQPrivacyContactGitHub repo
+napari hub | plugins
+
+"
+,
+,
+napari-yapic-prediction,"napari-yapic-prediction
+Napari widget plugin to perform yapic model segmentation prediction in the napari window
+napari widget plugin to perform YAPiC model segmentation prediction in the napari window.
+________________________________________
+This napari plugin was generated with Cookiecutter using with @napari's cookiecutter-napari-plugin template.
+Description
+This napari plugin provides a widget to upload a YAPiC trained model and perform segmentation over all the present images in the napari window. The segmentation results are uploaded as napari layers into the viewer automatically with the name structure of imgename_prediction.
+Installation
+1.	Please install either GPU or CPU version of tensorflow before installing the plugin depending on your system.
+One of the plugin dependency is yapic that currently has sensitivity to tensorflow versions. This behaviour will be removed in future.
+2.	You can install napari-yapic-prediction via pip:
+pip install napari-yapic-prediction
+Contributing
+Contributions are very welcome. Tests can be run with tox, please ensure the coverage at least stays the same before you submit a pull request.
+"
+,
+napari-omero,"napari-omero
+napari/OMERO interoperability
+This package provides interoperability between the OMERO image management platform, and napari: a fast, multi-dimensional image viewer for python.
+It provides a GUI interface for browsing an OMERO instance from within napari, as well as command line interface extensions for both OMERO and napari CLIs.
+
+Features
+•	GUI interface to browse remote OMERO data, with thumbnail previews.
+•	Loads remote nD images from an OMERO server into napari
+•	Planes are loading on demand as sliders are moved (""lazy loading"").
+•	session management (login memory)
+•	OMERO rendering settings (contrast limits, colormaps, active channels, current Z/T position) are applied in napari
+as a napari dock widget
+To launch napari with the OMERO browser added, install this package and run:
+1
+napari_omero
+The OMERO browser widget can also be manually added to the napari viewer:
+1
+2
+3
+4
+5
+6
+import napari
+from napari_omero import OMEROWidget
+
+with napari.gui_qt():
+    viewer = napari.Viewer()
+    viewer.window.add_dock_widget(OMEROWidget(), area=""right"")
+as a napari plugin
+This package provides a napari reader plugin that accepts OMERO resources as ""proxy strings"" (e.g. Image:<ID>) or as OMERO webclient URLS.
+1
+2
+3
+4
+5
+6
+7
+viewer = napari.Viewer()
+
+# omero object identifier string
+viewer.open(""Image:1"", plugin=""omero"")
+
+# or URLS: https://help.openmicroscopy.org/urls-to-data.html
+viewer.open(""http://yourdomain.example.org/omero/webclient/?show=image-314"")
+these will also work on the napari command line interface, e.g.:
+1
+2
+3
+napari Image:1
+# or
+napari http://yourdomain.example.org/omero/webclient/?show=image-314
+as an OMERO CLI plugin
+This package also serves as a plugin to the OMERO CLI
+1
+omero napari view Image:1
+•	ROIs created in napari can be saved back to OMERO via a ""Save ROIs"" button.
+•	napari viewer console has BlitzGateway 'conn' and 'omero_image' in context.
+installation
+Requires python 3.7 - 3.9.
+It's easiest to install omero-py from conda, so the recommended install procedure is to first create a new conda environment (here called ""omero"") with omero-py installed from the ome channel, and then use pip to install napari-omero (until we have a conda package available).
+1
+2
+3
+conda create -n omero -c ome python=3.7 omero-py
+conda activate omero
+pip install napari-omero
+issues
+❗	This is alpha software & some things will be broken or sub-optimal!
+•	experimental & definitely still buggy! Bug reports are welcome!
+•	remote loading can be very slow still... though this is not strictly an issue of this plugin. Datasets are wrapped as delayed dask stacks, and remote data fetching time can be significant. Plans for asynchronous rendering in napari and tiled loading from OMERO may eventually improve the subjective performance... but remote data loading will likely always be a limitation here.
+contributing
+Contributions are welcome! To get setup with a development environment:
+1
+2
+3
+4
+5
+6
+7
+8
+# clone this repo:
+git clone https://github.com/tlambert03/napari-omero.git
+# change into the new directory
+cd napari-omero
+# create conda environment
+conda env create -f environment.yml
+# activate the new env
+conda activate napari-omero
+To maintain good code quality, this repo uses flake8, mypy, and black. To enforce code quality when you commit code, you can install pre-commit
+1
+2
+# install pre-commit which will run code checks prior to commits
+pre-commit install
+The original OMERO data loader and CLI extension was created by Will Moore.
+The napari reader plugin and GUI browser was created by Talley Lambert
+
+"

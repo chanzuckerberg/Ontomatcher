@@ -1,5 +1,5 @@
 """
-Abstract class ConceptMatcher
+High level API into EntityMatcher
 """
 
 from abc import ABCMeta, abstractmethod
@@ -7,7 +7,6 @@ import dataclasses
 from enum import Enum
 import json
 import os
-import re
 from typing import Any, Dict, List, NamedTuple, Optional, Sequence, Set, Tuple, Union
 import unicodedata
 
@@ -28,7 +27,7 @@ class EntityNameType(Enum):
     SYNONYM = "synonym"
     # Any acronym that is not the primary name
     ACRONYM = "acronym"
-    # Partial Name
+    # Partial Name, lower priority synonyms, typically subsequences of Primary-Name or Synonyms
     PARTIAL = "partial"
 # /
 
@@ -210,111 +209,6 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
     # =====================================================================================================
     #       Methods for entity matching are left to the sub-classes.
     # =====================================================================================================
-
-    # @abstractmethod
-    # def get_matching_concepts_batched(self, mentions: Iterable[str],
-    #                                   entity_id: str = None,
-    #                                   nmax: int = None, min_score: float = None) \
-    #         -> List[Tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]]:
-    #     """
-    #     Arguments
-    #     ---------
-    #          If `entity_id` is provided Then it applies to all the mentions.
-    #          If `nmax` is provided Then return at most `nmax` matches.
-    #          If `min_score` is provided Then return only matches with scores >= min_score
-    #             (filter applied before adding match_name_type).
-    #
-    #      Results are sorted on descending score.
-    #      If self.add_name_type_preference_to_score
-    #      Then matching name_type_preference is added to score before sorting.
-    #
-    #     :returns: matching_concepts_seq
-    #             = [..., matching_concepts_seq[i], ...], one for each mention in `mentions`.
-    #         where ...
-    #             matching_concepts_seq[i] is:  ( array[entity_id, ...],
-    #                                             array[score, ...],
-    #                                             array[match_name_type_preference, ...],
-    #                                             array[name_index, ...] )
-    #             sorted on descending score.
-    #             `match_name_type_preference` indicates the preference-value for the type of name that
-    #                 this match is against, as specified in `self.params`.
-    #
-    #         Example output element:
-    #          (array(['T022:C0079652',
-    #                  'T022:C0079652',
-    #                  'T022:C0079652',
-    #                  'T022:C0816872',
-    #                  'T022:C1321512'], dtype='<U8'),
-    #           array([0.03777104, 0.03643799, 0.03555635, 0.01965859, 0.0189897 ]),
-    #           array([1, 2, 2, 3, 4]),
-    #           array([980106, 980107, 980108, 980381, 980900]))
-    #
-    #         IF mentions[i] has no matches THEN
-    #             returns tuple of empty arrays:
-    #                     (array([], dtype='<U8'),
-    #                      array([], dtype=float32),
-    #                      array([], dtype=int32),
-    #                      array([], dtype=int32))
-    #
-    #         name_index can be used to retrieve:
-    #             - Original Name:    get_original_name(name_index)
-    #
-    #         entity_id can be used to retrieve:
-    #             - Primary Name:     get_primary_name(entity_id)
-    #     """
-    #     raise NotImplementedError
-
-# /
-
-
-class BasicTokenizer:
-
-    NONWORD_CHAR_PATT = re.compile(r"\W|_")
-    SPACES_PATT = re.compile(r"(\s+)")
-
-    def __init__(self):
-        return
-
-    def tokenize_fullwords(self, txt: str, to_lower: bool = True) -> List[str]:
-        """
-        Tokenize `txt` without Lemmatizing or Stemming.
-        IF `to_lower` is True THEN convert `txt` to lower-case first ELSE do not change case.
-
-        Example usage is for Acronyms, where you do not want any word contraction:
-            acronym_tokens = tknzr.tokenize_fullwords(acronym, to_lower=False)
-
-        """
-        txt = self.standardize_chars(txt)
-        txt = self.NONWORD_CHAR_PATT.sub(" ", txt)
-
-        if to_lower:
-            txt = txt.casefold()
-
-        return txt.split()
-
-    def tokenize(self, txt: str, to_lower: bool = True) -> List[str]:
-        """
-        Tokenize `txt` in lower-Case and with all the normalization specified in __init__()
-        """
-        tkns = self.tokenize_fullwords(txt, to_lower=to_lower)
-
-        # Insert stemming / lemmatization here, if needed
-
-        return tkns
-
-    def normalize(self, txt: str, to_lower: bool = True) -> str:
-        tkns = self.tokenize(txt, to_lower)
-        return " ".join(tkns)
-
-    @staticmethod
-    def standardize_chars(text):
-        # Separate combined chars, e.g. [ﬁ] in 'ﬁnancial' => 'fi...'
-        text = unicodedata.normalize("NFKD", text)
-
-        # Strip accents, e.g. [é] in 'Montréal' => 'Montreal'
-        text = "".join([c for c in text if unicodedata.category(c) != "Mn"])
-
-        return text
 
 # /
 

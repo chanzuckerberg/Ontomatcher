@@ -1,4 +1,5 @@
 # Python Code for Napari Plug-In Annotation
+<hr>
 
 ## Requirements
 
@@ -6,7 +7,6 @@ The code requires the following packages:
 
 * Python ver 3.8+
 * [pygtrie](https://github.com/google/pygtrie), ver 2.4.2
-* [Stanza](https://stanfordnlp.github.io/stanza/index.html), ver 1.2
 
 On my machine, these are available in a Virtual Environment:
 

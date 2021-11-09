@@ -11,6 +11,8 @@ Annotate Napari plugin descriptions with bioimaging ontology terms.
 
 This project is stable and maintained, but not actively under development.
 
+This project adheres to the Contributor Covenant [code of conduct](https://github.com/chanzuckerberg/.github/blob/master/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to opensource@chanzuckerberg.com.
+
 ## License
 
 [MIT](LICENSE)

@@ -1,6 +1,6 @@
 # Project: rst-napari
 
-Annotate Napari plugin descriptions with bioimaging ontology terms.
+Annotate [Napari](https://napari.org/) plugin descriptions with bioimaging ontology terms.
 
 ## Contents
 

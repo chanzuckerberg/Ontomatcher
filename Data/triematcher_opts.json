@@ -1,0 +1,25 @@
+{
+    "class": "TrieMatcher",
+    "name": "TrieMatcher - Unstemmed",
+    "descr": "Trie Matcher, 3 tiers, unstemmed.",
+    "lexicon_id": "EDAM Imaging sub-Ontology",
+    "name_types": {
+        "primary": {
+            "tier": 1,
+            "normalization": "LOWER"
+        },
+        "acronym": {
+            "tier": 2,
+            "normalization": "STANDARD"
+        },
+        "synonym": {
+            "tier": 1,
+            "normalization": "LOWER"
+        },
+        "partial": {
+            "tier": 4,
+            "normalization": "LOWER"
+        }
+    },
+    "cache_file": "imgont_matcher.pkl"
+}

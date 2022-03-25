@@ -6,7 +6,9 @@
 The code requires the following packages:
 
 * Python ver 3.8+
+* [nltk](https://www.nltk.org), ver 3.5+
 * [pygtrie](https://github.com/google/pygtrie), ver 2.4.2
+* [unidecode](https://pypi.org/project/Unidecode/), ver 1.3.4+
 
 On my machine, these are available in a Virtual Environment:
 
@@ -28,7 +30,7 @@ This requires two data files:
 ### Output Ontology Terms detected in all Plugins
 
 ```
-$> python -m mentions.annotater annotate ../Data/programmatic\ napari-hub\ tagging\ -\ full\ terms\,synonyms\,\ partial\ phrases.csv ../Data/plugin_descriptions.csv ../Data/plugin_annotations.csv
+$> python -m imgont.mentions.annotater annotate ../Data/programmatic\ napari-hub\ tagging\ -\ full\ terms\,synonyms\,\ partial\ phrases.csv ../Data/plugin_descriptions.csv ../Data/plugin_annotations.csv
 ```
 
 Output is written to the file `../Data/plugin_annotations.csv` in CSV format.
@@ -39,7 +41,7 @@ Output is written to the file `../Data/plugin_annotations.csv` in CSV format.
 This shows where the matches were found in the description text. If plugins have a summary, it is added as the first line to the description.
 
 ```
-$> python -m mentions.annotater sample ../Data/programmatic napari-hub tagging - full terms,synonyms, partial phrases.csv ../Data/plugin_descriptions.csv 2
+$> python -m imgont.mentions.annotater sample ../Data/programmatic napari-hub tagging - full terms,synonyms, partial phrases.csv ../Data/plugin_descriptions.csv 2
 ```
 
 Output is written to the terminal. The last argument specifies how many plugins to annotate.
@@ -52,12 +54,12 @@ of ontology terms, treated as word-sequences.
 
 The two main functions are:
 
-* `mentions.annotater.build_ontology_trie_matcher()`: Load the ontology terms, and build the trie.
-* `mentions.annotater.get_ont_matches()`: Given a plugin description as a text string, find ontology matches.
+* `imgont.mentions.annotater.build_ontology_trie_matcher()`: Load the ontology terms, and build the trie.
+* `imgont.mentions.annotater.get_ont_matches()`: Given a plugin description as a text string, find ontology matches.
 
-See `mentions.annotater.annotate_plugins()` for an example of how to use these functions.
+See `imgont.mentions.annotater.annotate_plugins()` for an example of how to use these functions.
 
-The trie-based matcher `text.triematcher.TrieMatcher` supports 4 name types for each ontology entry:
+The trie-based matcher `imgont.text.triematcher.TrieMatcher` supports 4 name types for each ontology entry:
 
 * The Primary Name. The formal name of that entry.
 * Acronyms.
@@ -65,7 +67,7 @@ The trie-based matcher `text.triematcher.TrieMatcher` supports 4 name types for 
 * Partial names: a 'lower' category of synonyms.
 
 The provided names, and the plugin description text, are tokenized using the same tokenizer 
-(`text.entity_matcher.BasicRevMappedTokenizer`). Acronyms use a case-sensitive match, and all other name types are
+(`imgont.text.entity_matcher.BasicRevMappedTokenizer`). Acronyms use a case-sensitive match, and all other name types are
 matched without sensitivity to case. Finding greedy non-overlapping matches of names in the text seems to work the
 best, with preference given to name types in the order shown above (user can change this order when building a 
-`text.triematcher.TrieMatcher` instance).
+`imgont.text.triematcher.TrieMatcher` instance).

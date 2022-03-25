@@ -1,0 +1,6 @@
+{
+    "EDAM": "../Data/EDAM-bioimaging_alpha06.tsv",
+    "imgont": "../Data/imaging_subontology.json",
+    "curated_syns": "../Data/curated_imaging_synonyms-220316.csv",
+    "matcher": "../Data/triematcher_stemmed_opts.json"
+}

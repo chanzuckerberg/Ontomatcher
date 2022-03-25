@@ -2,13 +2,9 @@
 
 ## Contents
 
-* `programmatic napari-hub tagging - 10 plugins.csv`: Sample plugin descriptions. Exported from [this Google Sheet](https://docs.google.com/spreadsheets/d/1LHhkIq_PUgx2fVblZWwIZb8HvjS_sWN6stgiA-OyZ8U/edit#gid=1394695008).
+* `EDAM-bioimaging_alpha06.tsv`: The EDAM Bioimaging Ontology version used in this project. Copied from [EDAM Bioimaging Ontology repo](https://github.com/edamontology/edam-bioimaging).
 
-* `programmatic napari-hub tagging - full terms,synonyms, partial phrases.csv`: Terms to match, derived from [EDAM Bioimaging Ontology](https://github.com/edamontology/edam-bioimaging) by CZI curation team. Exported from [this Google Sheet](https://docs.google.com/spreadsheets/d/1LHhkIq_PUgx2fVblZWwIZb8HvjS_sWN6stgiA-OyZ8U/edit#gid=1394695008).
+* `imaging_subontology.json`: Describes which subset of the full EDAM ontology will be recognized. See Python method `ontomatch.data.ontology.Ontology.get_subontology()`.
 
-* `plugin_descriptions.csv`:
-	Name, Summary and Descr for all current plugins, from Justin Kiggins.	Date: Oct 13, 2021.
-
-* `plugin_annotations.csv`:
-	Ontology terms found for plugins in `plugin_descriptions.csv`.
+* `curated_imaging_synonyms-220316.csv`: Set of curated synonyms for imaging sub-ontology terms. Format is for reading by the Python function `ontomatch.data.imgontology.read_curated_synonyms()`.
 

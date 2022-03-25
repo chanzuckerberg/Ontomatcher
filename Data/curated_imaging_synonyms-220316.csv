@@ -1,0 +1,1397 @@
+ClassID,Paths_from_root,Name,Excluded?,EDAM_synonyms,EDAM_synonyms_exact,EDAM_synonyms_broad,EDAM_synonyms_narrow,EDAM_synonyms_related,curated_synonyms_full,curated_acronyms,curated_synonyms_partial,change_log,,,,,,
+http://edamontology.org/data_0006,,Data,X,"Data record (*)
+ Data set (*)
+ Datum (*)",Data record (*),,"Data set (*)
+ Datum (*)",,,,,,,,,,,
+http://edamontology.org/data_Image,Data,Image,X,"Digital image
+ Image data
+ Image set
+ Pixel-based image
+ Raster image
+ Set of images
+ Voxel-based image",Image data,,"Digital image
+ Image set
+ Pixel-based image
+ Raster image
+ Set of images
+ Voxel-based image",,"Digital image
+ Image data
+ Image set
+ Pixel-based image
+ Raster image
+ Set of images
+ Voxel-based image",,,,,,,,,
+http://edamontology.org/operation_0004,,Operation,X,"Computational method (*)
+ Computational operation (*)
+ Computational procedure (*)
+ Computational subroutine (*)
+ Computational tool (*)
+ Function (*)
+ Function (programming) (*)
+ Lambda abstraction (*)
+ Mathematical function (*)
+ Mathematical operation (*)
+ Process (*)
+ sumo:Function (*)",,Function (*),"Computational method (*)
+ Computational operation (*)
+ Computational procedure (*)
+ Computational subroutine (*)
+ Function (programming) (*)
+ Lambda abstraction (*)
+ Mathematical function (*)
+ Mathematical operation (*)","Computational tool (*)
+ Process (*)
+ sumo:Function (*)",,,,,,,,,,
+http://edamontology.org/operation_Image_processing,Operation,Image processing,X,"Image filtering
+ Image manipulation
+ Image post-processing
+ Image postprocessing
+ Image pre-processing
+ Image preprocessing
+ Image transformation",Image transformation,,"Image filtering
+ Image post-processing
+ Image postprocessing
+ Image pre-processing
+ Image preprocessing",Image manipulation,"Image filtering
+ Image manipulation
+ Image post-processing
+ Image postprocessing
+ Image pre-processing
+ Image preprocessing
+ Image transformation",,"filtering
+ manipulation
+ post-processing
+ postprocessing
+ pre-processing
+ preprocessing
+ transformation",,,,,,,
+http://edamontology.org/operation_Rotation,Operation : Image processing : Geometrical transformation : Affine transformation,Rotation,X,,,,,,,,,,,,,,,
+http://edamontology.org/operation_2945,Operation,Analysis,X,,,,,,,,,,,,,,,
+http://edamontology.org/operation_Image_visualisation,Operation : Visualisation,Image visualisation,X,"Lookup table
+ Rendering",Rendering,,Lookup table,,"Lookup table
+ Rendering
+Image visualization",,,alt spelling,,,,,,
+http://edamontology.org/topic_0003,,Topic,X,sumo:FieldOfStudy (*),,,,sumo:FieldOfStudy (*),,,,,,,,,,
+http://edamontology.org/topic_3382,Topic,Imaging,X,,,,,,,,,,,,,,,
+http://edamontology.org/data_3D_dataset,Data : Image,3D image,,"Image stack
+ stack",,,,Image stack,"Image stack
+ stack",,"3D
+3-dimensional","Added 3-dimensional
+alt spelling",,,,,,
+http://edamontology.org/data_2D_dataset,Data : Image,2D image,,,,,,,,,"2D
+2-dimensional","remove tile, tiling
+Added 2-dimensional
+alt spelling",,,,,,
+http://edamontology.org/data__R0uFIvsA9tQJYZz8NM3Smk,Data : Image,Multi-channel image,,,,,,,Multi channel image        ,,"Multi-channel
+Multi channel",alt spelling,,,,,,
+http://edamontology.org/data__RCMgLYJyn9WJyCc3bA23xT1,Data : Image,,,"Movie
+ Time-lapse image
+ Time-series image
+ Video sequence",Time-series image,,"Movie
+ Time-lapse image
+ Video sequence",,"Movie
+ Time-lapse image
+ Time-series image
+ Video sequence
+Time lapse image
+Time series image",,"Time-lapse
+ Time-series
+ Time series
+ Time lapse 
+",alt spelling,,,,,,
+http://edamontology.org/operation__Rhb4iyLUQWY4HnhPpuqNNI,Operation : Image processing,Image crop,,,,,,,,,crop,,,,,,,
+http://edamontology.org/operation_____Frequency_domain,Operation : Image processing,Frequency-domain transformation,,"FFT (*)
+ Fast Fourier transform
+ Transformation into frequency domain
+ Wavelet transform",Transformation into frequency domain,,,"Fast Fourier transform
+ Wavelet transform","Fast Fourier transform
+ Transformation into frequency domain
+ Wavelet transform",FFT,"Fast Fourier
+ Frequency domain
+ Transformation into frequency domain
+ Wavelet
+Frequency-domain",alt spelling,,,,,,
+http://edamontology.org/operation_Image_registration,"Operation : Image processing
+ Operation : Alignment construction",Image registration,,Image alignment,Image alignment,,,,Image alignment,,"alignment
+ registration",,,,,,,
+http://edamontology.org/operation_____Intensity-based_registration,"Operation : Image processing : Image registration
+ Operation : Alignment construction : Image registration",Intensity-based registration,,Area-based registration,,,Area-based registration,,"Area-based registration
+Intensity based registration
+Area based registration",,,alt spelling,,,,,,
+http://edamontology.org/operation__R9EjejimBB0tmnQRmZt0RhA,"Operation : Image processing : Image registration
+ Operation : Alignment construction : Image registration",Feature-based registration,,"Object registration
+ Shape-based registration",,,"Object registration
+ Shape-based registration",,"Object registration
+ Shape-based registration
+Feature based registration
+Shape based registration",,,alt spelling,,,,,,
+http://edamontology.org/operation__RCPVGO34XrwrJasQ5yWBg9k,"Operation : Image processing : Image registration
+ Operation : Alignment construction : Image registration",Deformable registration,,Elastic registration,,,Elastic registration,,Elastic registration,,,remove elastic,,,,,,
+http://edamontology.org/operation__RLtOI0poPsYRHzgXbAcr2E,"Operation : Image processing : Image registration
+ Operation : Alignment construction : Image registration",Affine registration,,Affine image registration,Affine image registration,,,,Affine image registration,,,,,,,,,
+http://edamontology.org/operation__R9Vc5BV3ZMcLHEL6WEceXbY,"Operation : Image processing : Image registration : Affine registration
+ Operation : Alignment construction : Image registration : Affine registration",Rigid registration,,Rigid image registration,Rigid image registration,,,,Rigid image registration,,,,,,,,,
+http://edamontology.org/operation_Image_segmentation,"Operation : Image processing
+ Operation : Analysis : Image analysis",Image segmentation,,,,,,,,,segmentation,,,,,,,
+http://edamontology.org/operation_Pixel_classification,"Operation : Image processing : Image segmentation
+ Operation : Analysis : Image analysis : Image segmentation
+ Operation : Classification",Pixel classification,,"Pixel labeling
+ Semantic image segmentation
+ Voxel classification","Pixel labeling
+ Voxel classification",,Semantic image segmentation,,"Pixel labeling
+ voxel labeling
+ Semantic image segmentation
+ Voxel classification
+Pixel labelling
+ voxel labelling",,,"add voxel labeling
+
+alt spelling",,,,,,
+http://edamontology.org/operation____Region_growing,"Operation : Image processing : Image segmentation
+ Operation : Analysis : Image analysis : Image segmentation",Region growing,,Region-based segmentation,,Region-based segmentation,,,"Region-based segmentation
+Region based segmentation",,Region growing,alt spelling,,,,,,
+http://edamontology.org/operation_Watershed,"Operation : Image processing : Image segmentation : Region growing
+ Operation : Analysis : Image analysis : Image segmentation : Region growing",Watershed segmentation,,"Watershed transformation
+ Watershed-based segmentation",Watershed-based segmentation,Watershed transformation,,,"Watershed transformation
+ Watershed-based segmentation
+ Watershed based segmentation",,Watershed,alt spelling,,,,,,
+http://edamontology.org/operation_____Connected-component_analysis,"Operation : Image processing : Image segmentation
+ Operation : Analysis : Image analysis : Image segmentation",Connected-component analysis,,Instance segmentation,,,,,Instance segmentation,,Connected component,,,,,,,
+http://edamontology.org/operation__R9Qf06vxvFj2UbAk7pW3IMG,"Operation : Image processing : Image segmentation
+ Operation : Analysis : Image analysis : Image segmentation",Filament tracing,,"Biofilament tracing
+ Curvilinear structure detection
+ Curvilinear structure reconstruction
+ Neuron reconstruction
+ Tubular structure extraction",Tubular structure extraction,,Biofilament tracing,"Curvilinear structure detection
+ Curvilinear structure reconstruction","Biofilament tracing
+ Curvilinear structure detection
+ Curvilinear structure reconstruction
+ Neuron reconstruction
+ Tubular structure extraction",,"Biofilament tracing
+ Curvilinear structure
+ Tubular structure",,,,,,,
+http://edamontology.org/operation_____Superpixel_extraction,"Operation : Image processing : Image segmentation
+ Operation : Analysis : Image analysis : Image segmentation",Superpixel extraction,,"Super-pixel extraction
+ Super-voxel extraction
+ Supervoxel extraction","Super-pixel extraction
+ Super-voxel extraction
+ Supervoxel extraction",,,,"Super-pixel extraction
+ Super-voxel extraction
+ Supervoxel extraction
+Super pixel extraction
+ Super voxel extraction
+ Supervoxel extraction",,"Super-pixel
+ Super-voxel
+ Superpixel
+ Supervoxel
+Super pixel
+ Super voxel",alt spelling,,,,"Super-pixel extraction
+ Super-voxel extraction
+ Supervoxel extraction",,"Super-pixel
+ Super-voxel
+ Superpixel
+ Supervoxel"
+http://edamontology.org/operation______Semi-automatic_segmentation,"Operation : Image processing : Image segmentation
+ Operation : Analysis : Image analysis : Image segmentation",Semi-automatic segmentation,,,,,,,Semiautomatic segmentation,,,alt spelling,,,,,,
+http://edamontology.org/operation______Manual_segmentation,"Operation : Image processing : Image segmentation
+ Operation : Analysis : Image analysis : Image segmentation
+ Operation : Annotation : Image annotation : Dense image annotation",Manual segmentation,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_Cell_segmentation,"Operation : Image processing : Image segmentation
+ Operation : Analysis : Image analysis : Image segmentation",Cell segmentation,,,,,,,,,,,,,,,,
+http://edamontology.org/operation____Model-based_segmentation,"Operation : Image processing : Image segmentation
+ Operation : Analysis : Image analysis : Image segmentation",Model-based segmentation,,,,,,,Model based segmentation,,Model based,alt spelling,,,,,,
+http://edamontology.org/operation_Active_contours,"Operation : Image processing : Image segmentation : Model-based segmentation
+ Operation : Analysis : Image analysis : Image segmentation : Model-based segmentation",Active contours,,"Active contour model
+ Active contour models
+ Snakes","Active contour model
+ Active contour models",,Snakes,,"Active contour model
+ Active contour models
+ Snakes",,"contour
+ contour model",,,,,,,
+http://edamontology.org/operation_Image_thresholding,"Operation : Image processing : Image segmentation
+ Operation : Analysis : Image analysis : Image segmentation",Image thresholding,,"Clustering-based image thresholding
+ Thresholding",Thresholding,,Clustering-based image thresholding,,"Clustering-based image thresholding
+ Thresholding
+Clustering based image thresholding",,,alt spelling,,,,,,
+http://edamontology.org/operation_Adaptative_thresholding,"Operation : Image processing : Image segmentation : Image thresholding
+ Operation : Analysis : Image analysis : Image segmentation : Image thresholding",Adaptive thresholding,,"Adaptative thresholding
+ Dynamic thresholding
+ Local thresholding","Adaptative thresholding
+ Dynamic thresholding
+ Local thresholding",,,,"Adaptative thresholding
+ Dynamic thresholding
+ Local thresholding",,,,,,,,,
+http://edamontology.org/operation_____Overlap_analysis,"Operation : Image processing : Image segmentation
+ Operation : Analysis : Image analysis : Image segmentation
+ Operation : Analysis : Image analysis : Object feature extraction",Overlap analysis,,"Intersection analysis
+ Jaccard index
+ Overlap quantification
+ S√∏rensen-Dice coefficient","Intersection analysis
+ Overlap quantification",,,,"Intersection analysis
+ Jaccard index
+ Overlap quantification
+ S√∏rensen-Dice coefficient",,"Jaccard
+ Overlap
+ S√∏rensen-Dice",check,,,,,,
+http://edamontology.org/operation_Geometrical_transform,Operation : Image processing,Geometrical transformation,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_Warping,Operation : Image processing : Geometrical transformation,Warping,,,,,,,,,,,,,,,,
+http://edamontology.org/operation__R8ANfLkuHu47r739AkhxrId,Operation : Image processing : Geometrical transformation,Affine transformation,,Orthographic projection,,,,Orthographic projection,Orthographic projection,,,,,,,,,
+http://edamontology.org/operation_Linear_transformation,Operation : Image processing : Geometrical transformation : Affine transformation,Linear transformation,,Image resampling,,,Image resampling,,Image resampling,,resampling,,,,,,,
+http://edamontology.org/operation_Image_reconstruction,"Operation : Image processing
+ Operation : Data generation : Image generation",Image reconstruction,,Image restoration,,,Image restoration,,Image restoration,,"reconstruction
+ restoration",,,,,,,
+http://edamontology.org/operation__RDyyXyhf1oHK93opXhEnRND,"Operation : Image processing : Image reconstruction
+ Operation : Data generation : Image generation : Image reconstruction
+ Operation : Image processing : Image enhancement",Image denoising,,Noise reduction,Noise reduction,,,,Noise reduction,,denoising,,,,,,,
+http://edamontology.org/operation_Image_stitching,"Operation : Image processing : Image reconstruction
+ Operation : Data generation : Image generation : Image reconstruction",Image stitching,,"Mosaic
+ Tile
+ Tiling",,,,Mosaic,"Mosaic
+ Tile
+ Tiling",,stitching,,,,,,,
+http://edamontology.org/operation_Image_deconvolution,"Operation : Image processing : Image reconstruction
+ Operation : Data generation : Image generation : Image reconstruction",Image deconvolution,,,,,,,,,deconvolution,,,,,,,
+http://edamontology.org/operation__R8EfungVXA0oQM2Ac7YY5eu,"Operation : Image processing : Image reconstruction
+ Operation : Data generation : Image generation : Image reconstruction
+ Operation : Analysis : Image analysis : Object detection",Single molecule localisation,,"PAINT image reconstruction
+ PALM image reconstruction
+ SMLM image reconstruction
+ STORM image reconstruction
+ Single molecule localization
+ Single-molecule localisation microscopy image reconstruction
+ Single-molecule localization microscopy image reconstruction",Single molecule localization,,"PAINT image reconstruction
+ PALM image reconstruction
+ SMLM image reconstruction
+ STORM image reconstruction
+ Single-molecule localisation microscopy image reconstruction
+ Single-molecule localization microscopy image reconstruction",,"PAINT image reconstruction
+ PALM image reconstruction
+ SMLM image reconstruction
+ STORM image reconstruction
+ Single molecule localization
+Single-molecule localisation
+Single-molecule localization
+","PAINT
+ PALM
+ SMLM
+ STORM",Single molecule,"add PAINT, remove PAINT image, remove single-molecule localization microscopy image reconstruction
+
+alt spelling",,,,,,
+http://edamontology.org/operation__R1NVO6hpWWcs99UiEFiOfK,"Operation : Image processing : Image reconstruction
+ Operation : Data generation : Image generation : Image reconstruction",Tomographic reconstruction,,"Filtered back projection
+ Tomography reconstruction",Tomography reconstruction,,Filtered back projection,,"Filtered back projection
+ Tomography reconstruction",,"Tomographic
+ Tomography",,,,,,,
+http://edamontology.org/operation__RBPObKBKIMwjdLygBOlvojW,"Operation : Image processing : Image reconstruction
+ Operation : Data generation : Image generation : Image reconstruction",Selective plane illumination microscopy reconstruction,,,,,,,,SPIM,plane illumination,add SPIM,,,,,,
+http://edamontology.org/operation__R8V95OnTjs7fCvVXWjaXrh6,"Operation : Image processing : Image reconstruction
+ Operation : Data generation : Image generation : Image reconstruction",Structured illumination reconstruction,,,,,,,structured illumination microscopy,SIM,Structured illumination,"add structured illumination microscopy, SIM",,,,,,
+http://edamontology.org/operation___Image_convolution,Operation : Image processing,Image convolution,,Linear shift invariant image filtering,Linear shift invariant image filtering,,,,Linear shift invariant image filtering,,"Linear shift
+ convolution",,,,,,,
+http://edamontology.org/operation______Image-to-image_translation,Operation : Image processing,Image-to-image translation,,"Neural style transfer
+ Style transfer",,,"Neural style transfer
+ Style transfer",,"Neural style transfer
+ Style transfer
+Image to image translation",,"Image-to-image
+Image to image",alt spelling,,,,,,
+http://edamontology.org/operation__R7MFwdgojfmkZ07yWbdcda0,Operation : Image processing,Image correction,,"Image pre-processing
+ Image preprocessing
+ Instrument aberration correction",,,Instrument aberration correction,"Image pre-processing
+ Image preprocessing","Image pre-processing
+ Image preprocessing
+ Instrument aberration correction",,"aberration correction
+ correction",,,,,,,
+http://edamontology.org/operation__RBh3vNecu5XlIPh3kbMM4Cq,Operation : Image processing : Image correction,Drift correction,,,,,,,,,Drift,,,,,,,
+http://edamontology.org/operation__R3BGvVm77d5vFMF6f28ZiW,Operation : Image processing : Image correction,Geometric distortion correction,,Lens distortion correction,,,Lens distortion correction,,Lens distortion correction,,"Geometric distortion
+ Lens distortion",,,,,,,
+http://edamontology.org/operation__RCi5QWhY2hXnO46smg6bHRQ,Operation : Image processing : Image correction,Detector gain correction,,,,,,,,,Detector gain,,,,,,,
+http://edamontology.org/operation__RDr8xcZEa4L3mZsslmhhee8,Operation : Image processing : Image correction,Chromatic aberration correction,,Channel shift correction,,,,Channel shift correction,Channel shift correction,,"Channel shift
+ Chromatic aberration",,,,,,,
+http://edamontology.org/operation_Illumination_correction,Operation : Image processing : Image correction,Illumination correction,,"Background subtraction
+ Flat field correction",Flat field correction,,,,"Background subtraction
+ Flat field correction
+Flat-field correction",,field correction,alt spelling,,,,,,
+http://edamontology.org/operation__RDlueIjODveP3FyOknVAqo5,Operation : Image processing : Image correction,Detector bias correction,,Camera bias correction,,,Camera bias correction,,Camera bias correction,,"Camera bias
+ Detector bias",,,,,,,
+http://edamontology.org/operation__R7qn3VpJyCAPGqdW6ia3h2d,Operation : Image processing : Image correction,Spectral unmixing,,Color deconvolution,,,,Color deconvolution,Color deconvolution,,,,,,,,,
+http://edamontology.org/operation_Image_enhancement,Operation : Image processing,Image enhancement,,Image restoration,,,Image restoration,,Image restoration,,enhancement,,,,,,,
+http://edamontology.org/operation_Edge_detection,Operation : Image processing : Image enhancement,Feature enhancement,,"Edge enhancement
+ Matching filter
+ Steerable filter",,,Edge enhancement,,"Edge enhancement
+ Matching filter
+ Steerable filter",,,,,,,,,
+http://edamontology.org/operation____Contrast_enhancement,Operation : Image processing : Image enhancement,Contrast enhancement,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_Image_smoothing,Operation : Image processing : Image enhancement,Smoothing,,"Blurring
+ Gaussian blurring
+ Gaussian filtering
+ Gaussian smoothing",,,"Gaussian blurring
+ Gaussian filtering
+ Gaussian smoothing",Blurring,"Blurring
+ Gaussian blurring
+ Gaussian filtering
+ Gaussian smoothing",,"Blurring
+ Gaussian",,,,,,,
+http://edamontology.org/operation_Morphological_operations,Operation : Image processing,Morphological operation,,"Mathematical morphology
+ Morphological image processing",Morphological image processing,,,,"Mathematical morphology
+ Morphological image processing",,,,,,,,,
+http://edamontology.org/operation_Opening,Operation : Image processing : Morphological operation,Opening,,,,,,,,,,,,,,,,
+http://edamontology.org/operation____Top-hat_transform,Operation : Image processing : Morphological operation,Top-hat transform,,"Black top-hat transform
+ Bottom-hat transform
+ Hat transform
+ White top-hat transform",White top-hat transform,Hat transform,,"Black top-hat transform
+ Bottom-hat transform","Black top-hat transform
+ Bottom-hat transform
+ Hat transform
+ White top-hat transform
+Black top hat transform
+ Bottom hat transform
+ White top hat transform
+Top hat transform",,"Top-hat
+Top hat",alt spelling,,,,,,
+http://edamontology.org/operation_Dilation,Operation : Image processing : Morphological operation,Dilation,,Dilatation,Dilatation,,,,Dilatation,,,,,,,,,
+http://edamontology.org/operation_Distance_transform,Operation : Image processing : Morphological operation,Distance transform,,,,,,,distance map,,,add distance map,,,,,,
+http://edamontology.org/operation_Erosion,Operation : Image processing : Morphological operation,Erosion,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_Skeletonization,Operation : Image processing : Morphological operation,Skeletonisation,,Medial axis transform,,,Medial axis transform,,"Medial axis transform
+ skeletonization",,,add skeletonization,,,,,,
+http://edamontology.org/operation_Closing,Operation : Image processing : Morphological operation,Closing,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_____Image_fusion,Operation : Image processing,Image fusion,,,,,,,,,,,,,,,,
+http://edamontology.org/operation___Validation,Operation,Validation,,,,,,,,,,,,,,,,
+http://edamontology.org/operation___Image_validation,Operation : Validation,Image validation,,,,,,,,,validation,,,,,,,
+http://edamontology.org/operation___Clustering,Operation,Clustering,,Cluster analysis,Cluster analysis,,,,Cluster analysis,,cluster,add cluster,,,,,,
+http://edamontology.org/operation______Centroid-based_clustering,Operation : Clustering,Centroid-based clustering,,"Fuzzy c-means clustering
+ k-means clustering",,,,,"Fuzzy c-means clustering
+ k-means clustering
+Centroid based clustering",,"Centroid-based
+ k-means
+ c-means
+Centroid based ","add k-means, c-means
+
+alt spelling",,,,,,
+http://edamontology.org/operation______Density-based_clustering,Operation : Clustering,Density-based clustering,,DBSCAN (*),,,,,Density based clustering,DBSCAN,"Density-based
+Density based",alt spelling,,,,,,
+http://edamontology.org/operation______Connectivity-based_clustering,Operation : Clustering,Hierarchical clustering,,Connectivity-based clustering,Connectivity-based clustering,,,,"Connectivity-based clustering
+Connectivity based clustering",,"Connectivity based
+Connectivity-based",alt spelling,,,,,,
+http://edamontology.org/operation______Distribution-based_clustering,Operation : Clustering,Distribution-based clustering,,"GMM (*)
+ Gaussian mixture model",,,,,"Gaussian mixture model
+Distribution based clustering",GMM,"Distribution-based
+ Gaussian mixture
+Distribution based",alt spelling,,,,,,
+http://edamontology.org/operation_3429,Operation,Data generation,,Data synthesis,Data synthesis,,,,Data synthesis,,,,,,,,,
+http://edamontology.org/operation______Data_augmentation,Operation : Data generation,Data augmentation,,,,,,,,,,,,,,,,
+http://edamontology.org/operation__RDFFD5jBfUw74a3vJeBAGB1,Operation : Data generation,Image generation,,Image synthesis,Image synthesis,,,,Image synthesis,,,,,,,,,
+http://edamontology.org/operation__R9FvNkpDIaqZQhLVlPsHisj,Operation : Data generation : Image generation,Synthetic image generation,,"Image simulation
+ Simulated image generation","Image simulation
+ Simulated image generation",,,,"Image simulation
+ Simulated image generation
+",,"Simulated image
+ Synthetic image","remove simulation 
+alt spelling
+",,,,,,
+http://edamontology.org/operation______Machine_learning-based_data_generation,Operation : Data generation,Machine learning-based data generation,,"GAN (*)
+ Generative adversarial network",,,,,"Generative adversarial network
+Machine learning based data generation",GAN,Generative adversarial network,"remove machine learning
+
+alt spelling",,,,,,
+http://edamontology.org/operation_3443,Operation : Analysis,Image analysis,,General image analysis,,,General image analysis,,General image analysis,,,,,,,,,
+http://edamontology.org/operation_Optical_flow_analysis,Operation : Analysis : Image analysis,Optical flow analysis,,,,,,,,,Optical flow,,,,,,,
+http://edamontology.org/operation__RBNng13hEB0CJD5VzSKqrfB,Operation : Analysis : Image analysis,Object detection,,"Isolated object detection
+ Object localisation
+ Object localization
+ Particle detection",,,"Isolated object detection
+ Object localisation
+ Object localization
+ Particle detection",,"Isolated object detection
+ Object localisation
+ Object localization
+ Particle detection",,,,,,,,,
+http://edamontology.org/operation___Colocalisation_analysis,Operation : Analysis : Image analysis,Colocalisation analysis,,"Co-localisation analysis
+ Co-localization analysis
+ Colocalization analysis","Co-localisation analysis
+ Co-localization analysis
+ Colocalization analysis",,,,"Co-localisation analysis
+ Co-localization analysis
+ Colocalization analysis",,"Co-localisation
+ Co-localization
+ Colocalisation
+ Colocalization",,,,,,,
+http://edamontology.org/operation_Image_colocalization,Operation : Analysis : Image analysis : Colocalisation analysis,Object-based colocalisation analysis,,"Object-based co-localisation analysis
+ Object-based colocalization analysis","Object-based co-localisation analysis
+ Object-based colocalization analysis",,,,"Object-based co-localisation analysis
+ Object-based colocalization analysis
+Object based co-localisation analysis
+ Object based colocalization analysis",,"Object-based colocalisation
+ object-based colocalization","add object-based colocalization
+
+alt spelling",,,,,,
+http://edamontology.org/operation___Pixel-based_colocalisation,Operation : Analysis : Image analysis : Colocalisation analysis,Pixel-based colocalisation analysis,,"Manders coefficient
+ Pixel-based co-localisation analysis
+ Pixel-based colocalization analysis
+ Voxel-based colocalisation analysis","Pixel-based co-localisation analysis
+ Pixel-based colocalization analysis
+ Voxel-based colocalisation analysis",,,,"Manders coefficient
+ Pixel-based co-localisation analysis
+ Pixel-based colocalization analysis
+ Voxel-based colocalisation analysis
+Pixel based co-localisation analysis
+ Pixel based colocalization analysis
+ Voxel based colocalisation analysis
+Pixel based colocalisation analysis",,"Manders
+ Pixel-based colocalisation
+ Pearson correlation coefficient","add Pearson correlation coefficient
+
+alt spelling",,,,,,
+http://edamontology.org/operation_Image_classification,"Operation : Analysis : Image analysis
+ Operation : Classification",Image classification,,Image clustering,,,,,Image clustering,,classification,,,,,,,
+http://edamontology.org/operation_Image_tracking,Operation : Analysis : Image analysis,Object tracking,,"Tracking
+ Trajectory extraction",Tracking,,Trajectory extraction,,"Tracking
+ Trajectory extraction",,,,,,,,,
+http://edamontology.org/operation___Trajectory_analysis,Operation : Analysis : Image analysis : Object tracking,Trajectory analysis,,"Displacement analysis
+ Motility analysis",,,,"Displacement analysis
+ Motility analysis","Displacement analysis
+ Motility analysis",,"Displacement
+ Motility
+ Trajectory",,,,,,,
+http://edamontology.org/operation__RDsrmC9l0bZw9kGJzGMCyY8,Operation : Analysis : Image analysis : Object tracking,Isolated object tracking,,,,,,,Isolated-object tracking,,,"remove isolated object 
+
+alt spelling",,,,,,
+http://edamontology.org/operation_Particle_tracking,Operation : Analysis : Image analysis : Object tracking : Isolated object tracking,Particle tracking,,,,,,,,,,remove particle,,,,,,
+http://edamontology.org/operation_Cell_tracking,Operation : Analysis : Image analysis : Object tracking : Isolated object tracking,Cell tracking,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_____Cell_lineage_extraction,Operation : Analysis : Image analysis : Object tracking,Cell lineage extraction,,,,,,,Cell-lineage extraction,,Cell lineage,alt spelling,,,,,,
+http://edamontology.org/operation__RBUpi1JSczmHQSf8Q8fDzG5,Operation : Analysis : Image analysis : Object tracking,Collective object tracking,,"Scratch assay
+ Scratch assay analysis
+ Wound healing analysis
+ Wound-healing assay",,,,"Scratch assay
+ Scratch assay analysis
+ Wound healing analysis
+ Wound-healing assay","Scratch assay
+ Scratch assay analysis
+ Wound healing analysis
+ Wound-healing assay
+Scratch-assay analysis
+ Wound-healing analysis
+ Wound healing assay",,Collective object,alt spelling,,,,,,
+http://edamontology.org/operation___Wound-healing_analysis,Operation : Analysis : Image analysis : Object tracking,Wound-healing analysis,,"Scratch assay
+ Wound-healing assay",,,,,"Scratch assay
+ Wound-healing assay
+Wound healing analysis
+ Wound healing assay",,"Scratch
+Wound healing
+Wound-healing",alt spelling,,,,,,
+http://edamontology.org/operation__RyCFuPLOeGxpcGjYbWcWWD,"Operation : Analysis : Image analysis
+ Operation : Classification",Object classification,,"Isolated object classification
+ Semantic object classification","Isolated object classification
+ Semantic object classification",,,,"Isolated object classification
+ Semantic object classification",,,"remove isolated object, semantic object",,,,,,
+http://edamontology.org/operation_Object_detection,Operation : Analysis : Image analysis,Image feature detection,,Image feature extraction,Image feature extraction,,,,Image feature extraction,,"feature detection
+ feature extraction",,,,,,,
+http://edamontology.org/operation____Edge_detection,Operation : Analysis : Image analysis : Image feature detection,Edge detection,,,,,,,,,,remove feature enhancement,,,,,,
+http://edamontology.org/operation_Spot_extraction,Operation : Analysis : Image analysis : Image feature detection,Spot detection,,Seed point detection,,,Seed point detection,,"Seed point detection
+ point detection
+ blob detection",,Seed point,"add point detection, blob detection",,,,,,
+http://edamontology.org/operation_____Ridge_detection,Operation : Analysis : Image analysis : Image feature detection,Ridge detection,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_Feature_extraction,Operation : Analysis : Image analysis,Object feature extraction,,"Feature detection
+ Image labeling
+ SIFT (*)
+ SURF (*)
+ scale-invariant feature transform","Feature detection
+ Image labeling",,"SIFT (*)
+ SURF (*)
+ scale-invariant feature transform",,"Feature detection
+ Image labeling
+ scale-invariant feature transform
+Image labelling
+","SIFT
+ SURF","Object feature
+ scale-invariant feature",alt spelling,,,,,,
+http://edamontology.org/operation_____Velocity_extraction,Operation : Analysis : Image analysis : Object feature extraction,Velocity extraction,,,,,,,,,Velocity,,,,,,,
+http://edamontology.org/operation_Homogeneity,Operation : Analysis : Image analysis : Object feature extraction,Homogeneity extraction,,,,,,,,,Homogeneity,,,,,,,
+http://edamontology.org/topic______Stereology,Operation : Analysis : Image analysis : Object feature extraction,Stereology,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_Shape_features,Operation : Analysis : Image analysis : Object feature extraction,Shape features extraction,,"Area
+ Shape feature extraction",Shape feature extraction,,,Area,Shape feature extraction,,Shape features,remove area,,,,,,
+http://edamontology.org/operation_Texture_extraction,Operation : Analysis : Image analysis : Object feature extraction,Texture extraction,,"Inverse Difference Moment
+ Texture feature extraction",Texture feature extraction,,Inverse Difference Moment,,"Inverse Difference Moment
+ Texture feature extraction
+Texture-feature extraction",,"Inverse Difference Moment
+ Texture
+ Texture feature
+Texture-feature",alt spelling,,,,,,
+http://edamontology.org/operation_Cell_counting,Operation : Analysis : Image analysis,Object counting,,,,,,,,,,,,,,,,
+http://edamontology.org/operation__RBYLqCqN4rP7Jy5m5mxpTeM,Operation : Analysis,Frequency-domain analysis,,"Analysis in the frequency domain
+ FFT (*)
+ Fast Fourier transform
+ Wavelet transform",Analysis in the frequency domain,,,"Fast Fourier transform
+ Wavelet transform","Analysis in the frequency domain
+ Fast Fourier transform
+ Wavelet transform
+Frequency domain analysis",FFT,Frequency domain,alt spelling,,,,,,
+http://edamontology.org/operation_2990,Operation,Classification,,,,,,,,,,,,,,,,
+http://edamontology.org/operation__RDetoixS3xEu0agR2CebaoB,Operation,Pattern recognition,,,,,,,,,,,,,,,,
+http://edamontology.org/operation___Optimisation_or_refinement,Operation,Optimisation or refinement,,Optimization or refinement (*),Optimization or refinement (*),,,,,,"Optimisation
+ Optimization",add optimization,,,,,,
+http://edamontology.org/operation___Parameter_optimisation,Operation : Optimisation or refinement,Parameter optimisation,,"Model optimisation
+ Model training
+ Parameter optimization",Parameter optimization,,,,"Model optimisation
+Model training
+Parameter optimization
+Model optimization",,,,,,,,,
+http://edamontology.org/operation_0337,Operation,Visualisation,,Plotting,,,Plotting,,"Plotting
+Visualization",,,alt spelling,,,,,,
+http://edamontology.org/operation_3441,Operation : Visualisation,Plotting,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_Volume_rendering,Operation : Visualisation : Image visualisation,Volume rendering,,,,,,,,,,,,,,,,
+http://edamontology.org/operation____Surface_rendering,Operation : Visualisation : Image visualisation,Surface rendering,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_Projection,Operation : Visualisation : Image visualisation,Image projection,,"Maximum intensity projection
+ Maximum projection
+ Mean projection
+ Minimum projection","Maximum projection
+ Minimum projection",,"Maximum intensity projection
+ Mean projection",,"Maximum intensity projection
+ Maximum projection
+ Mean projection
+ Minimum projection",,"Maximum intensity
+ intensity projection",add intensity projection,,,,,,
+http://edamontology.org/operation____Slice_rendering,Operation : Visualisation : Image visualisation,Slice rendering,,"Cut plane rendering
+ Slice viewing","Cut plane rendering
+ Slice viewing",,,,"Cut plane rendering
+ Slice viewing",,,,,,,,,
+http://edamontology.org/operation_Montage,Operation : Visualisation : Image visualisation,Montage,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_Anaglyph,Operation : Visualisation : Image visualisation,Anaglyph,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_Overlay,Operation : Visualisation : Image visualisation,Overlay,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_2423,Operation,Regression,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_2928,Operation,Alignment construction,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_2409,Operation,Data handling,,,,,,,Data-handling,,,alt spelling,,,,,,
+http://edamontology.org/operation_3434,Operation : Data handling,Conversion,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_3096,Operation : Data handling,Editing,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_0226,Operation,Annotation,,,,,,,,,,,,,,,,
+http://edamontology.org/operation_3553,Operation : Annotation,Image annotation,,,,,,,,,,,,,,,,
+http://edamontology.org/operation______Sparse_annotation,Operation : Annotation : Image annotation,Sparse image annotation,,,,,,,,,Sparse image,,,,,,,
+http://edamontology.org/operation__RDggamr21qZlMqkQmyOdC7l,Operation : Annotation : Image annotation : Sparse image annotation,Landmark assignment,,"Fiducial placement
+ Reference point assignment
+ Seed point selection",Reference point assignment,,Fiducial placement,,"Fiducial placement
+ Reference point assignment
+ Seed point selection",,Reference point,remove seed point,,,,,,
+http://edamontology.org/operation______Dense_annotation,Operation : Annotation : Image annotation,Dense image annotation,,,,,,,,,Dense image,,,,,,,
+http://edamontology.org/topic_High_content_screening,Topic : Imaging,High-content analysis,,"HCA (*)
+ HCS (*)
+ High-content imaging
+ High-content screening","HCA (*)
+ High-content imaging",,"HCS (*)
+ High-content screening",,"High-content imaging
+ High-content screening","HCA
+ HCS","High-content
+High content",add high content,,,,,,
+http://edamontology.org/topic_Microscopy,Topic : Imaging,Microscopy,x,Slide scanner,,,Slide scanner,,,,,add to excluded list,,,,,,
+http://edamontology.org/topic_____Force_microscopy,Topic : Imaging : Microscopy,Force microscopy,,,,,,,,,,,,,,,,
+http://edamontology.org/topic_____Atomic_force_microscopy,Topic : Imaging : Microscopy : Force microscopy,Atomic force microscopy,,"AFM (*)
+ Force spectroscopy
+ SFM (*)
+ Scanning force microscopy",AFM (*),,"Force spectroscopy
+ SFM (*)
+ Scanning force microscopy",,"Force spectroscopy
+ Scanning force microscopy","AFM
+ SFM",Atomic force,,,,,,,
+http://edamontology.org/topic_____Photon_force_microscopy,Topic : Imaging : Microscopy : Force microscopy,Photonic force microscopy,,"Force measurement microscopy
+ Force sensing optical tweezers
+ PFM (*)",PFM (*),,"Force measurement microscopy
+ Force sensing optical tweezers",,"Force measurement microscopy
+ Force sensing optical tweezers",PFM,"Force measurement
+ Photonic force",,,,,,,
+http://edamontology.org/topic_____Traction_force_microscopy,Topic : Imaging : Microscopy : Force microscopy,Traction force microscopy,,,,,,,,TFM,Traction force,add TFM,,,,,,
+http://edamontology.org/topic_3385,Topic : Imaging : Microscopy,Light microscopy,,"Light microscope
+ Optical microscope
+ Optical microscopy",Optical microscopy,,,,"Light microscope
+ Optical microscope
+ Optical microscopy",,,,,,,,,
+http://edamontology.org/topic_____Non-linear_microscopy,Topic : Imaging : Microscopy : Light microscopy,Non-linear microscopy,,,,,,,Nonlinear microscopy,,,"remove non-linear
+
+alt spelling",,,,,,
+http://edamontology.org/topic__RBKlmE9DGTZwEwxw0juThGg,"Topic : Imaging : Microscopy : Light microscopy : Point-scanning microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Non-linear microscopy",Multi-photon microscopy,,"2PEM (*)
+ 3PEM (*)
+ TPEM (*)
+ Three-photon excitation microscopy
+ Two-photon excitation microscopy",,,"2PEM (*)
+ 3PEM (*)
+ TPEM (*)
+ Three-photon excitation microscopy
+ Two-photon excitation microscopy",,"Three-photon excitation microscopy
+ Two-photon excitation microscopy","2PEM
+ 3PEM
+ TPEM","Multi-photon
+ Three-photon excitation
+ Two-photon excitation",,,,,,,
+http://edamontology.org/topic_____Second-harmonic_imaging_microscopy,Topic : Imaging : Microscopy : Light microscopy : Non-linear microscopy,Second-harmonic imaging microscopy,,"SHG (*)
+ SHIM (*)
+ Second harmonic generation
+ THG (*)
+ Third harmonic generation","SHG (*)
+ SHIM (*)
+ Second harmonic generation",,"THG (*)
+ Third harmonic generation",,"Second harmonic generation
+ Third harmonic generation","SHG
+ SHIM
+ THG","Second harmonic generation
+ Second-harmonic
+ Third harmonic generation",,,,,,,
+http://edamontology.org/topic______Stereoscopy,Topic : Imaging : Microscopy : Light microscopy,Stereoscopy,,"Stereo imaging
+ Stereoscopics",,,"Stereo imaging
+ Stereoscopics",,"Stereo imaging
+ Stereoscopics",,,,,,,,,
+http://edamontology.org/topic______Photomanipulation,Topic : Imaging : Microscopy : Light microscopy,Photomanipulation,,,,,,,,,,,,,,,,
+http://edamontology.org/topic______Photoactivation,Topic : Imaging : Microscopy : Light microscopy : Photomanipulation,Photoactivation,,"Optogenetics
+ Photoconversion
+ Photoswitch
+ photobleaching",,,,"Optogenetics
+ Photoconversion
+ Photoswitch
+ photobleaching","Optogenetics
+ Photoconversion
+ Photoswitch
+ photobleaching",,,,,,,,,
+http://edamontology.org/topic___Foerster_resonance_energy_transfer,"Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Photomanipulation",F√∂rster resonance energy transfer,,"FRET (*)
+ Fluorescence resonance energy transfer (*)","FRET (*)
+ Fluorescence resonance energy transfer (*)",,,,,FRET,F√∂rster,"remove fluorescence lifetime correlation microscopy, Fluorescence cross-correlation spectroscopy, FCCS, FCS, FLCS
+ add FRET",,,,,,
+http://edamontology.org/topic______Photoablation,"Topic : Imaging : Live sample imaging
+ Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Photomanipulation",Photoablation,,"Laser ablation
+ Laser microsurgery
+ Laser nanosurgery",,,"Laser ablation
+ Laser microsurgery
+ Laser nanosurgery",,"Laser ablation
+ Laser microsurgery
+ Laser nanosurgery",,"microsurgery
+ nanosurgery",,,,,,,
+http://edamontology.org/topic______Laser_microdissection,Topic : Imaging : Microscopy : Light microscopy : Photomanipulation,Laser microdissection,,"LCM (*)
+ Laser capture microdissection
+ Laser capture microscopy
+ Laser catapulting
+ Laser dissection microscopy",,,"LCM (*)
+ Laser capture microdissection
+ Laser capture microscopy
+ Laser catapulting
+ Laser dissection microscopy",,"Laser capture microdissection
+ Laser capture microscopy
+ Laser catapulting
+ Laser dissection microscopy
+Laser-capture microdissection
+ Laser-capture microscopy
+ Laser catapulting
+ Laser-dissection microscopy",LCM,"Laser dissection
+ microdissection",alt spelling,,,,,,
+http://edamontology.org/topic___Fluorescence_recovery_after_photobleaching,"Topic : Imaging : Live sample imaging
+ Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Photomanipulation",Fluorescence recovery after photobleaching,,"FLAP (*)
+ FLIP (*)
+ FRAP (*)
+ Fluorescence localization after photobleaching
+ Fluorescence loss in photobleaching
+ Inverse fluorescence recovery after photobleaching
+ iFRAP (*)",FRAP (*),,,"FLAP (*)
+ FLIP (*)
+ Fluorescence localization after photobleaching
+ Fluorescence loss in photobleaching
+ Inverse fluorescence recovery after photobleaching
+ iFRAP (*)","Fluorescence localization after photobleaching
+ Fluorescence loss in photobleaching
+ Inverse fluorescence recovery after photobleaching","FLAP
+ FLIP
+ FRAP
+ iFRAP
+ iFRAP","Fluorescence localization after photobleaching
+ Fluorescence loss in photobleaching
+ Inverse fluorescence recovery after photobleaching",,,,,,,
+http://edamontology.org/topic__R9P5gEAm1wic4R2PcZ7ZpPA,"Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy
+ Topic : Imaging : Microscopy : Light microscopy",Transmission light microscopy,,Widefield transmission light microscopy,,,Widefield transmission light microscopy,,Widefield transmission light microscopy,,"Transmission light
+ Widefield transmission",,,,,,,
+http://edamontology.org/topic__RNFOzq5E0ZVBh5Euhn06rn,"Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy : Transmission light microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Transmission light microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy",DIC microscopy,,"Differential interference contrast microscopy
+ NIC (*)
+ Nomarski interferential contrast
+ Nomarski microscopy",Differential interference contrast microscopy,,"NIC (*)
+ Nomarski interferential contrast
+ Nomarski microscopy",,"Differential interference contrast microscopy
+ Nomarski interferential contrast
+ Nomarski microscopy",NIC,"Differential interference contrast
+ Nomarski
+ Nomarski interferential contrast",,,,,,,
+http://edamontology.org/topic__R8nlu8VCuL5nvBFgOaGNHgT,"Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy : Transmission light microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Transmission light microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy",Polarized light microscopy,,,,,,,,,"Polarized light
+ polarised light",add polarised light,,,,,,
+http://edamontology.org/topic__R89wYXZ2735GXdn4m4GOT9n,"Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy : Transmission light microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Transmission light microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy",Dark-field microscopy,,,,,,,,,Dark-field,,,,,,,
+http://edamontology.org/topic______Phase_imaging,"Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy : Transmission light microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Transmission light microscopy",Phase imaging,,"Digital Holography
+ Holographic microscopy
+ Holographic tomography
+ Label free
+ Ptychography",,,"Digital Holography
+ Holographic microscopy
+ Holographic tomography
+ Ptychography",,"Digital Holography
+ Holographic microscopy
+ Holographic tomography
+ Label free
+ Ptychography",,,,,,,,,
+http://edamontology.org/topic______Quantitative_phase_imaging,"Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy : Transmission light microscopy : Phase imaging
+ Topic : Imaging : Microscopy : Light microscopy : Transmission light microscopy : Phase imaging",Quantitative phase imaging,,,,,,,,,Quantitative phase,,,,,,,
+http://edamontology.org/topic__RtBCcu7zJiS0phrbR2HzAI,"Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy : Transmission light microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Transmission light microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy",Phase-contrast microscopy,,"Phase imaging
+ Quantitative phase-contrast imaging",,,Phase imaging,Quantitative phase-contrast imaging,"Phase imaging
+ Quantitative phase-contrast imaging
+Phase contrast microscopy",,"Phase-contrast
+ Quantitative phase-contrast",alt spelling,,,,,,
+http://edamontology.org/topic__RDdX0TswBVhmWiS1dI3pghN,"Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy : Transmission light microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Transmission light microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy",Bright-field microscopy,,,,,,,Bright field microscopy,,Bright-field,alt spelling,,,,,,
+http://edamontology.org/topic__RBsSZve5PnQFO3scMDWo9f0,Topic : Imaging : Microscopy : Light microscopy,Array-based detection microscopy,,"Area-capturing microscopy
+ Array based detection
+ CLEM (*)
+ Camera based microscopy
+ Controlled light exposure microscopy",,,"Area-capturing microscopy
+ Array based detection","CLEM (*)
+ Camera based microscopy
+ Controlled light exposure microscopy","Area-capturing microscopy
+ Array based detection
+ Camera based microscopy
+ Controlled light exposure microscopy",CLEM,"Area-capturing
+ Array based
+ Array-based detection
+ Camera based
+ Controlled light exposure",remove CLEM,,,,,,
+http://edamontology.org/topic_Light-sheet_microscopy,"Topic : Imaging : Microscopy : Light microscopy : Point-scanning microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy",Light-sheet microscopy,,"Bessel Beam Lightsheet Microscopy
+ COLM (*)
+ Clarity Optimized Light-sheet Microscopy
+ DSLM (*)
+ Digitally scanned Laser Light-sheet Microscopy
+ Dual-View inverted SPIM
+ LLS (*)
+ LLSM (*)
+ LSFM (*)
+ Lattice Light-sheet Microscopy
+ Light-sheet fluorescence microscopy
+ MuViSPIM (*)
+ Multidirectional SPIM (*)
+ Multiview selective plane illumination microscopy
+ OCPI (*)
+ OPFOS (*)
+ OPM (*)
+ OPTiSPIM (*)
+ Objective-Coupled Planar Illumination Microscopy
+ Oblique Plane Microscopy
+ Orthogonal-plane fluorescence optical sectioning
+ SCAPE (*)
+ SPED (*)
+ SPIM (*)
+ Selective plane illumination microscopy
+ Spherical aberrations assisted Extended Depth-of-field Lightsheet Microscopy
+ Swept confocally-aligned planar excitation microscopy
+ TSLIM (*)
+ Thin Sheet Laser Imaging Microscopy
+ diSPIM (*)
+ eSPIM (*)
+ iSPIM (*)
+ inverted SPIM
+ mSPIM (*)
+ mesoSPIM (*)
+ single objective Selective Plane Illumination Microscopy
+ soSPIM (*)",,,"DSLM (*)
+ Digitally scanned Laser Light-sheet Microscopy
+ LLS (*)
+ LSFM (*)
+ Light-sheet fluorescence microscopy
+ OCPI (*)
+ OPFOS (*)
+ OPM (*)
+ Objective-Coupled Planar Illumination Microscopy
+ Oblique Plane Microscopy
+ Orthogonal-plane fluorescence optical sectioning
+ SCAPE (*)
+ SPIM (*)
+ Selective plane illumination microscopy
+ Swept confocally-aligned planar excitation microscopy
+ TSLIM (*)
+ Thin Sheet Laser Imaging Microscopy
+ eSPIM (*)
+ mesoSPIM (*)","Bessel Beam Lightsheet Microscopy
+ COLM (*)
+ Clarity Optimized Light-sheet Microscopy
+ Dual-View inverted SPIM
+ LLSM (*)
+ Lattice Light-sheet Microscopy
+ MuViSPIM (*)
+ Multidirectional SPIM (*)
+ Multiview selective plane illumination microscopy
+ OPTiSPIM (*)
+ SPED (*)
+ Spherical aberrations assisted Extended Depth-of-field Lightsheet Microscopy
+ diSPIM (*)
+ iSPIM (*)
+ inverted SPIM
+ mSPIM (*)
+ single objective Selective Plane Illumination Microscopy
+ soSPIM (*)","Bessel Beam Lightsheet Microscopy
+ Clarity Optimized Light-sheet Microscopy
+ Digitally scanned Laser Light-sheet Microscopy
+ Dual-View inverted SPIM
+ Lattice Light-sheet Microscopy
+ Light-sheet fluorescence microscopy
+ Multiview selective plane illumination microscopy
+ Objective-Coupled Planar Illumination Microscopy
+ Oblique Plane Microscopy
+ Orthogonal-plane fluorescence optical sectioning
+ Selective plane illumination microscopy
+ Spherical aberrations assisted Extended Depth-of-field Lightsheet Microscopy
+ Swept confocally-aligned planar excitation microscopy
+ Thin Sheet Laser Imaging Microscopy
+ inverted SPIM
+ single objective Selective Plane Illumination Microscopy","COLM
+ DSLM
+ LLS
+ LLSM
+ LSFM
+ MuViSPIM
+ Multidirectional SPIM
+ OCPI
+ OPFOS
+ OPM
+ OPTiSPIM
+ SCAPE
+ SPED
+ SPIM
+ TSLIM
+ diSPIM
+ eSPIM
+ iSPIM
+ mSPIM
+ mesoSPIM
+ soSPIM","Bessel Beam Lightsheet
+ Clarity Optimized Light-sheet
+ Digitally scanned Laser Light-sheet
+ Dual-View inverted SPIM
+ Lattice Light-sheet
+ Light-sheet
+ Light-sheet fluorescence
+ Multiview selective plane illumination
+ Objective-Coupled Planar Illumination
+ Oblique Plane
+ Orthogonal-plane fluorescence optical sectioning
+ Selective plane illumination
+ Spherical aberrations assisted Extended Depth-of-field Lightsheet
+ Swept confocally-aligned planar excitation
+ Thin Sheet Laser Imaging Microscopy
+ inverted SPIM
+ single objective Selective Plane Illumination",,,,,,,
+http://edamontology.org/topic_____Total_internal_reflection_fluorescence_microscopy,"Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy",Total internal reflection fluorescence microscopy,,"HiLo (*)
+ HiLo microscopy
+ TIRF (*)
+ TIRFM (*)
+ highly inclined and laminated optical sheet","TIRF (*)
+ TIRFM (*)",,,"HiLo (*)
+ HiLo microscopy
+ highly inclined and laminated optical sheet","HiLo microscopy
+ highly inclined and laminated optical sheet","HiLo
+ TIRF
+ TIRFM","Total internal reflection
+ highly inclined and laminated optical sheet",,,,,,,
+http://edamontology.org/topic_Widefield_microscopy,"Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy",Widefield fluorescence microscopy,,"Epi-fluorescence microscopy
+ Epifluorescence microscopy",,,"Epi-fluorescence microscopy
+ Epifluorescence microscopy",,"Epi-fluorescence microscopy
+ Epifluorescence microscopy
+Wide-field fluorescence microscopy",,"Epi-fluorescence
+ Epifluorescence
+ Widefield fluorescence",alt spelling,,,,,,
+http://edamontology.org/topic______Deconvolution_widefield_microscopy,"Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy : Widefield fluorescence microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy : Widefield fluorescence microscopy",Deconvolution widefield microscopy,,,,,,,Deconvolution wide-field microscopy ,,Deconvolution widefield,alt spelling,,,,,,
+http://edamontology.org/topic______Image_Scanning_Microscopy,"Topic : Imaging : Microscopy : Light microscopy : Point-scanning microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy",Image scanning microscopy,,ISM (*),ISM (*),,,,,ISM,Image scanning,,,,,,,
+http://edamontology.org/topic______Airyscan,"Topic : Imaging : Microscopy : Light microscopy : Point-scanning microscopy : Image scanning microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy : Image scanning microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy : Image scanning microscopy",Airyscan,,,,,,,,,,,,,,,,
+http://edamontology.org/topic______Re-scan_confocal_microscopy,"Topic : Imaging : Microscopy : Light microscopy : Point-scanning microscopy : Image scanning microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy : Image scanning microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Array-based detection microscopy : Image scanning microscopy",Re-scan confocal microscopy,,"RCM (*)
+ Re-Scan
+ Rescan","RCM (*)
+ Rescan",,,Re-Scan,"Re-Scan
+ Rescan",RCM,Re-scan confocal,,,,,,,
+http://edamontology.org/topic__R8Ss4wIFt90wZ1yjFLfXyPM,"Topic : Imaging : Multimodal imaging
+ Topic : Imaging : Microscopy : Electron microscopy
+ Topic : Imaging : Microscopy : Light microscopy",Correlative light and electron microscopy,,"CLEM (*)
+ Correlative light-electron microscopy
+ ILEM (*)
+ Integrated light and electron microscopy
+ Integrated light-electron microscopy","CLEM (*)
+ Correlative light-electron microscopy",,"ILEM (*)
+ Integrated light and electron microscopy
+ Integrated light-electron microscopy",,"Correlative light-electron microscopy
+ Integrated light and electron microscopy
+ Integrated light-electron microscopy","CLEM
+ ILEM","Correlative light-electron
+ Integrated light and electron microscopy
+ Integrated light-electron",,,,,,,
+http://edamontology.org/topic_Fluorescent_microscopy,Topic : Imaging : Microscopy : Light microscopy,Fluorescence microscopy,,,,,,,,,,,,,,,,
+http://edamontology.org/topic___Fluorescence_lifetime_imaging,Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy,Fluorescence lifetime imaging microscopy,,FLIM (*),FLIM (*),,,,Fluorescence life-time imaging microscopy        ,FLIM,"Fluorescence lifetime
+Fluorescence life-time",alt spelling,,,,,,
+http://edamontology.org/topic___Image_correlation_spectroscopy,Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy,Image correlation spectroscopy,,"ICS (*)
+ PICS (*)
+ Particle Image Correlation Spectroscopy
+ RICS (*)
+ Raster Image Correlation Spectroscopy",ICS (*),,,"PICS (*)
+ Particle Image Correlation Spectroscopy
+ RICS (*)
+ Raster Image Correlation Spectroscopy","Particle Image Correlation Spectroscopy
+ Raster Image Correlation Spectroscopy","ICS
+ PICS
+ RICS",correlation spectroscopy,,,,,,,
+http://edamontology.org/topic___Fluorescence_correlative_spectroscopy,"Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy
+ Topic : Imaging : Spectroscopy",Fluorescence correlation spectroscopy,,"FCCS (*)
+ FCS (*)
+ FLCS (*)
+ Fluorescence Lifetime Correlation Microscopy
+ Fluorescence cross-correlation spectroscopy",FCS (*),,,"FCCS (*)
+ FLCS (*)
+ Fluorescence Lifetime Correlation Microscopy
+ Fluorescence cross-correlation spectroscopy","Fluorescence Lifetime Correlation Microscopy
+ Fluorescence cross-correlation spectroscopy","FCCS
+ FCS
+ FLCS","Fluorescence Lifetime Correlation
+ Fluorescence cross-correlation spectroscopy",,,,,,,
+http://edamontology.org/topic___Fluctuation_based_microscopy,Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy,Fluctuation based microscopy,,"Photobleaching microscopy with non-linear processing
+ PiMP (*)
+ SOFI (*)
+ SRRF (*)
+ Super resolution optical fluctuation imaging
+ Super resolution radial fluctuations",,,"Photobleaching microscopy with non-linear processing
+ PiMP (*)
+ SOFI (*)
+ SRRF (*)
+ Super resolution optical fluctuation imaging
+ Super resolution radial fluctuations",,"Photobleaching microscopy with non-linear processing
+ Super resolution optical fluctuation imaging
+ Super resolution radial fluctuations
+Fluctuation-based microscopy","PiMP
+ SOFI
+ SRRF","Fluctuation based
+ Super resolution optical fluctuation
+ Super resolution radial fluctuations
+Fluctuation-based",alt spelling,,,,,,
+http://edamontology.org/topic______Ratiometric_imaging,Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy,Ratiometric imaging,,,,,,,,,Ratiometric,,,,,,,
+http://edamontology.org/topic_Super-resolution_microscopy,Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy,Super-resolution microscopy,,"High resolution microscopy
+ Nanoscopy
+ SR microscopy
+ SRM (*)","SR microscopy
+ SRM (*)",,"High resolution microscopy
+ Nanoscopy",,"High resolution microscopy
+ Nanoscopy
+ SR microscopy
+Super resolution microscopy",SRM,"Super-resolution
+Super resolution 
+","remove High resolution
+
+alt spelling",,,,,,
+http://edamontology.org/topic__RC91JqkkQnsmvg8zuG6Td7q,Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy : Super-resolution microscopy,Structured illumination microscopy,,"Instant linear structured Illumination Microscopy
+ MSIM (*)
+ Multifocal Structured Illumination Microscopy
+ SIM (*)
+ SSIM (*)
+ Saturated structured illumination microscopy
+ iSIM (*)",SIM (*),,,"Instant linear structured Illumination Microscopy
+ MSIM (*)
+ Multifocal Structured Illumination Microscopy
+ SSIM (*)
+ Saturated structured illumination microscopy
+ iSIM (*)","Instant linear structured Illumination Microscopy
+ Multifocal Structured Illumination Microscopy
+ Saturated structured illumination microscopy","MSIM
+ SIM
+ SSIM
+ iSIM","Multifocal Structured Illumination
+ Saturated structured illumination
+ Structured illumination",,,,,,,
+http://edamontology.org/topic__RMCSMqSNvOTurvW2FV8tjN,Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy : Super-resolution microscopy,Stimulated emission depletion microscopy,,"MinFlux (*)
+ RESOLFT (*)
+ Reversible saturable optical linear fluorescence transitions microscopy
+ STED (*)
+ STED-4Pi (*)
+ gated-STED",STED (*),STED-4Pi (*),"MinFlux (*)
+ RESOLFT (*)
+ Reversible saturable optical linear fluorescence transitions microscopy
+ gated-STED",,"Reversible saturable optical linear fluorescence transitions microscopy
+ gated-STED","MinFlux
+ RESOLFT
+ STED
+ STED-4Pi","Reversible saturable optical linear fluorescence transitions
+ Stimulated emission depletion",,,,,,,
+http://edamontology.org/topic__R8oQpUEjKZjNQCTB4x3JQuJ,Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy : Super-resolution microscopy,Single molecule localisation microscopy,,"Direct stochastic optical reconstruction microscopy (*)
+ Fluorescence photoactivation localisation microscopy (*)
+ GSDIM (*)
+ Ground state depletion individual molecule return (*)
+ PALM (*)
+ Photoactivated localisation microscopy (*)
+ SMLM (*)
+ STORM (*)
+ Single molecule localization microscopy (*)
+ Stochastic optical reconstruction microscopy (*)
+ dSTORM (*)
+ fPALM (*)","SMLM (*)
+ Single molecule localization microscopy (*)",,"Direct stochastic optical reconstruction microscopy (*)
+ Fluorescence photoactivation localisation microscopy (*)
+ GSDIM (*)
+ Ground state depletion individual molecule return (*)
+ PALM (*)
+ Photoactivated localisation microscopy (*)
+ STORM (*)
+ Stochastic optical reconstruction microscopy (*)
+ dSTORM (*)
+ fPALM (*)",,"Single-molecule localisation microscopy
+Single-molecule localization microscopy
+Single molecule localization microscopy",SMLM,,"add SMLM
+
+alt spelling",,,,,,
+http://edamontology.org/topic__Rn8MnorStmqIkNlAVZWBc0,"Topic : Imaging : Microscopy : Light microscopy : Point-scanning microscopy : Confocal microscopy
+ Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy",Confocal fluorescence microscopy,,"LSM (*)
+ Laser scanning microscopy
+ Nipkow disk microscopy
+ SDCM (*)
+ Spinning disk confocal microscopy",,,"LSM (*)
+ Laser scanning microscopy
+ Nipkow disk microscopy
+ SDCM (*)
+ Spinning disk confocal microscopy",,"Laser scanning microscopy
+ Nipkow disk microscopy
+ Spinning disk confocal microscopy","LSM
+ SDCM","Confocal fluorescence
+ Laser scanning
+ Nipkow disk
+ Spinning disk confocal",,,,,,,
+http://edamontology.org/topic______Fluorescence,Topic : Imaging : Microscopy : Light microscopy : Fluorescence microscopy,Fluorescence,,,,,,,,,,,,,,,,
+http://edamontology.org/topic__R7Vn7GbwtqVvGWNAMGdcNW1,Topic : Imaging : Microscopy : Light microscopy,Point-scanning microscopy,,"4Pi microscopy
+ CLEM (*)
+ Controlled light exposure microscopy
+ Laser scanning microscopy
+ Scanning probe microscopy",,,"Laser scanning microscopy
+ Scanning probe microscopy","4Pi microscopy
+ CLEM (*)
+ Controlled light exposure microscopy","4Pi microscopy
+ Controlled light exposure microscopy
+ Laser scanning microscopy
+ Scanning probe microscopy
+Point scanning microscopy
+Laser-scanning microscopy
+Controled light exposure microscopy",,"4Pi
+ Controlled light exposure
+ Laser scanning
+ Point-scanning","remove CLEM
+
+alt spelling",,,,,,
+http://edamontology.org/topic_____Near-field_scanning_optical_microscopy,Topic : Imaging : Microscopy : Light microscopy : Point-scanning microscopy,Near-field scanning optical microscopy,,"NSOM (*)
+ SNOM (*)
+ Scanning near-field optical microscopy
+ Scattering-type scanning near-field optical microscopy","NSOM (*)
+ SNOM (*)
+ Scanning near-field optical microscopy",,Scattering-type scanning near-field optical microscopy,,"Scanning near-field optical microscopy
+ Scattering-type scanning near-field optical microscopy","NSOM
+ SNOM","Near-field scanning
+ Scanning near-field
+ Scattering-type scanning",,,,,,,
+http://edamontology.org/topic__R9Cmje2ZUXyDW6aQAvFhwSM,Topic : Imaging : Microscopy : Light microscopy : Point-scanning microscopy,Confocal microscopy,,"CLSM (*)
+ Confocal laser scanning microscopy
+ LSCM (*)
+ Laser scanning confocal microscopy
+ Optical sectioning","CLSM (*)
+ Confocal laser scanning microscopy
+ LSCM (*)
+ Laser scanning confocal microscopy",,,,"Confocal laser scanning microscopy
+ Laser scanning confocal microscopy
+ Optical sectioning
+Laser-scanning confocal microscopy","CLSM
+ LSCM","Confocal
+ Confocal laser scanning",alt spelling,,,,,,
+http://edamontology.org/topic_____Interferometric_microscopy,Topic : Imaging : Microscopy : Light microscopy,Interferometric microscopy,,Interference reflection microscopy,,,Interference reflection microscopy,,Interference reflection microscopy,,"Interference reflection
+ Interferometric",,,,,,,
+http://edamontology.org/topic_____Light_field_microscopy,Topic : Imaging : Microscopy : Light microscopy,Light field microscopy,,,,,,,Light-field microscopy,,"Light field
+Light-field",alt spelling,,,,,,
+http://edamontology.org/topic______Self-adjusting_microscopy,Topic : Imaging : Microscopy,Adaptive microscopy,,"Adaptive optics
+ Intelligent microscopy
+ Smart microscopy",,,"Intelligent microscopy
+ Smart microscopy",,"Adaptive optics
+ Intelligent microscopy
+ Smart microscopy",,,,,,,,,
+http://edamontology.org/topic_0611,Topic : Imaging : Microscopy,Electron microscopy,,"EM (*)
+ Electron microscope",EM (*),,,,Electron microscope,EM,,,,,,,,
+http://edamontology.org/topic______Cryo_electron_microscopy,Topic : Imaging : Microscopy : Electron microscopy,Cryo electron microscopy,,,,,,,Cryo-electron microscopy,,"Cryo electron
+ cryo-EM
+Cryogenic electron microscopy ","add cryo-EM
+
+alt spelling",,,,,,
+http://edamontology.org/topic__RBNfUSYBOKUapWrsyPMMTkw,"Topic : Imaging : Microscopy : Electron microscopy : Cryo electron microscopy
+ Topic : Imaging : Microscopy : Electron microscopy : Scanning electron microscopy",Scanning electron cryomicroscopy,,"Cryo-scanning electron microscopy
+ CryoSEM (*)
+ Cryogenic scanning electron microscopy","Cryo-scanning electron microscopy
+ CryoSEM (*)
+ Cryogenic scanning electron microscopy",,,,"Cryo-scanning electron microscopy
+ Cryogenic scanning electron microscopy
+Cryo scanning electron microscopy
+",CryoSEM,"Cryo-scanning electron
+ Cryogenic scanning electron
+ cryomicroscopy
+Cryo scanning electron",alt spelling,,,,,,
+http://edamontology.org/topic__RDCjx86atJP685sX1zrE2ia,"Topic : Imaging : Microscopy : Electron microscopy : Cryo electron microscopy
+ Topic : Imaging : Microscopy : Electron microscopy : Transmission electron microscopy : Electron tomography",Electron cryotomography,,"CET (*)
+ Cryo-electron tomography
+ Cryo-transmission electron microscopy
+ CryoET (*)
+ CryoTEM (*)
+ Cryogenic transmission electron microscopy","Cryo-electron tomography
+ CryoET (*)","Cryo-transmission electron microscopy
+ CryoTEM (*)
+ Cryogenic transmission electron microscopy",CET (*),,"Cryo-electron tomography
+ Cryo-transmission electron microscopy
+ Cryogenic transmission electron microscopy
+Cryo electron tomography
+ Cryo transmission electron microscopy","CET
+ CryoET
+ CryoTEM","Cryo-electron tomography
+ Cryo-transmission electron
+ Cryogenic transmission electron
+ cryotomography",alt spelling,,,,,,
+http://edamontology.org/topic______Sample_thinning,Topic : Imaging : Microscopy : Electron microscopy,Sample thinning,,,,,,,,,Sample thinning,,,,,,,
+http://edamontology.org/topic______Ablation,Topic : Imaging : Microscopy : Electron microscopy : Sample thinning,Ablation,,"FIB (*)
+ Focused ion beam",,,"FIB (*)
+ Focused ion beam",,Focused ion beam,FIB,Ablation,,,,,,,
+http://edamontology.org/topic______Microtomy,Topic : Imaging : Microscopy : Electron microscopy : Sample thinning,Microtomy,,"Cryo-microtomy
+ Cryo-ultramicrotomy
+ Oscilating knife
+ Ultra-microtomy
+ Vibrate",,,"Cryo-microtomy
+ Cryo-ultramicrotomy
+ Oscilating knife
+ Ultra-microtomy
+ Vibrate",,"Cryo-microtomy
+ Cryo-ultramicrotomy
+ Oscilating knife
+ Ultra-microtomy
+ Vibrate
+Cryo microtomy
+Cryo ultramicrotomy
+Ultramicrotomy
+",,Microtomy,alt spelling,,,,,,
+http://edamontology.org/topic______Blotting,Topic : Imaging : Microscopy : Electron microscopy : Sample thinning,Blotting,,,,,,,,,Blotting,,,,,,,
+http://edamontology.org/topic__R7LElbFkBgKS401YKsVtNck,Topic : Imaging : Microscopy : Electron microscopy,Transmission electron microscopy,,"TEM (*)
+ Transmission electron microscope",TEM (*),,,,Transmission electron microscope,TEM,Transmission electron,,,,,,,
+http://edamontology.org/topic______Single_Particle_Cryo-Electron_microscopy,Topic : Imaging : Microscopy : Electron microscopy : Transmission electron microscopy,Single particle cryo-electron microscopy,,"SPA (*)
+ Single particle analysis",,,"SPA (*)
+ Single particle analysis",,,SPA,Single particle cryo-electron,remove Single particle analysis,,,,,,
+http://edamontology.org/topic__RXLeVr0cHSXzTSRyO5zwZD,Topic : Imaging : Microscopy : Electron microscopy : Transmission electron microscopy,Scanning transmission electron microscopy,,STEM (*),STEM (*),,,,,STEM,Scanning transmission,,,,,,,
+http://edamontology.org/topic__R9O3HmIAjoN5IqXXXRukzzr,Topic : Imaging : Microscopy : Electron microscopy : Transmission electron microscopy,Electron tomography,,Electron Microscopy Array Tomography,,,,Electron Microscopy Array Tomography,Electron Microscopy Array Tomography,,Array Tomography,,,,,,,
+http://edamontology.org/topic__RBZsLMTdyuEDtVe2fge61l0,Topic : Imaging : Microscopy : Electron microscopy,Scanning electron microscopy,,"SEM (*)
+ Scanning electron microscope",SEM (*),,,,Scanning electron microscope,SEM,Scanning electron,,,,,,,
+http://edamontology.org/topic__RByvmgDpAo4FOrMdvTm1gwR,Topic : Imaging : Microscopy : Electron microscopy : Scanning electron microscopy,Serial block-face scanning electron microscopy,,"3View¬Æ (*)
+ SBEM (*)
+ SBF SEM (*)
+ SBFSEM (*)","SBEM (*)
+ SBF SEM (*)
+ SBFSEM (*)",,3View¬Æ (*),,,,block-face scanning,,,,,,,
+http://edamontology.org/topic__R9zg34pnGmTyzPidJj9vfJt,Topic : Imaging : Microscopy : Electron microscopy : Scanning electron microscopy,Focused ion beam scanning electron microscopy,,"FIB-SEM (*)
+ FIBSEM (*)","FIB-SEM (*)
+ FIBSEM (*)",,,,,"FIB-SEM
+ FIBSEM",,,,,,,,
+http://edamontology.org/topic_____X-ray_microscopy,"Topic : Imaging : X-ray imaging
+ Topic : Imaging : Microscopy",X-ray microscopy,,X-ray microscope,,,,,"X-ray microscope
+X ray microscopy
+X ray microscope",,,alt spelling,,,,,,
+http://edamontology.org/topic______Computed_microtomography,"Topic : Imaging : Tomography : Computed tomography
+ Topic : Imaging : X-ray imaging : X-ray microscopy
+ Topic : Imaging : Microscopy : X-ray microscopy",X-ray microtomography,,"Computed microtomography
+ High-resolution micro-CT
+ Micro computed tomography
+ Micro-computed tomography
+ micro CT
+ micro-CT
+ ¬µCT (*)","Computed microtomography
+ High-resolution micro-CT
+ Micro computed tomography
+ Micro-computed tomography
+ micro CT
+ micro-CT
+ ¬µCT (*)",,,,"Computed microtomography
+ High-resolution micro-CT
+ Micro computed tomography
+ Micro-computed tomography
+ micro CT
+ micro-CT
+High resolution micro-CT
+X ray microtomography",¬µCT,"Micro computed
+ Micro-computed
+ micro-CT
+ microtomography",alt spelling,,,,,,
+http://edamontology.org/topic__RBfI2XgIsxcfKonPPluKAhK,Topic : Imaging,Spectroscopy,,Spectrometry,,,Spectrometry,,Spectrometry,,,,,,,,,
+http://edamontology.org/topic_____Mass_spectrometry_imaging,Topic : Imaging : Spectroscopy,Mass spectrometry imaging,,"MALDI imaging
+ MALDI imaging mass spectrometry
+ MALDI-IMS (*)
+ MSI (*)
+ Matrix-assisted laser desorption ionization imaging",MSI (*),,,"MALDI imaging
+ MALDI imaging mass spectrometry
+ MALDI-IMS (*)
+ Matrix-assisted laser desorption ionization imaging","MALDI imaging
+ MALDI imaging mass spectrometry
+ Matrix-assisted laser desorption ionization imaging","MALDI
+ MALDI-IMS
+ MSI","Mass spectrometry
+ Matrix-assisted laser desorption ionization
+ imaging mass spectrometry",,,,,,,
+http://edamontology.org/topic_____Raman_imaging,Topic : Imaging : Spectroscopy,Raman imaging,,"CARS (*)
+ Coherent anti-Stokes Raman scattering microscopy",,,,"CARS (*)
+ Coherent anti-Stokes Raman scattering microscopy",Coherent anti-Stokes Raman scattering microscopy,CARS,"Coherent anti-Stokes
+ Raman",,,,,,,
+http://edamontology.org/topic_0593,Topic : Imaging : Spectroscopy,Nuclear magnetic resonance spectroscopy,,"MRS (*)
+ Magnetic resonance spectroscopy
+ NMR (*)",NMR (*),,"MRS (*)
+ Magnetic resonance spectroscopy",,Magnetic resonance spectroscopy,"MRS
+ NMR","Magnetic resonance spectroscopy
+ Nuclear magnetic resonance",,,,,,,
+http://edamontology.org/topic______Fourier-transform_infrared_spectroscopy,Topic : Imaging : Spectroscopy,Fourier-transform infrared spectroscopy,,FTIR (*),FTIR (*),,,,,FTIR,,remove Fourier,,,,,,
+http://edamontology.org/topic__RL4rPCXlIu9uzNrGcbcSNp,Topic : Imaging,Live sample imaging,x,Dynamic imaging,,Dynamic imaging,,,Dynamic imaging,,Live sample,add to excluded list,,,,,,
+http://edamontology.org/topic__R8XUtD89JCyeUaaVebe9Mkw,Topic : Imaging : Live sample imaging,In-vivo imaging,x,,,,,,,,In-vivo,add to excluded list,,,,,,
+http://edamontology.org/topic_____Intravital_imaging,Topic : Imaging : Live sample imaging : In-vivo imaging,Intravital imaging,x,,,,,,,,Intravital,add to excluded list,,,,,,
+http://edamontology.org/topic__R7WRbf9Y8ySw9QWPwAjzcUa,Topic : Imaging : Live sample imaging,In-vitro imaging,x,,,,,,,,In-vitro,add to excluded list,,,,,,
+http://edamontology.org/topic__RB4unXFUWvdBe91ihVAA9rR,Topic : Imaging : Live sample imaging,Ex-vivo imaging,x,,,,,,,,Ex-vivo,add to excluded list,,,,,,
+http://edamontology.org/topic______X_ray_imaging,Topic : Imaging,X-ray imaging,,,,,,,X ray imaging,,"X-ray
+X ray",alt spelling,,,,,,
+http://edamontology.org/topic_____Soft_x-ray_tomography,"Topic : Imaging : X-ray imaging
+ Topic : Imaging : Tomography",Soft X-ray tomography,,"Cryo-SXT (*)
+ Cryo-soft X-ray tomography
+ SXT (*)
+ Synchrotron X-ray tomographic microscopy
+ Synchrotron X-ray tomography
+ cSXT (*)",SXT (*),,"Cryo-SXT (*)
+ Cryo-soft X-ray tomography
+ Synchrotron X-ray tomographic microscopy
+ Synchrotron X-ray tomography
+ cSXT (*)",,"Cryo-soft X-ray tomography
+ Synchrotron X-ray tomographic microscopy
+ Synchrotron X-ray tomography
+Cryo-soft X ray tomography
+Synchrotron X ray tomographic microscopy
+Synchrotron X ray tomography
+Soft X ray tomography","Cryo-SXT
+ SXT
+ cSXT","Cryo-soft X-ray
+ Synchrotron X-ray
+ X-ray tomography",alt spelling,,,,,,
+http://edamontology.org/topic______Phase_Contrast_X-Ray_Imaging,Topic : Imaging : X-ray imaging,Phase-contrast X-ray imaging,,PCI (*),PCI (*),,,,"Phase contrast X-ray imaging
+Phase contrast X ray imaging",PCI,"Phase-contrast X-ray
+Phase contrast X-ray
+Phase contrast X ray",alt spelling,,,,,,
+http://edamontology.org/topic_3452,Topic : Imaging,Tomography,,,,,,,,,,,,,,,,
+http://edamontology.org/topic______Optical_Projection_Tomography,Topic : Imaging : Tomography,Optical projection tomography,,"OPT (*)
+ Optical computed tomography
+ Optical emission computed tomography
+ Optical tomography
+ optical-CT
+ optical-ECT","OPT (*)
+ Optical tomography",,"Optical computed tomography
+ Optical emission computed tomography
+ Optical tomography
+ optical-CT
+ optical-ECT",,"Optical computed tomography
+ Optical emission computed tomography
+ Optical tomography
+ optical-CT
+ optical-ECT",OPT,"Optical emission
+ Optical projection",,,,,,,
+http://edamontology.org/topic__R9WwNqEL8rvkyBPk7GkDTYh,Topic : Imaging : Tomography,Photoacoustic tomography,,"PAT (*)
+ Photoacoustic imaging",PAT (*),Photoacoustic imaging,,,Photoacoustic imaging,PAT,Photoacoustic,,,,,,,
+http://edamontology.org/topic__RDos3h5yRfjhLUcOImDOFgB,"Topic : Imaging : Tomography
+ Topic : Imaging : Medical imaging",Positron emission tomography,,"Computerized tomography
+ PET (*)
+ microPET (*)",,,"PET (*)
+ microPET (*)",,"Computerized tomography
+Positron-emission tomography","PET
+ microPET",Positron emission,alt spelling,,,,,,
+http://edamontology.org/topic_____Micro-optical_sectioning_tomography,Topic : Imaging : Tomography,Optical sectioning tomography,,"2P-MOST (*)
+ Holography
+ MOST (*)
+ Micro-optical sectioning tomography
+ Structured illumination
+ Two-photon micro-optical sectioning microscopy",,,"2P-MOST (*)
+ MOST (*)
+ Micro-optical sectioning tomography
+ Two-photon micro-optical sectioning microscopy",,"Holography
+ Micro-optical sectioning tomography
+ Two-photon micro-optical sectioning microscopy","2P-MOST
+ MOST","Micro-optical sectioning
+ Optical sectioning
+ Two-photon micro-optical sectioning",remove Structured illumination,,,,,,
+http://edamontology.org/topic__RxfmHE99gOkUOOML5krfsJ,Topic : Imaging : Tomography,Computed tomography,,"CAT scan
+ CT (*)
+ CT scan
+ Computerised axial tomography
+ HRCT (*)
+ High-resolution CT
+ High-resolution X-ray tomography
+ High-resolution micro-CT
+ X-ray computed tomography
+ X-ray tomography","CAT scan
+ CT (*)
+ CT scan
+ Computerised axial tomography",,"HRCT (*)
+ High-resolution CT
+ High-resolution micro-CT
+ X-ray computed tomography","High-resolution X-ray tomography
+ X-ray tomography","CAT scan
+ CT scan
+ Computerised axial tomography
+ High-resolution CT
+ High-resolution X-ray tomography
+ High-resolution micro-CT
+ X-ray computed tomography
+ X-ray tomography
+High resolution CT
+ High resolution X-ray tomography
+ High resolution micro-CT
+ X ray computed tomography
+ X ray tomography","CT
+ HRCT","High-res CT
+ High-res X-ray tomography
+ micro-CT
+High res CT
+ High res X-ray tomography
+",alt spelling,,,,,,
+http://edamontology.org/topic______Optical_Coherence_Tomography,Topic : Imaging : Tomography,Optical coherence tomography,,OCT (*),OCT (*),,,,,,Optical coherence,,,,,,,
+http://edamontology.org/topic_____Array_tomography,Topic : Imaging : Tomography,Array tomography,,,,,,,,,,,,,,,,
+http://edamontology.org/topic__RBkRgSi7js0c70kjiPgYTgR,Topic : Imaging : Tomography,Single-photon emission computed tomography,,SPECT (*),,,,SPECT (*),Single photon emission computed tomography,SPECT,"Single-photon emission
+Single photon emission",alt spelling,,,,,,
+http://edamontology.org/topic__RBNoPZIOvBhdWGe8mFNpoWQ,Topic : Imaging,Fixed sample imaging,x,,,,,,,,Fixed sample,add to excluded list,,,,,,
+http://edamontology.org/topic______Medical_imaging,Topic : Imaging,Medical imaging,,,,,,,,,,remove medical,,,,,,
+http://edamontology.org/topic______Molecular_Imaging,Topic : Imaging : Medical imaging,Molecular imaging,,,,,,,,,,remove molecular,,,,,,
+http://edamontology.org/topic______Imaging_flow_cytometry,Topic : Imaging,Imaging flow cytometry,,IFC (*),IFC (*),,,,,IFC,flow cytometry,,,,,,,
+http://edamontology.org/topic____Multimodal_imaging,Topic : Imaging,Multimodal imaging,,"Correlative imaging
+ Hybrid imaging
+ Multisensor imaging",Multisensor imaging,,"Correlative imaging
+ Hybrid imaging",,"Correlative imaging
+ Hybrid imaging
+ Multisensor imaging
+Multi-modal imaging
+ Multi-sensor imaging",,"Multimodal
+Multi-modal",alt spelling,,,,,,
+http://edamontology.org/topic__RBHw300pzIYcttGsAmIZvk5,Topic : Imaging,Ultrasonography,,"Medical ultrasound
+ Ultrasound imaging
+ diagnostic sonography
+ microUS (*)","Medical ultrasound
+ diagnostic sonography",,"Ultrasound imaging
+ microUS (*)",,"Medical ultrasound
+ Ultrasound imaging
+ diagnostic sonography",microUS,,,,,,,,
+http://edamontology.org/topic__RDvZSyRAcr8fonKvKdVoXw2,Topic : Imaging,Bioluminescence imaging,,BLI (*),BLI (*),,,,,BLI,Bioluminescence,,,,,,,
+http://edamontology.org/topic_3444,Topic : Imaging,Magnetic resonance imaging,,MRI (*),MRI (*),,,,,MRI,Magnetic resonance,add MRI,,,,,,

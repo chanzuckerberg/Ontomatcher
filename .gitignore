@@ -4,6 +4,8 @@ __pycache__/
 
 # Exclude Sample* files under Data/
 /Data/Sample*
+# Exclude '*.pkl' files, which can be recreated from supplied data
+/Data/*.pkl
 
 # Text files under Python
 /Python/*.txt

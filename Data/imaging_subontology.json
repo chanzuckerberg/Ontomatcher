@@ -1,0 +1,7 @@
+{
+    "subroots": {
+        "http://edamontology.org/data_Image": "Image",
+        "http://edamontology.org/operation_0004": "Operation",
+        "http://edamontology.org/topic_3382": "Topic"
+    }
+}

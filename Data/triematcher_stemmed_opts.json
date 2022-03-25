@@ -1,0 +1,25 @@
+{
+    "class": "TrieMatcher",
+    "name": "TrieMatcher - Stemmed",
+    "descr": "Trie Matcher, 3 tiers, Stemmed.",
+    "lexicon_id": "EDAM Imaging sub-Ontology",
+    "name_types": {
+        "primary": {
+            "tier": 1,
+            "normalization": "STEMMED"
+        },
+        "acronym": {
+            "tier": 2,
+            "normalization": "STANDARD"
+        },
+        "synonym": {
+            "tier": 1,
+            "normalization": "STEMMED"
+        },
+        "partial": {
+            "tier": 4,
+            "normalization": "STEMMED"
+        }
+    },
+    "cache_file": "../Data/imgont_stemmed_matcher.pkl"
+}

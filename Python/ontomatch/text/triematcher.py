@@ -75,13 +75,18 @@ class TrieMatchHelper:
 
     ROUND_NBR_DECIMALS = 3
 
-    def __init__(self, name: str, min_name_length: int = 1, stop_names: List[str] = None):
+    def __init__(self, name: str, min_name_length: int = 1, stop_names: List[List[str]] = None):
+        """
+
+        :param name: Name of this `TrieMatchHelper`
+        :param min_name_length: Single-token names with length less than this are rejected
+        :param stop_names: List of tokenized-and-normalized names that are considered invalid names (and skipped)
+        """
         self.name = name
 
         self.min_name_length = min_name_length
-        self.stop_names = set(stop_names) if stop_names else set()
-
-        # self.add_name_tier_to_score = add_name_tier_to_score
+        # Convert List to Tuple for use in Set
+        self.stop_names = set(tuple(nm) for nm in stop_names) if stop_names else set()
 
         # Each entry is List[normalized-token]
         self.normalized_names: List[List[str]] = []
@@ -98,7 +103,24 @@ class TrieMatchHelper:
     def add_name(self, entity_id: str, original_name: str, normalized_name: List[str],
                  name_type: str, name_tier: int):
         """
-        :returns: -1 if name not added
+        Add a name for entity `entity_id`.
+
+        :param entity_id: Unique id for this entity
+        :param original_name: The original name being added
+        :param normalized_name: The normalized name, corresponding to the `original_name`, being added
+        :param name_type: One of the Name-Types as specified in `EntityMatcher.name_type_params`
+        :param name_tier: Specifies the priority tier for matching this name
+
+        The `normalized_name` is rejected if:
+            - It is a single token, and its length < `self.min_name_length`
+            - It matches one of the stop-names
+
+        :returns: -1 if rejected,
+                Else:
+                  Index (>= 0) at which this name is added.
+                  This index corresponds to the `NameMatch.name_index` in a match,
+                  and can be used in the following methods to retrieve the names:
+                    `self.get_original_names()`, `self.get_normalized_name()`, `self.get_names()`
         """
         entity_id = entity_id.strip()
         original_name = original_name.strip()
@@ -107,8 +129,10 @@ class TrieMatchHelper:
             return -1
 
         if len(normalized_name) == 1:
-            if len(normalized_name[0]) < self.min_name_length or normalized_name[0] in self.stop_names:
+            if len(normalized_name[0]) < self.min_name_length:
                 return -1
+        elif tuple(normalized_name) in self.stop_names:
+            return -1
 
         kvalue = self.trie.get(normalized_name)
         if kvalue is None:
@@ -189,8 +213,11 @@ class TrieMatchHelper:
     @staticmethod
     def sorted_matches(name_matches: Set[NameMatchImpl]) -> List[NameMatchImpl]:
         """
-        Sort on (name-tier [ascending], key_length [descending], start_token_index [ascending]),
-        ... where key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
+        Sort on:
+            (name-tier [ascending], key_length [descending], start_token_index [asc.], entity_id [asc.]),
+        ... where:
+            key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
+            entity_id used in case multiple entities have the same normalized name
         """
 
         if not name_matches:
@@ -199,11 +226,11 @@ class TrieMatchHelper:
         # For indexing at the end
         name_matches = list(name_matches)
 
-        # Assemble for Compound Sort
+        # Assemble for Compound Sort ... include enough keys to make sort deterministic
 
-        names_in_order = ["tier", "key_length", "start_idx"]
+        names_in_order = ["tier", "key_length", "start_idx", "entity_id"]
 
-        match_scores = np.core.records.fromrecords([(nm.name_tier, -nm.key_length, nm.start_idx)
+        match_scores = np.core.records.fromrecords([(nm.name_tier, -nm.key_length, nm.start_idx, nm.entity_id)
                                                     for nm in name_matches],
                                                    names=names_in_order)
 
@@ -234,7 +261,8 @@ class TrieMatcher(EntityMatcher):
         self.match_helpers: Dict[NormalizationType, TrieMatchHelper] = \
             {norm_type: TrieMatchHelper(norm_type.value,
                                         min_name_length=self.min_name_length,
-                                        stop_names=self.stop_names)
+                                        stop_names=[self.tknzr.normalized_tokens(name_, normalization_type=norm_type)
+                                                    for name_ in self.stop_names])
              for norm_type in NormalizationType
              }
 
@@ -371,8 +399,12 @@ class TrieMatcher(EntityMatcher):
     def get_full_matches(self, text: str) -> List[NameMatchImpl]:
         """
         Entities matching entire text, i.e. entire text should match each name.
-        Returned matches are sorted on (name-tier [ascending], key_length [descending]),
-        ... where key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
+        Returned matches are sorted on:
+            (name-tier [ascending], key_length [descending], start_token_index [asc.], entity_id [asc.]),
+        ... where:
+            key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
+            entity_id corresponds to sort order on Entity-IDs:
+                in case of duplicated names, 'earlier' Entity-ID is preferred.
         """
         name_matches = set()
         match_helper = None
@@ -388,8 +420,12 @@ class TrieMatcher(EntityMatcher):
                                   nmax: int = None) -> List[NameMatchImpl]:
         """
         All Entity matches into text, possibly overlapping.
-        Returned matches are sorted on (name-tier [ascending], key_length [descending]),
-        ... where key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
+        Returned matches are sorted on:
+            (name-tier [ascending], key_length [descending], start_token_index [asc.], entity_id [asc.]),
+        ... where:
+            key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
+            entity_id corresponds to sort order on Entity-IDs:
+                in case of duplicated names, 'earlier' Entity-ID is preferred.
         """
         name_matches = set()
         match_helper = None
@@ -412,6 +448,7 @@ class TrieMatcher(EntityMatcher):
             - higher tiers
             - longer matching keys (in nbr of tokens)
             - left-most matches
+            - 'earlier' entity_id (in sort order)
         """
         name_matches = self.get_all_matching_entities(text, nmax=nmax)
 

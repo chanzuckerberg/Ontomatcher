@@ -1,6 +1,7 @@
 """
-Build Ontology Matcher.
-Find mentions of ontology terms in provided text, and in Napari plug-in descriptions.
+Annotater for Napari Plugins:
+    - Build Ontology Matcher.
+    - Find mentions of ontology terms in provided text, and in Napari plug-in descriptions.
 """
 
 from collections import defaultdict
@@ -9,11 +10,11 @@ import json
 import os
 import os.path
 import re
-from typing import Dict, List, NamedTuple, Optional, Sequence, Set, Tuple, Union
+from typing import Dict, Iterable, List, NamedTuple, Optional, Sequence, Set, Tuple, Union
 
 from ontomatch.data.ontology import Ontology
 from ontomatch.data.imgontology import CuratedTerm, get_curated_imaging_subontology
-from ontomatch.data.napari import fetch_plugin
+from ontomatch.data.naparihub import CATEGORY_TERM_MAP, NapariPlugin, fetch_plugin
 from ontomatch.text.triematcher import NameMatch, TrieMatcher
 from ontomatch.utils.misc import terminal_highlighted, highlight_spans_multicolor
 
@@ -137,6 +138,23 @@ def get_imgont_trie_matcher(imgont_matcher_opts: Union[str, Dict[str, str]], ver
     return trie_matcher
 
 
+def get_imaging_ontology(imgont_matcher_opts: Union[str, Dict[str, str]], verbose: bool = False) -> Ontology:
+    cwd = None
+    if isinstance(imgont_matcher_opts, str):
+        imgont_matcher_opts, cwd = read_opts_chage_cwd(imgont_matcher_opts)
+
+    img_ont = get_curated_imaging_subontology(edam_ontology_tsv = imgont_matcher_opts["EDAM"],
+                                              imgsubont_json = imgont_matcher_opts["imgont"],
+                                              curated_syns_csv = imgont_matcher_opts["curated_syns"],
+                                              verbose = verbose)
+
+    # Chage cwd back
+    if cwd is not None:
+        os.chdir(cwd)
+
+    return img_ont
+
+
 # -----------------------------------------------------------------------------
 #   Functions: Get matching terms
 # -----------------------------------------------------------------------------
@@ -214,6 +232,30 @@ def get_matching_entity_ids(text: str, ont_matcher: TrieMatcher,
     txt_lines, matches_by_line = get_ont_matches_by_line(text, ont_matcher, htc_reduce_descr)
     entity_ids = set([nm.entity_id for line_matches in matches_by_line for nm in line_matches])
     return entity_ids
+
+
+def split_terms_by_category(term_ids: Iterable[str], img_ont: Ontology) -> Dict[str, List[str]]:
+    """
+    Split `term_ids` into the broad categories used by Napari Hub for Plugins.
+    See: `ontomatch.data.naparihub.CATEGORY_TERM_MAP`
+    """
+    terms_by_cat = defaultdict(list)
+    for termid in term_ids:
+        term_catg = "Unknown"
+        for catg, catg_id in CATEGORY_TERM_MAP.items():
+            if img_ont.has_ancestor(termid, catg_id):
+                term_catg = catg
+                break
+
+        terms_by_cat[term_catg].append(termid)
+
+    # Re-order them for pretty-printing
+    terms_by_cat_ordered = dict()
+    for k in CATEGORY_TERM_MAP:
+        if termids := terms_by_cat.get(k):
+            terms_by_cat_ordered[k] = termids
+
+    return terms_by_cat_ordered
 
 
 # -----------------------------------------------------------------------------
@@ -309,8 +351,8 @@ def filter_descr_lines(txt_lines: List[str]):
 # -----------------------------------------------------------------------------
 
 
-def pp_ont_matches(plugin_name: str, descr: str, ont_matcher: TrieMatcher,
-                   htc_reduce_descr: bool = False):
+def pp_ont_matches(plugin_name: str, descr: str, ont_matcher: TrieMatcher, img_ont: Ontology,
+                   plugin_data: Optional[NapariPlugin] = None, htc_reduce_descr: bool = False):
 
     txt_lines, matches_by_line = get_ont_matches_by_line(descr, ont_matcher, htc_reduce_descr=htc_reduce_descr)
 
@@ -339,12 +381,30 @@ def pp_ont_matches(plugin_name: str, descr: str, ont_matcher: TrieMatcher,
 
     if not matching_terms:
         print("... No term mentions found.")
-        return
 
-    for i, (termid, tmatches) in enumerate(sorted(matching_terms.items()), start=1):
-        matched_names = sorted(tmatches)
-        print(f"{i:2d}.  {termid}:", terminal_highlighted(ont_matcher.get_primary_name(termid)))
-        print("       ", terminal_highlighted("Matches:", font_color='blue'), ", ".join(matched_names))
+    else:
+        for i, (termid, tmatches) in enumerate(sorted(matching_terms.items()), start=1):
+            matched_names = sorted(tmatches)
+            print(f"{i:2d}.  {termid}:", terminal_highlighted(ont_matcher.get_primary_name(termid)))
+            print("       ", terminal_highlighted("Matches:", font_color='blue'), ", ".join(matched_names))
+
+        print()
+        print(terminal_highlighted("Category recommendations:", font_color='black'))
+
+        terms_by_cat = split_terms_by_category(matching_terms.keys(), img_ont)
+
+        for catg, term_ids in terms_by_cat.items():
+            print("   ", f"{terminal_highlighted(catg, font_color='blue')}:",
+                  ", ".join(sorted([terminal_highlighted(img_ont.get_term(termid).name, font_color='red')
+                             for termid in term_ids])))
+
+    if plugin_data and plugin_data.categories:
+        print()
+        print(terminal_highlighted("Plugin Categories:", font_color='black'))
+        for catg_name, labels in plugin_data.categories.items():
+            print("   ", f"{terminal_highlighted(catg_name, font_color='blue')}:",
+                  ", ".join(sorted([terminal_highlighted(label_, font_color='red')
+                             for label_ in labels])))
 
     return
 
@@ -358,6 +418,7 @@ def test_match_sample(imgont_matcher_opts: str, plugin_file: Optional[str] = Non
     :param plugin_name: Name of napari plugin, whose descr is fetched from Napari-Hub API.
     """
     plugin_descr: Optional[str] = None
+    plugin_data = None
 
     if plugin_file is not None:
         with open(plugin_file) as f:
@@ -374,12 +435,15 @@ def test_match_sample(imgont_matcher_opts: str, plugin_file: Optional[str] = Non
         plugin_descr = plugin_data.get_combined_description()
 
     ont_matcher = get_imgont_trie_matcher(imgont_matcher_opts)
+    img_ont = get_imaging_ontology(imgont_matcher_opts)
+
     print()
     if htc_reduce_descr:
         print("Heuristically reduce description = True.")
         print()
     print("-------------------------------------------------------")
-    pp_ont_matches(plugin_name, plugin_descr, ont_matcher, htc_reduce_descr=htc_reduce_descr)
+    pp_ont_matches(plugin_name, plugin_descr, ont_matcher, img_ont,
+                   plugin_data=plugin_data, htc_reduce_descr=htc_reduce_descr)
     print("-------------------------------------------------------")
     return
 

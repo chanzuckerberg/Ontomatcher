@@ -74,6 +74,18 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
         # Identifies where the entities and their names are from
         "lexicon_id": "EDAM Imaging sub-Ontology",
 
+        # Any single-token Entity Names whose length is less than this value will be ignored.
+        # Default is 2.
+        "min_name_length": 2,
+
+        # Entity names that match any of these (after corresponding normalization) are ignored.
+        # Default is no stop-names.
+        # Example:
+        #   Based on the "name_types" below, an entry of "Ms" will result in
+        #       - "primary", "synonym" and "partial" names that are normalized to "ms" being ignored
+        #       - "acronym" name "Ms" will be ignored, but not "MS" or "ms".
+        "stop_names": ["as", "The"],
+
         # How to match the different types of names:
         #  NameType [str] => [Dict]
         #                    {"tier": [int > 0] Match tier,
@@ -102,13 +114,13 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
             A brief description
 
         cache_file: str.
-            Path to file where Class Instance is cached by `build_and_save()`
+            Path to file where Class Instance is cached by `build_and_save()`, as a Pickle file.
 
         lexicon_id: str.
                 Used to identify the Lexicon this matcher is built from.
                 Can be a path to the Lexicon file.
 
-        name_type_params: Dict[ NameType [str] => Dict[ NameType-Definition ]
+        name_types: Dict[ NameType [str] => Dict[ NameType-Definition ]
             Defines how to normalize names of this type, and their match tier.
             See `EXAMPLE_PARAMS`.
 

@@ -6,12 +6,22 @@ EDAM Bioimaging ontology is extracted from:
 
 import copy
 import re
+import sys
 from typing import Dict, Generator, Iterable, List, Optional, Set, Union
 
 
 # -----------------------------------------------------------------------------
 #   Classes
 # -----------------------------------------------------------------------------
+
+
+class EntityExistsError(Exception):
+    """
+    Raised by `Ontology.add_entity()` if called with an entity-id that already exists.
+    """
+    def __init__(self, ent_id):
+        super(EntityExistsError, self).__init__(f"Entity id '{ent_id}' already exists in the ontology")
+# /
 
 
 class OntologyTerm:
@@ -24,7 +34,7 @@ class OntologyTerm:
     ACRONYM_SFX_PATT = re.compile(r"\s+\(([^)]+)\)$")
 
     def __init__(self,
-                 classid: str,
+                 termid: str,
                  name: str,
                  definition: Optional[str] = None,
                  synonyms: Optional[str] = None,
@@ -35,11 +45,14 @@ class OntologyTerm:
                  parent_ids: Optional[str] = None,
                  ):
         """
-        Args correspond to fields in the ontology TSV file:
-            classid: Class ID
-            name: Preferred Label
+        Arguments
+        ---------
+            termid: Unique identifier in Ontology for this Term, aka Entity ID, aka Class ID
+            name: Preferred Name for this Term
             synonyms: Synonyms
-            definition: Definitions
+            definition: Definition
+
+        Corresponding fields in the EDAM ontology TSV file:
 
             synonyms_exact: http://www.geneontology.org/formats/oboInOwl#hasExactSynonym
             synonyms_broad: http://www.geneontology.org/formats/oboInOwl#hasBroadSynonym
@@ -47,7 +60,7 @@ class OntologyTerm:
             synonyms_related: http://www.geneontology.org/formats/oboInOwl#hasRelatedSynonym
         """
 
-        self.classid = classid
+        self.termid = termid
         self.name = name
         self.definition = definition
 
@@ -87,6 +100,14 @@ class OntologyTerm:
         return
 
     @property
+    def entity_id(self) -> str:
+        return self.termid
+
+    @property
+    def classid(self) -> str:
+        return self.termid
+
+    @property
     def parent_ids(self) -> Set[str]:
         return self._parent_ids
 
@@ -96,7 +117,7 @@ class OntologyTerm:
 
     def __str__(self):
         child_ids = ",\n                 ".join(sorted(self.child_ids))
-        return f"{self.__class__.__name__}('{self.classid}', '{self.name}')\n" + \
+        return f"{self.__class__.__name__}('{self.termid}', '{self.name}')\n" + \
                f"  parents  [{len(self.parent_ids)}] = {', '.join(sorted(self.parent_ids))}\n" + \
                f"  children [{len(self.child_ids)}] = {child_ids}"
 # /
@@ -109,17 +130,20 @@ class Ontology:
         self.terms: Dict[str, OntologyTerm] = dict()
         return
 
-    def add_term(self, term: OntologyTerm):
-        if term.classid in self.terms:
-            return
+    def add_term(self, term: OntologyTerm, except_if_exists: bool = True):
+        if term.termid in self.terms:
+            if except_if_exists:
+                raise EntityExistsError(term.termid)
+            else:
+                return
 
-        self.terms[term.classid] = term
+        self.terms[term.termid] = term
         if not term.parent_ids:
-            self.root_termids.add(term.classid)
+            self.root_termids.add(term.termid)
         return
 
-    def get_term(self, term_classid: str):
-        return self.terms.get(term_classid)
+    def get_term(self, term_id: str) -> Optional[OntologyTerm]:
+        return self.terms.get(term_id)
 
     def get_descendants(self, term: Union[str, OntologyTerm]) -> Generator[OntologyTerm, None, None]:
         """
@@ -144,7 +168,7 @@ class Ontology:
 
         :param _paths: Local use only
 
-        :return: List of paths: List of ClassID
+        :return: List of paths: List of Term-ID
             In each path [pid_0, ..., pid_n],
                 - pid_0 is a root term in the ontology,
                 - pid_{i} is a parent of pid_{i+1}
@@ -165,6 +189,51 @@ class Ontology:
 
         return paths
 
+    def has_ancestor(self, term: Union[str, OntologyTerm], ancestor: Union[str, OntologyTerm]) -> bool:
+        """
+        True if `ancestor` is a direct ancestor of `term`
+        """
+        return self.get_min_ancestral_distance(term, ancestor) is not None
+
+    def get_min_ancestral_distance(self, term: Union[str, OntologyTerm], ancestor: Union[str, OntologyTerm])\
+            -> Optional[int]:
+        """
+        Distance = 1    If `ancestor` is parent of `term`
+                 = 2    If  `ancestor` is grand-parent of `term`
+                 = ...
+                 = None if `ancestor` is not an ancestor of `term`
+        :return: Min such distance, given that a term may have multiple parents
+        """
+        if isinstance(term, str):
+            term = self.get_term(term)
+
+        if isinstance(ancestor, str):
+            ancestor_id = self.get_term(ancestor).termid
+        else:
+            ancestor_id = ancestor.termid
+
+        max_dist = sys.maxsize
+
+        # ---
+        def get_distance(path_to_root, anc_id):
+            dist = max_dist
+            try:
+                dist = len(path_to_root) - path_to_root.index(anc_id)
+            except ValueError:
+                pass
+
+            return dist
+        # ---
+
+        paths_to_root = self.get_paths_from_root(term)
+
+        min_dist = min(get_distance(path_, ancestor_id) for path_ in paths_to_root)
+
+        if min_dist < max_dist:
+            return min_dist
+
+        return None
+
     def set_children(self, strict=True):
         for term in self.terms.values():
             for pid in term.parent_ids:
@@ -174,7 +243,7 @@ class Ontology:
                         raise KeyError(pid)
                     else:
                         continue
-                parent.add_child(term.classid)
+                parent.add_child(term.termid)
         return
 
     def pp_term(self, term: Union[str, OntologyTerm]):
@@ -194,10 +263,10 @@ class Ontology:
         """
         Returns a sub-ontology that contains only relevant terms, with paths to the original root terms.
 
-        :param selected_subroots: Sequence of ClassIDs. Sub-trees rooted at these are included.
+        :param selected_subroots: Sequence of Term-IDs. Sub-trees rooted at these are included.
                 All ancestors are also included, but marked as `ignore`.
 
-        :param ingore_terms: Sequence of ClassIDs. These terms are marked to be ignored from recognition.
+        :param ingore_terms: Sequence of Term-IDs. These terms are marked to be ignored from recognition.
         """
         if ingore_terms is None:
             ingore_terms = []
@@ -212,7 +281,7 @@ class Ontology:
 
         def copy_from_tree(root_id: str):
             for t in self.get_descendants(root_id):
-                img_ont.add_term(copy_term(t))
+                img_ont.add_term(copy_term(t), except_if_exists=False)
             return
         # ---
 

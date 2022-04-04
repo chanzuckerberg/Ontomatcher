@@ -8,7 +8,6 @@ import json
 from typing import Any, Dict, List, Optional, Set, Union
 
 from .ontology import Ontology, OntologyTerm
-from ..text.tokenizer import NormalizationType, BasicRevMappedTokenizer
 
 
 # -----------------------------------------------------------------------------
@@ -18,7 +17,7 @@ from ..text.tokenizer import NormalizationType, BasicRevMappedTokenizer
 
 class CuratedTerm(OntologyTerm):
     def __init__(self, term: OntologyTerm):
-        super(CuratedTerm, self).__init__(term.classid, term.name, definition=term.definition)
+        super(CuratedTerm, self).__init__(term.termid, term.name, definition=term.definition)
 
         self.synonyms = term.synonyms
         self.synonyms_exact = term.synonyms_exact
@@ -79,19 +78,6 @@ def get_imaging_subontology(edam_ontology_tsv: str, imgont_options: Union[str, D
                                        ingore_terms=ignore_terms)
 
     return img_ont
-
-
-def is_acronym(name: str, tknzr: BasicRevMappedTokenizer = None):
-    # Heuristic test for whether a name should be treated as an Acronym.
-    # Acronyms use case-sensitive match.
-    if len(name) <= 1 or name.islower() or name.istitle():
-        return False
-
-    if tknzr is None:
-        tknzr = BasicRevMappedTokenizer()
-    tkns = tknzr.tokenize(name, normalization_type=NormalizationType.LOWER)
-
-    return not any(t.text.islower() for t in tkns) and not all(t.text.istitle() for t in tkns)
 
 
 def read_curated_synonyms(curated_syns_csv: str, verbose: bool = True) -> Dict[str, Dict[str, Union[bool, Set[str]]]]:

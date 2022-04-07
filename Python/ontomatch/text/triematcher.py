@@ -8,7 +8,7 @@ import dataclasses
 from datetime import datetime
 import os
 from pathlib import Path
-from typing import Dict, Iterable, List, NamedTuple, Sequence, Set, Tuple
+from typing import Dict, Iterable, List, NamedTuple, Optional, Sequence, Set, Tuple
 
 import pygtrie
 
@@ -39,6 +39,7 @@ class NameEntry(NamedTuple):
 class OriginalName(NamedTuple):
     entity_id: str
     name: str
+    name_type: str
 # /
 
 
@@ -141,17 +142,21 @@ class TrieMatchHelper:
 
         if kvalue:
             name_index = get_set_element(kvalue).name_index
-            self.original_names[name_index].add(OriginalName(entity_id, original_name))
+            self.original_names[name_index].add(OriginalName(entity_id, original_name, name_type))
         else:
             name_index = len(self.normalized_names)
             self.normalized_names.append(normalized_name)
-            self.original_names.append({OriginalName(entity_id, original_name)})
+            self.original_names.append({OriginalName(entity_id, original_name, name_type)})
 
         kvalue.add(NameEntry(entity_id, name_type, name_tier, name_index))
         return name_index
 
     def nbr_keys(self):
         return len(self.original_names)
+
+    def get_all_entity_ids(self, name_type: Optional[str] = None) -> Set[str]:
+        return set([orig_name_.entity_id for orig_names in self.original_names for orig_name_ in orig_names
+                    if name_type is None or orig_name_.name_type == name_type])
 
     def get_original_names(self, name_index: int) -> Set[OriginalName]:
         return self.original_names[name_index]
@@ -278,11 +283,14 @@ class TrieMatcher(EntityMatcher):
         """
 
         # Remove primary_name from synonyms if using same normalization
-        if self.name_type_params["primary"]["normalization"] == self.name_type_params["synonym"]["normalization"]:
-            norm_type = self.name_type_params["primary"]["normalization"]
-            normlzd_primary = self.tknzr.normalize(primary_name, normalization_type=norm_type)
+        primary_norm_type = self.name_type_params[self.NAME_TYPE_PRIMARY]["normalization"]
+
+        if "synonym" in self.name_type_params \
+                and self.name_type_params["synonym"]["normalization"] == primary_norm_type:
+
+            normlzd_primary = self.tknzr.normalize(primary_name, normalization_type=primary_norm_type)
             synonyms = [syn for syn in synonyms
-                        if self.tknzr.normalize(syn, normalization_type=norm_type) != normlzd_primary]
+                        if self.tknzr.normalize(syn, normalization_type=primary_norm_type) != normlzd_primary]
 
         self.add_entity_with_names(entity_id, primary_name,
                                    dict(synonym=synonyms, acronym=acronyms, partial=partial_names))
@@ -365,6 +373,46 @@ class TrieMatcher(EntityMatcher):
         #   self.tknzr
 
         return
+
+    # =====================================================================================================
+    #       Stats
+    # =====================================================================================================
+
+    def pp_stats(self):
+        hdr = f"Stats for {self.__class__.__name__}, lexicon_id = '{self.lexicon_id}':"
+        print(hdr)
+        print("-" * len(hdr))
+        print()
+
+        print(f"Nbr entities = {self.get_nbr_entities():,d}")
+        print()
+
+        for name_type in self.name_type_params:
+            tkn_norm_type, name_tier, match_helper = self._get_params_and_match_helper(name_type)
+            print(f"Name Type = {name_type}, tier = {name_tier}, normalization = {tkn_norm_type.name}")
+            print()
+
+            print("   ", f"Nbr entities in this type      = {len(match_helper.get_all_entity_ids(name_type)):5,d}")
+
+            all_names = set(tuple([orig_name_ for orig_name_ in orig_names if orig_name_.name_type == name_type])
+                            for orig_names in match_helper.original_names) - {tuple()}
+
+            ambig_names = [orig_names for orig_names in all_names if len(orig_names) > 1]
+
+            print("   ", f"Nbr unique normalized names    = {len(all_names):5,d}")
+
+            # ambig_names = [orig_names
+            #                for orig_names in match_helper.original_names
+            #                if len([orig_name_ for orig_name_ in orig_names if orig_name_.name_type == name_type]) > 1]
+
+            print("   ", f"Nbr ambiguous normalized names = {len(ambig_names):5,d}")
+            print()
+
+        return
+
+    # =====================================================================================================
+    #       Methods for retrieving names for an Entity / NameMatch
+    # =====================================================================================================
 
     def get_all_unique_names(self, entity_id: str) -> Dict[str, Tuple[Set[str], Set[str]]]:
         """

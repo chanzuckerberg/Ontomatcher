@@ -61,6 +61,8 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
         em.compile_and_save()
     """
 
+    NAME_TYPE_PRIMARY = "primary"
+
     EXAMPLE_PARAMS = {
         # Required. Specifies sub-class of EntityMatcher to create.
         "class": "TrieMatcher",
@@ -159,7 +161,8 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
         """
         Checks all name-type definitions, and converts 'normalization' values to `NormalizationType` members.
         """
-        assert "primary" in self.name_type_params, f"'primary' is a required key in `name_type_params`"
+        assert self.NAME_TYPE_PRIMARY in self.name_type_params, \
+            f"'{self.NAME_TYPE_PRIMARY}' is a required key in `name_type_params`"
 
         for nt, np in self.name_type_params.items():
             assert "tier" in np and "normalization" in np, \
@@ -258,6 +261,9 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
         Build out all the local data structures, and save to 'cache_file'
         """
         raise NotImplementedError
+
+    def get_nbr_entities(self) -> int:
+        return len(self.entity_info)
 
     def get_all_entity_ids(self) -> Set[str]:
         return set(self.entity_info.keys())

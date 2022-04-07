@@ -6,6 +6,10 @@ __pycache__/
 /Data/Sample*
 # Exclude '*.pkl' files, which can be recreated from supplied data
 /Data/*.pkl
+# Exclude 'stats_' files, which can be recreated from supplied data
+/Data/stats_*
+# Exclude old curated synonys file
+/Data/curated_imaging_synonyms-220316.csv
 
 # Text files under Python
 /Python/*.txt

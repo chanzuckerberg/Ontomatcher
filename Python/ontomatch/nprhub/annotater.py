@@ -1,7 +1,7 @@
 """
 Annotater for Napari Plugins:
     - Build Ontology Matcher.
-    - Find mentions of ontology terms in provided text, and in Napari plug-in descriptions.
+    - Find nprhub of ontology terms in provided text, and in Napari plug-in descriptions.
 """
 
 from collections import defaultdict
@@ -13,10 +13,11 @@ import re
 from typing import Dict, Iterable, List, NamedTuple, Optional, Sequence, Set, Tuple, Union
 
 from ontomatch.data.ontology import Ontology
-from ontomatch.data.imgontology import CuratedTerm, get_curated_imaging_subontology
-from ontomatch.data.naparihub import CATEGORY_TERM_MAP, NapariPlugin, fetch_plugin
 from ontomatch.text.triematcher import NameMatch, TrieMatcher
 from ontomatch.utils.misc import terminal_highlighted, highlight_spans_multicolor
+
+from .imgontology import CuratedTerm, get_curated_imaging_subontology, pp_curated_ontology_stats
+from .plugins import CATEGORY_TERM_MAP, NapariPlugin, fetch_plugin
 
 
 # -----------------------------------------------------------------------------
@@ -36,10 +37,10 @@ class EntityMatch(NamedTuple):
     entity_id: str
     primary_name: str
 
-    # All the original (un-normalized) names that matcbed one or more mentions
+    # All the original (un-normalized) names that matcbed one or more nprhub
     matching_names_original: Set[str]
 
-    # All the normalized names that matched one or more mentions
+    # All the normalized names that matched one or more nprhub
     matching_names_normalized: Set[str]
 # /
 
@@ -77,24 +78,29 @@ def build_imgont_trie_matcher(imgont_matcher_opts: Union[str, Dict[str, str]], v
         - curated_syns: Path to CSV file containing curated synonyms for imaging sub-ontology.
         - matcher: Path to JSON file containing TrieMatcher options.
 
-    All relative paths are relative to the Python dir.
+    IF `imgont_matcher_opts` is a path to a JSON file,
+    THEN all paths mentioned in that file are relative to the dir containing that file.
     """
+
     # noinspection PyUnresolvedReferences
     from ontomatch.text.triematcher import NameMatch, TrieMatcher
+
+    if verbose:
+        print("Building imgont_trie_matcher ...", flush=True)
+
+    # -- Get the imaging sub-ontology, with Heuristic expansion
+
+    img_ont = get_imaging_ontology(imgont_matcher_opts, htc_expand_synonyms=True, verbose=verbose)
+
+    # -- Build the Trie Matcher instance, and add ontology entities
 
     cwd = None
     if isinstance(imgont_matcher_opts, str):
         imgont_matcher_opts, cwd = read_opts_chage_cwd(imgont_matcher_opts)
 
     trie_matcher = TrieMatcher.from_params(imgont_matcher_opts["matcher"])
-
-    img_ont = get_curated_imaging_subontology(edam_ontology_tsv = imgont_matcher_opts["EDAM"],
-                                              imgsubont_json = imgont_matcher_opts["imgont"],
-                                              curated_syns_csv = imgont_matcher_opts["curated_syns"],
-                                              verbose = verbose)
-
-    # Heuritic expansion of Synonyms
-    expand_ontology_synonyms(img_ont)
+    # Set the lexicon id to the path to Curated Synonyms file
+    trie_matcher.lexicon_id = imgont_matcher_opts["curated_syns"]
 
     # noinspection PyTypeChecker,PyUnusedLocal
     term: CuratedTerm = None
@@ -113,10 +119,14 @@ def build_imgont_trie_matcher(imgont_matcher_opts: Union[str, Dict[str, str]], v
     if cwd is not None:
         os.chdir(cwd)
 
+    if verbose:
+        print("imgont_trie_matcher build completed.", flush=True)
+
     return trie_matcher
 
 
-def get_imgont_trie_matcher(imgont_matcher_opts: Union[str, Dict[str, str]], verbose: bool = False) -> TrieMatcher:
+def get_imgont_trie_matcher(imgont_matcher_opts: Union[str, Dict[str, str]],
+                            verbose: bool = False) -> TrieMatcher:
     """
     Load from cached file, if exists, else build and save it.
     """
@@ -138,7 +148,9 @@ def get_imgont_trie_matcher(imgont_matcher_opts: Union[str, Dict[str, str]], ver
     return trie_matcher
 
 
-def get_imaging_ontology(imgont_matcher_opts: Union[str, Dict[str, str]], verbose: bool = False) -> Ontology:
+def get_imaging_ontology(imgont_matcher_opts: Union[str, Dict[str, str]],
+                         htc_expand_synonyms: bool = True,
+                         verbose: bool = False) -> Ontology:
     cwd = None
     if isinstance(imgont_matcher_opts, str):
         imgont_matcher_opts, cwd = read_opts_chage_cwd(imgont_matcher_opts)
@@ -148,11 +160,33 @@ def get_imaging_ontology(imgont_matcher_opts: Union[str, Dict[str, str]], verbos
                                               curated_syns_csv = imgont_matcher_opts["curated_syns"],
                                               verbose = verbose)
 
+    if htc_expand_synonyms:
+        expand_ontology_synonyms(img_ont)
+
     # Chage cwd back
     if cwd is not None:
         os.chdir(cwd)
 
     return img_ont
+
+
+def pp_matcher_stats(imgont_matcher_opts: Union[str, Dict[str, str]]):
+    print()
+    print("Curated Imaging sub-ontology stats")
+    print("==================================")
+    print()
+    get_imaging_ontology(imgont_matcher_opts, verbose=True)
+    print()
+
+    print("Imaging sub-ontology Matcher stats")
+    print("==================================")
+    print()
+    trie_matcher = get_imgont_trie_matcher(imgont_matcher_opts, verbose=True)
+    print()
+    trie_matcher.pp_stats()
+    print()
+
+    return
 
 
 # -----------------------------------------------------------------------------
@@ -165,7 +199,7 @@ def get_ont_matches_by_line(text: str, ont_matcher: TrieMatcher,
     """
     Splits `text` into lines (on "\n"), and then looks for Ontology Term matches in each line.
 
-    :param text: Text in which to find term mentions
+    :param text: Text in which to find term nprhub
     :param ont_matcher:
     :param htc_reduce_descr: Whether to heuristically reduce the text
 
@@ -193,7 +227,7 @@ def get_entity_matches(text: str, ont_matcher: TrieMatcher,
     """
     Returns a Dict[ entity_id (str) => EntityMatch ], for each entity_id whose mention(s) detected in `text`.
 
-    :param text: Text in which to find term mentions
+    :param text: Text in which to find term nprhub
     :param ont_matcher:
     :param htc_reduce_descr: Whether to heuristically reduce the text
     """
@@ -224,7 +258,7 @@ def get_matching_entity_ids(text: str, ont_matcher: TrieMatcher,
                             htc_reduce_descr: bool = False) -> Set[str]:
     """
     Return the set of matching Term IDs.
-    :param text: Text in which to find term mentions
+    :param text: Text in which to find term nprhub
     :param ont_matcher:
     :param htc_reduce_descr: Whether to heuristically reduce the text
     :return: Set of term Entity-IDs
@@ -380,7 +414,7 @@ def pp_ont_matches(plugin_name: str, descr: str, ont_matcher: TrieMatcher, img_o
     print(terminal_highlighted("Matched terms:", font_color='black'))
 
     if not matching_terms:
-        print("... No term mentions found.")
+        print("... No term nprhub found.")
 
     else:
         for i, (termid, tmatches) in enumerate(sorted(matching_terms.items()), start=1):
@@ -434,7 +468,7 @@ def test_match_sample(imgont_matcher_opts: str, plugin_file: Optional[str] = Non
 
         plugin_descr = plugin_data.get_combined_description()
 
-    ont_matcher = get_imgont_trie_matcher(imgont_matcher_opts)
+    ont_matcher = get_imgont_trie_matcher(imgont_matcher_opts, verbose=True)
     img_ont = get_imaging_ontology(imgont_matcher_opts)
 
     print()
@@ -453,10 +487,12 @@ def test_match_sample(imgont_matcher_opts: str, plugin_file: Optional[str] = Non
 # ======================================================================================================
 
 # Activate Virtual Env: $> . ~/Home/Test/PyVenvs/Txf46x/bin/activate
-# Invoke as: python -m ontomatch.mentions.annotater CMD ...
+# Invoke as: python -m ontomatch.nprhub.annotater CMD ...
 # e.g.
-# python -m ontomatch.mentions.annotater sample -f ../Data/plugin_sample.txt ../Data/imgont_matcher.json
-# python -m ontomatch.mentions.annotater sample -n napari-allencell-segmenter ../Data/imgont_matcher.json
+# python -m ontomatch.nprhub.annotater build ../Data/imgont_matcher.json
+# python -m ontomatch.nprhub.annotater stats ../Data/imgont_matcher.json
+# python -m ontomatch.nprhub.annotater sample -f ../Data/plugin_sample.txt ../Data/imgont_matcher.json
+# python -m ontomatch.nprhub.annotater sample -n napari-allencell-segmenter ../Data/imgont_matcher.json
 
 if __name__ == '__main__':
 
@@ -476,7 +512,14 @@ if __name__ == '__main__':
 
     # ... build IMGONT_MATCHER_OPTS_JSON
     _sub_cmd_parser = _subparsers.add_parser('build',
-                                             help="PPrint Samples.")
+                                             help="Build and save instance of Imaging ontology matcher.")
+
+    _sub_cmd_parser.add_argument('imgont_matcher_opts_json', type=str,
+                                 help="JSON file containing Image-Ontology matcher options.")
+
+    # ... stats IMGONT_MATCHER_OPTS_JSON
+    _sub_cmd_parser = _subparsers.add_parser('stats',
+                                             help="PPrint stats for Imaging ontology matcher.")
 
     _sub_cmd_parser.add_argument('imgont_matcher_opts_json', type=str,
                                  help="JSON file containing Image-Ontology matcher options.")
@@ -523,6 +566,10 @@ if __name__ == '__main__':
     if _args.subcmd == 'build':
 
         build_imgont_trie_matcher(_args.imgont_matcher_opts_json)
+
+    elif _args.subcmd == 'stats':
+
+        pp_matcher_stats(_args.imgont_matcher_opts_json)
 
     elif _args.subcmd == 'sample':
 

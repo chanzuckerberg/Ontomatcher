@@ -7,7 +7,7 @@ import csv
 import json
 from typing import Any, Dict, List, Optional, Set, Union
 
-from .ontology import Ontology, OntologyTerm
+from ontomatch.data.ontology import Ontology, OntologyTerm
 
 
 # -----------------------------------------------------------------------------
@@ -173,7 +173,7 @@ def read_curated_synonyms(curated_syns_csv: str, verbose: bool = True) -> Dict[s
 
 def get_curated_imaging_subontology(edam_ontology_tsv: str = '../Data/EDAM-bioimaging_alpha06.tsv',
                                     imgsubont_json: str = '../Data/imaging_subontology.json',
-                                    curated_syns_csv: str = '../Data/curated_imaging_synonyms-220316.csv',
+                                    curated_syns_csv: str = '../Data/curated_imaging_synonyms-220407.csv',
                                     verbose: bool = True) -> Ontology:
     """
     Merge the curated synonyms with the imaging sub-ontology, using the additional fields in class `CuratedTerm`.

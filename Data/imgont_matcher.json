@@ -1,6 +1,6 @@
 {
     "EDAM": "EDAM-bioimaging_alpha06.tsv",
     "imgont": "imaging_subontology.json",
-    "curated_syns": "curated_imaging_synonyms-220316.csv",
+    "curated_syns": "curated_imaging_synonyms-220407.csv",
     "matcher": "triematcher_opts.json"
 }

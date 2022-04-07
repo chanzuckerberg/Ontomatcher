@@ -37,15 +37,10 @@ class PersistentObject:
         if verbose:
             print('Saving {} to: {} ...'.format(self.__class__.__name__, fpath), end='', flush=True)
 
-        # prev_rec_limit = sys.getrecursionlimit()
-        # sys.setrecursionlimit(32000)
-
         self._fpath = fpath
 
         with open(fpath, 'wb') as f:
             pickle.dump(self, f, pickle.HIGHEST_PROTOCOL)
-
-        # sys.setrecursionlimit(prev_rec_limit)
 
         if verbose:
             print(flush=True)

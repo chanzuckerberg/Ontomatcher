@@ -1,5 +1,5 @@
 """
-Fetching Napari Plugin data from Napari API.
+Fetching Napari Plugin data from Napari GitHub API.
 """
 
 import json

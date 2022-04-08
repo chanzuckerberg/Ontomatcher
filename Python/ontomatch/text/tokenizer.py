@@ -2,7 +2,7 @@
 A basic string tokenizer that provides mapping back to the source string.
 """
 
-from enum import IntEnum, unique
+from enum import Enum, IntEnum, unique, auto
 from typing import Any, Dict, List, NamedTuple
 import unicodedata
 
@@ -51,6 +51,17 @@ class NormalizationType(IntEnum):
 # /
 
 
+class CharacterStandardization(Enum):
+
+    UNIDECODE = auto()
+    """For `standardize_chars_unidecode()`"""
+
+    BASIC = auto()
+    """For `standardize_chars_basic()`"""
+
+# /
+
+
 class BasicRevMappedTokenizer:
     """
     Splits a source string into standardized and normalized tokens,
@@ -63,22 +74,36 @@ class BasicRevMappedTokenizer:
     TOKEN_PATT = regex.compile(r"((?:(?!_)\w|\p{Mn})+)")
 
     DEFAULT_PARAMS = {
-        # Character-standardization: True = `standardize_chars_unidecode()`, else `standardize_chars_basic()`
-        "use_unidecode_standardization": True,
+        # Character-standardization style
+        "char_standardization": CharacterStandardization.UNIDECODE,
     }
 
     def __init__(self, params: Dict[str, Any] = None):
 
-        self.params = dict() if params is None else params
+        self._set_params(params)
 
-        self.use_unidecode_standardization = self.params.get("use_unidecode_standardization",
-                                                             self.DEFAULT_PARAMS["use_unidecode_standardization"])
+        self.use_unidecode_standardization = \
+            self.params["char_standardization"] is CharacterStandardization.UNIDECODE
 
         # SnowballStemmer('english') is less aggressive than PorterStemmer
         self.stemmer = SnowballStemmer("english", ignore_stopwords=True)
 
         # For LEMMATIZED, more conservative than Stemming
         self.wnl = WordNetLemmatizer()
+
+        return
+
+    def _set_params(self, params):
+        self.params = dict() if params is None else params
+
+        if (char_standardization := self.params.get("char_standardization")) is None:
+            self.params["char_standardization"] = self.DEFAULT_PARAMS["char_standardization"]
+        elif not isinstance(char_standardization, CharacterStandardization):
+            assert isinstance(char_standardization, str), f"Param 'char_standardization' must be a str"
+            try:
+                self.params["char_standardization"] = CharacterStandardization[char_standardization.upper()]
+            except KeyError:
+                raise KeyError(f"Illegal value 'char_standardization' = '{char_standardization}'")
 
         return
 

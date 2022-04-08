@@ -32,7 +32,8 @@ class EntityInfo:
 class NameMatch:
     """
     Instances of this (or its sub-class) are returned for each name match.
-    Setting `frozen=True` makes instance immutable and hashable, so can be used in a Set.
+    Use of `dataclass` allows sub-classing, and
+    setting `frozen=True` above makes instance immutable and hashable, so can be used in a Set.
     """
 
     entity_id: str
@@ -131,6 +132,12 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
                 else they are discarded.
 
         stop_names: List[str]
+            Entity names that match any of these (after corresponding normalization) are ignored.
+            Default is no stop-names.
+            Example:
+              Based on the "name_types" in `EXAMPLE_PARAMS`, an entry of "Ms" will result in
+                  - "primary", "synonym" and "partial" names that are normalized to "ms" being ignored
+                  - "acronym" name "Ms" will be ignored, but not "MS" or "ms".
             e.g. ["as"]
         """
         super().__init__()
@@ -232,6 +239,10 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
 
     def add_entity_with_names(self, entity_id: str, primary_name: str,
                               typed_synonyms: Dict[str, Sequence[str]]):
+        """
+        Adds entity (aka term) with unique id `entity_id`, primary name `primary_name`,
+        and other synonyms as named in `typed_synonyms` whose keys are the name-types in `self.name_type_params`.
+        """
 
         assert not self.is_compiled, "Can only add entities before compiling"
 
@@ -324,8 +335,12 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
     def get_full_matches(self, text: str) -> List[NameMatch]:
         """
         Entities matching entire text, i.e. entire text should match each name.
-        Returned matches are sorted on (name-tier [ascending], key_length [descending]),
-        ... where key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
+        Returned matches are sorted on:
+            (name-tier [ascending], key_length [descending], start_token_index [asc.], entity_id [asc.]),
+        ... where:
+            key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
+            entity_id corresponds to sort order on Entity-IDs:
+                in case of duplicated names, 'earlier' Entity-ID is preferred.
         """
         raise NotImplementedError
 
@@ -334,8 +349,12 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
                                   nmax: int = None) -> List[NameMatch]:
         """
         All Entity matches into text, possibly overlapping.
-        Returned matches are sorted on (name-tier [ascending], key_length [descending]),
-        ... where key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
+        Returned matches are sorted on:
+            (name-tier [ascending], key_length [descending], start_token_index [asc.], entity_id [asc.]),
+        ... where:
+            key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
+            entity_id corresponds to sort order on Entity-IDs:
+                in case of duplicated names, 'earlier' Entity-ID is preferred.
         """
         raise NotImplementedError
 
@@ -347,6 +366,7 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
             - higher tiers
             - longer matching keys (in nbr of tokens)
             - left-most matches
+            - 'earlier' entity_id (in sort order)
         """
         raise NotImplementedError
 

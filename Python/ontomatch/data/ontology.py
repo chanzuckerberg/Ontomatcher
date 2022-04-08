@@ -26,7 +26,10 @@ class EntityExistsError(Exception):
 
 class OntologyTerm:
     """
-    A term in the EDAM ontology (https://github.com/edamontology/edam-bioimaging)
+    A term in the `Ontology`, e.g. the EDAM ontology (https://github.com/edamontology/edam-bioimaging).
+    A parent-child relationship between terms is represented through the properties `parent_ids` and `child_ids`,
+    and captured through the __init__ arg `parent_ids` to populate the child-to-parent links,
+     and the method `add_child()`, which is used to add the reverse (parent-to-child) links.
     """
 
     SEQ_SEP = "|"
@@ -48,7 +51,7 @@ class OntologyTerm:
         Arguments
         ---------
             termid: Unique identifier in Ontology for this Term, aka Entity ID, aka Class ID
-            name: Preferred Name for this Term
+            name: Preferred or Primary Name for this Term
             synonyms: Synonyms
             definition: Definition
 
@@ -96,15 +99,21 @@ class OntologyTerm:
         return parse_syns(fval, self.SEQ_SEP)
 
     def add_child(self, child_id: str):
+        """
+        Simply adds Term ID `child_id` as a child of this term. Does not check parentage in the child term.
+        Primary use: Called from `Ontology.set_children()`.
+        """
         self._child_ids.add(child_id)
         return
 
     @property
     def entity_id(self) -> str:
+        """Synonym for TermID."""
         return self.termid
 
     @property
     def classid(self) -> str:
+        """Synonym for TermID used by the EDAM Ontology."""
         return self.termid
 
     @property
@@ -124,10 +133,24 @@ class OntologyTerm:
 
 
 class Ontology:
+    """
+    Class to hold a set of Terms or Entities, each encapsulated in an `OntologyTerm`,
+    including a parent-child hierarchy.
+
+    Multiple parents are allowed, but Cycles are NOT handled (nor checked), including self-cycles.
+    So the graph structure connecting OntologyTerm's through the properties `parent_ids` and `child_ids`
+        MUST BE A Directed Acyclic Graph (DAG).
+    """
+
     def __init__(self, src: str):
         self.src = src
+
+        # TermID[s] of Root[s] in the Ontology hierarchy
         self.root_termids = set()
+
+        # TermID => OntologyTerm
         self.terms: Dict[str, OntologyTerm] = dict()
+
         return
 
     def add_term(self, term: OntologyTerm, except_if_exists: bool = True):
@@ -148,6 +171,7 @@ class Ontology:
     def get_descendants(self, term: Union[str, OntologyTerm]) -> Generator[OntologyTerm, None, None]:
         """
         Depth-first recursive generator.
+        Does NOT handle cycles in the parent-child hierarchy!
         """
         if isinstance(term, str):
             term = self.get_term(term)
@@ -235,6 +259,13 @@ class Ontology:
         return None
 
     def set_children(self, strict=True):
+        """
+        The class `OntologyTerm` records parents for a term in the `parent_ids` property.
+        This method populates the reverse links to children (property `OntologyTerm.child_ids`
+            for all terms in the ontology.
+        Call after all terms have been loaded.
+        See method `from_edam_tsv()` for an example.
+        """
         for term in self.terms.values():
             for pid in term.parent_ids:
                 parent = self.get_term(pid)

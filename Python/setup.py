@@ -13,6 +13,7 @@ setup(
     python_requires='>=3.8',
     install_requires=[
         'nltk >= 3.5',
+        'numpy',
         'pygtrie >= 2.4.2',
         'unidecode >= 1.3.4'
     ]

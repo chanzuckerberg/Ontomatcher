@@ -15,6 +15,6 @@ setup(
         'nltk >= 3.5',
         'numpy',
         'pygtrie >= 2.4.2',
-        'unidecode >= 1.3.4'
+        'Unidecode >= 1.3.4'
     ]
 )

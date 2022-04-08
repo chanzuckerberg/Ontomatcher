@@ -1,4 +1,8 @@
-# rst-napari/Data/README.md
+# Ontomatcher/Data/
+<hr>
+
+The files in this directory are used to build an Ontomatcher instance for detecting bio-imaging terms in text. This is then used to make category recommendations for [Napari Hub](https://www.napari-hub.org) plugins. 
+
 
 ## Contents
 
@@ -8,7 +12,7 @@
 
 * `imaging_subontology.json`: Describes which subset of the full EDAM ontology will be recognized. See Python function `ontomatch.nprhub.imgontology.get_imaging_subontology()`.
 
-* `imgont_matcher.json`: Options for building an EntityMatcher to recognize mentions of the bio-imaging sub-ontology, used for recommending categories for Napari Hub plug-ins. 
+* `imgont_matcher.json`: Options for building an EntityMatcher to recognize mentions of the bio-imaging sub-ontology, used for recommending categories for Napari Hub plugins. 
 
 	All paths mentioned in this file are relative to the directory containing this file (i.e. the `Data` dir).
 
@@ -18,7 +22,7 @@
 
 * `imgont_stemmed_matcher.json`: Variant of `imgont_matcher.json` that uses word-stemming.
 
-* `plugin_sample.txt`: A sample text file containing a Napari Hub plug-in description, for use as argument to the Python function `ontomatch.nprhub.annotater.test_match_sample()`. The first line contains the name of the plug-in, and the rest of the lines are treated as the description.
+* `plugin_sample.txt`: A sample text file containing a Napari Hub plugin description, for use as argument to the Python function `ontomatch.nprhub.annotater.test_match_sample()`. The first line contains the name of the plugin, and the rest of the lines are treated as the description.
 
 * `triematcher_opts.json`: Options for creating an instance of `ontomatch.text.triematcher.TrieMatcher`.
 

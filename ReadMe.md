@@ -5,10 +5,11 @@ _Ontomatcher_ is a general purpose, configurable, fast mention detector of ontol
 
 ## Requirements
 
-The code requires the following packages:
+The code requires the following packages (versions are those tested):
 
 * Python ver 3.8+
 * [nltk](https://www.nltk.org), ver 3.5+
+* [numpy](https://numpy.org), ver 1.19.2+
 * [pygtrie](https://github.com/google/pygtrie), ver 2.4.2
 * [unidecode](https://pypi.org/project/Unidecode/), ver 1.3.4+
 

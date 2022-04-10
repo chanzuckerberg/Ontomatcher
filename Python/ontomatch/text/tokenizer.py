@@ -53,6 +53,9 @@ class NormalizationType(IntEnum):
 
 class CharacterStandardization(Enum):
 
+    NOSTANDARDIZATION = auto()
+    """Do not do any character transliteration"""
+
     UNIDECODE = auto()
     """For `standardize_chars_unidecode()`"""
 
@@ -76,14 +79,19 @@ class BasicRevMappedTokenizer:
     DEFAULT_PARAMS = {
         # Character-standardization style
         "char_standardization": CharacterStandardization.UNIDECODE,
+
+        # Pattern used for tokenization. Default is None (uses self.TOKEN_PATT).
+        "token_pattern": None
     }
 
     def __init__(self, params: Dict[str, Any] = None):
 
+        # Parameters set in `_set_params()`
+        self.params = None
+        self.char_standardization = CharacterStandardization.UNIDECODE
+        self.token_patt = self.TOKEN_PATT
+        #
         self._set_params(params)
-
-        self.use_unidecode_standardization = \
-            self.params["char_standardization"] is CharacterStandardization.UNIDECODE
 
         # SnowballStemmer('english') is less aggressive than PorterStemmer
         self.stemmer = SnowballStemmer("english", ignore_stopwords=True)
@@ -96,6 +104,8 @@ class BasicRevMappedTokenizer:
     def _set_params(self, params):
         self.params = dict() if params is None else params
 
+        # char_standardization
+
         if (char_standardization := self.params.get("char_standardization")) is None:
             self.params["char_standardization"] = self.DEFAULT_PARAMS["char_standardization"]
         elif not isinstance(char_standardization, CharacterStandardization):
@@ -104,6 +114,14 @@ class BasicRevMappedTokenizer:
                 self.params["char_standardization"] = CharacterStandardization[char_standardization.upper()]
             except KeyError:
                 raise KeyError(f"Illegal value 'char_standardization' = '{char_standardization}'")
+
+        self.char_standardization = self.params["char_standardization"]
+
+        # token_pattern
+
+        if (token_pattern := self.params.get("token_pattern")) is not None:
+            assert isinstance(token_pattern, str), f"Param 'token_pattern' must be a str"
+            self.token_patt = regex.compile(token_pattern)
 
         return
 
@@ -119,10 +137,10 @@ class BasicRevMappedTokenizer:
     def _tokenize(self, txt: str, normalization_type: NormalizationType) -> List[Token]:
         tokens = []
         s = 0
-        for t in self.TOKEN_PATT.split(txt):
+        for t in self.token_patt.split(txt):
             if len(t) == 0:
                 continue
-            elif not self.TOKEN_PATT.match(t):
+            elif not self.token_patt.match(t):
                 s += len(t)
             else:
                 e = s + len(t)
@@ -142,10 +160,14 @@ class BasicRevMappedTokenizer:
         return tokens
 
     def standardize_chars(self, text):
-        if self.use_unidecode_standardization:
+        if self.char_standardization is CharacterStandardization.UNIDECODE:
             return standardize_chars_unidecode(text)
-        else:
+        elif self.char_standardization is CharacterStandardization.BASIC:
             return standardize_chars_basic(text)
+        elif self.char_standardization is CharacterStandardization.NOSTANDARDIZATION:
+            return text
+        else:
+            raise NotImplementedError(f"Character standardization = '{self.char_standardization}' not implemented!")
 # /
 
 

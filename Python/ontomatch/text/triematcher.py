@@ -249,16 +249,71 @@ class TrieMatchHelper:
 
 class TrieMatcher(EntityMatcher):
 
+    EXAMPLE_PARAMS = {
+        # Required. Specifies sub-class of EntityMatcher to create.
+        "class": "TrieMatcher",
+
+        # Give it a meaningful name
+        "name": "Default Matcher",
+
+        # Brief description
+        "descr": "Matcher with default parameters",
+
+        # Identifies where the entities and their names are from
+        "lexicon_id": "EDAM Imaging sub-Ontology",
+
+        # Parameters used to instantiate `BasicRevMappedTokenizer`. Default is `None`.
+        # (see class `ontomatch.text.tokenizer.BasicRevMappedTokenizer` for default parameters)
+        "tokenizer": {
+            "char_standardization": "UNIDECODE"
+        },
+
+        # Any single-token Entity Names whose length is less than this value will be ignored.
+        # Default is 2.
+        "min_name_length": 2,
+
+        # Entity names that match any of these (after corresponding normalization) are ignored.
+        # Default is no stop-names.
+        # Example:
+        #   Based on the "name_types" below, an entry of "Ms" will result in
+        #       - "primary", "synonym" and "partial" names that are normalized to "ms" being ignored
+        #       - "acronym" name "Ms" will be ignored, but not "MS" or "ms".
+        "stop_names": ["as", "The"],
+
+        # How to match the different types of names:
+        #  NameType [str] => [Dict]
+        #                    {"tier": [int > 0] Match tier,
+        #                     "normalization": [str] A name of one of the members of `tokenizer.NormalizationType`
+        #                    }
+        "name_types": {
+            # An entry for "primary" is required, but the value can be customized.
+            # This NameType is used for each entity's Primary-Name.
+            "primary": {"tier": 1, "normalization": "LOWER"},
+
+            # Other NameTypes ...
+            "acronym": {"tier": 2, "normalization": "STANDARD"},
+            "synonym": {"tier": 3, "normalization": "LOWER"},
+            "partial": {"tier": 4, "normalization": "LOWER"},
+        }
+    }
+
     def __init__(self, *args, **kwargs):
         """
-        Args: Same as for `EntityMatcher`
+        Args: Same as for `EntityMatcher`, plus:
+
+        Additional Parameters for TrieMatcher:
+        -------------------------------------
+
+            tokenizer: Dict[str, ...]
+                These are the parameters used to instantiate `BasicRevMappedTokenizer`.
+                Default is `None`, meaning the defaults for class `ontomatch.text.tokenizer.BasicRevMappedTokenizer`.
         """
 
         super().__init__(*args, **kwargs)
 
         # --- Local fields
 
-        self.tknzr = BasicRevMappedTokenizer()
+        self.tknzr = BasicRevMappedTokenizer(self.params.get("tokenizer"))
 
         # --- Fields populated by build / load
 

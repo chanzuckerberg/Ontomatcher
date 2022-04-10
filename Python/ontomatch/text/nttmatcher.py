@@ -64,48 +64,6 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
 
     NAME_TYPE_PRIMARY = "primary"
 
-    EXAMPLE_PARAMS = {
-        # Required. Specifies sub-class of EntityMatcher to create.
-        "class": "TrieMatcher",
-
-        # Give it a meaningful name
-        "name": "Default Matcher",
-
-        # Brief description
-        "descr": "Matcher with default parameters",
-
-        # Identifies where the entities and their names are from
-        "lexicon_id": "EDAM Imaging sub-Ontology",
-
-        # Any single-token Entity Names whose length is less than this value will be ignored.
-        # Default is 2.
-        "min_name_length": 2,
-
-        # Entity names that match any of these (after corresponding normalization) are ignored.
-        # Default is no stop-names.
-        # Example:
-        #   Based on the "name_types" below, an entry of "Ms" will result in
-        #       - "primary", "synonym" and "partial" names that are normalized to "ms" being ignored
-        #       - "acronym" name "Ms" will be ignored, but not "MS" or "ms".
-        "stop_names": ["as", "The"],
-
-        # How to match the different types of names:
-        #  NameType [str] => [Dict]
-        #                    {"tier": [int > 0] Match tier,
-        #                     "normalization": [str] A name of one of the members of `tokenizer.NormalizationType`
-        #                    }
-        "name_types": {
-            # An entry for "primary" is required, but the value can be customized.
-            # This NameType is used for each entity's Primary-Name.
-            "primary": {"tier": 1, "normalization": "LOWER"},
-
-            # Other NameTypes ...
-            "acronym": {"tier": 2, "normalization": "STANDARD"},
-            "synonym": {"tier": 3, "normalization": "LOWER"},
-            "partial": {"tier": 4, "normalization": "LOWER"},
-        }
-    }
-
     def __init__(self, params: Dict[str, Any]):
         """
         Params
@@ -336,11 +294,9 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
         """
         Entities matching entire text, i.e. entire text should match each name.
         Returned matches are sorted on:
-            (name-tier [ascending], key_length [descending], start_token_index [asc.], entity_id [asc.]),
-        ... where:
-            key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
-            entity_id corresponds to sort order on Entity-IDs:
-                in case of duplicated names, 'earlier' Entity-ID is preferred.
+            (name-tier [ascending], ... etc),
+
+        See also implementing sub-class for more details.
         """
         raise NotImplementedError
 
@@ -350,11 +306,9 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
         """
         All Entity matches into text, possibly overlapping.
         Returned matches are sorted on:
-            (name-tier [ascending], key_length [descending], start_token_index [asc.], entity_id [asc.]),
-        ... where:
-            key_length = Nbr. normalized tokens that matched (i.e. prefer longer matches)
-            entity_id corresponds to sort order on Entity-IDs:
-                in case of duplicated names, 'earlier' Entity-ID is preferred.
+            (name-tier [ascending], ... etc),
+
+        See also implementing sub-class for more details.
         """
         raise NotImplementedError
 
@@ -364,9 +318,11 @@ class EntityMatcher(PersistentObject, metaclass=ABCMeta):
         """
         Greedy selection of non-overlapping matches, prefers:
             - higher tiers
-            - longer matching keys (in nbr of tokens)
+            - longer matches
             - left-most matches
             - 'earlier' entity_id (in sort order)
+
+        See also implementing sub-class for more details.
         """
         raise NotImplementedError
 

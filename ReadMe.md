@@ -1,5 +1,5 @@
 # Project: Ontomatcher
-<hr>
+
 
 _Ontomatcher_ is a general purpose, configurable, fast mention detector of ontology terms (or entities) in plain text. It is implemented in Python. The detection of mentions relies on text normalization and 'dictionary lookup' of known names and synonyms. The speed comes from its use of the [prefix tree (aka trie)](https://en.wikipedia.org/wiki/Trie) data structure.
 
@@ -7,11 +7,12 @@ _Ontomatcher_ is a general purpose, configurable, fast mention detector of ontol
 
 The code requires the following packages (versions are those tested):
 
-* Python ver 3.8+
-* [nltk](https://www.nltk.org), ver 3.5+
-* [numpy](https://numpy.org), ver 1.19.2+
+* Python ver 3.8
+* [nltk](https://www.nltk.org), ver 3.5
+* [numpy](https://numpy.org), ver 1.19.2
 * [pygtrie](https://github.com/google/pygtrie), ver 2.4.2
-* [unidecode](https://pypi.org/project/Unidecode/), ver 1.3.4+
+* [regex](https://github.com/mrabarnett/mrab-regex), ver 2.5.86
+* [unidecode](https://pypi.org/project/Unidecode/), ver 1.3.4
 
 On my machine, these are available in a Virtual Environment:
 

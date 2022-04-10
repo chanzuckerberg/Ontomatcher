@@ -15,6 +15,7 @@ setup(
         'nltk >= 3.5',
         'numpy',
         'pygtrie >= 2.4.2',
+        'regex',
         'Unidecode >= 1.3.4'
     ]
 )

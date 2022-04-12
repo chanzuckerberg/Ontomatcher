@@ -14,13 +14,40 @@ The code requires the following packages (versions are those tested):
 * [regex](https://github.com/mrabarnett/mrab-regex), ver 2.5.86
 * [unidecode](https://pypi.org/project/Unidecode/), ver 1.3.4
 
-On my machine, these are available in a Virtual Environment:
+### Installing in a Python Virtual Environment
 
-```
-$> . $ONTOM_VENV/bin/activate
-$> ...
-$> deactivate
-```
+Here is one way to install the Ontomatcher package and all its dependencies, in a Python Virtual Environment. Once you have an appropriate version of Python installed, do the following steps:
+
+1. Create a new virtual environment in `$VENV_BASE/Ontom`, and activate it
+
+	```shell
+	$> cd $VENV_BASE
+	$> python -m venv --system-site-packages Ontom
+	$> . Ontom/bin/activate
+	```
+
+2. Clone the Ontomatcher repo into path `$ONTO_BASE/Ontomatcher`
+
+	```shell
+	$> cd $ONTO_BASE
+	$> git clone https://github.com/chanzuckerberg/Ontomatcher.git
+	```
+	
+3. Install Ontomatcher and its dependencies in the virtual environment
+
+	```shell
+	$> cd Ontomatcher/Python
+	$> python setup.py install
+	```
+	
+4. Use it, and then quit the virtual environment
+
+	```shell
+	$> python -m ontomatch.nprhub.annotater sample -f $ONTO_BASE/Ontomatcher/Data/plugin_sample.txt $ONTO_BASE/Ontomatcher/Data/imgont_matcher.json
+	$> ...
+	$> deactivate
+	```
+
 
 ## Contents
 

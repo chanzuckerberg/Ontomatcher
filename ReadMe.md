@@ -29,23 +29,29 @@ Here is one way to install the Ontomatcher package and all its dependencies, in 
 2. Clone the Ontomatcher repo into path `$ONTO_BASE/Ontomatcher`
 
 	```shell
-	$> cd $ONTO_BASE
-	$> git clone https://github.com/chanzuckerberg/Ontomatcher.git
+	$ ONTO_BASE=...path-to-base-dir...
+	$ cd $ONTO_BASE
+	$ git clone https://github.com/chanzuckerberg/Ontomatcher.git
 	```
 	
 3. Install Ontomatcher and its dependencies in the virtual environment
 
 	```shell
-	$> cd Ontomatcher/Python
-	$> python setup.py install
+	$ pip install $ONTO_BASE/Ontomatcher/Python
+	```
+	
+	If not already installed, download nltk's `stopwords`
+	
+	```shell
+	$ python -m nltk.downloader stopwords
 	```
 	
 4. Use it, and then quit the virtual environment
 
 	```shell
-	$> python -m ontomatch.nprhub.annotater sample -f $ONTO_BASE/Ontomatcher/Data/plugin_sample.txt $ONTO_BASE/Ontomatcher/Data/imgont_matcher.json
-	$> ...
-	$> deactivate
+	$ python -m ontomatch.nprhub.annotater sample -f $ONTO_BASE/Ontomatcher/Data/plugin_sample.txt $ONTO_BASE/Ontomatcher/Data/imgont_matcher.json
+	$ ...
+	$ deactivate
 	```
 
 

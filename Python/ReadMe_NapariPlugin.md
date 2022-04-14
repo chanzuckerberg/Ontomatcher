@@ -44,7 +44,7 @@ To detect mentions of terms (aka entities) from the curated imaging sub-ontology
 $> python -m ontomatch.nprhub.annotater sample -f ../Data/plugin_sample.txt ../Data/imgont_matcher.json
 ```
 
-Here `../Data/imgont_matcher.json` specifies the instance of the mention detector to use.
+Here `../Data/imgont_matcher.json` specifies the instance of the mention detector to use. In the text file (here `../Data/plugin_sample.txt`), the first line is treated as the plugin name, and the rest of the lines are considered as the description of the plugin.
 
 To detect mentions in an actual plugin, specify the name of the plugin, as follows (the example uses `napari-allencell-segmenter`):
 

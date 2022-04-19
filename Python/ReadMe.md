@@ -16,6 +16,8 @@ For an example of how to use Ontomatcher, to find mentions of bio-imaging terms 
 
 ## Main Components of Ontomatcher
 
+![Ontomatcher Architecture](architecture.jpg)
+
 ### class TrieMatcher: EntityMatcher
 
 To create a term mention detector, you need to create an instance of [TrieMatcher](ontomatch/text/triematcher.py#L250), add to it each term or entity you want to be able to detect, along with its synonyms, and then use it to detect mentions of the added terms in plain text.

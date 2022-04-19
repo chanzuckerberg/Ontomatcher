@@ -16,7 +16,7 @@ from ontomatch.data.ontology import Ontology
 from ontomatch.text.triematcher import NameMatch, TrieMatcher
 from ontomatch.utils.misc import terminal_highlighted, highlight_spans_multicolor
 
-from .imgontology import CuratedTerm, get_curated_imaging_subontology, pp_curated_ontology_stats
+from .imgontology import CuratedTerm, get_curated_imaging_subontology
 from .plugins import CATEGORY_TERM_MAP, NapariPlugin, fetch_plugin
 
 
@@ -50,7 +50,7 @@ class EntityMatch(NamedTuple):
 # -----------------------------------------------------------------------------
 
 
-def read_opts_chage_cwd(opts_json: str):
+def read_opts_change_cwd(opts_json: str):
     """
     Read options from JSON file.
     IF JSON file is in a diff dir from cwd, THEN change cwd to that dir.
@@ -96,7 +96,7 @@ def build_imgont_trie_matcher(imgont_matcher_opts: Union[str, Dict[str, str]], v
 
     cwd = None
     if isinstance(imgont_matcher_opts, str):
-        imgont_matcher_opts, cwd = read_opts_chage_cwd(imgont_matcher_opts)
+        imgont_matcher_opts, cwd = read_opts_change_cwd(imgont_matcher_opts)
 
     trie_matcher = TrieMatcher.from_params(imgont_matcher_opts["matcher"])
     # Set the lexicon id to the path to Curated Synonyms file
@@ -132,7 +132,7 @@ def get_imgont_trie_matcher(imgont_matcher_opts: Union[str, Dict[str, str]],
     """
     cwd = None
     if isinstance(imgont_matcher_opts, str):
-        imgont_matcher_opts, cwd = read_opts_chage_cwd(imgont_matcher_opts)
+        imgont_matcher_opts, cwd = read_opts_change_cwd(imgont_matcher_opts)
 
     trie_matcher = TrieMatcher.from_params(imgont_matcher_opts["matcher"])
 
@@ -153,7 +153,7 @@ def get_imaging_ontology(imgont_matcher_opts: Union[str, Dict[str, str]],
                          verbose: bool = False) -> Ontology:
     cwd = None
     if isinstance(imgont_matcher_opts, str):
-        imgont_matcher_opts, cwd = read_opts_chage_cwd(imgont_matcher_opts)
+        imgont_matcher_opts, cwd = read_opts_change_cwd(imgont_matcher_opts)
 
     img_ont = get_curated_imaging_subontology(edam_ontology_tsv = imgont_matcher_opts["EDAM"],
                                               imgsubont_json = imgont_matcher_opts["imgont"],

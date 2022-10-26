@@ -145,7 +145,8 @@ class BasicRevMappedTokenizer:
             else:
                 e = s + len(t)
 
-                t = self.standardize_chars(t)
+                # Standardization may add SPACE, e.g. standardize_chars_unidecode('北亰') = 'Bei Jing '
+                t = self.standardize_chars(t).strip()
 
                 if normalization_type is NormalizationType.LOWER:
                     t = t.casefold()

@@ -145,8 +145,7 @@ class BasicRevMappedTokenizer:
             else:
                 e = s + len(t)
 
-                # Standardization may add SPACE, e.g. standardize_chars_unidecode('北亰') = 'Bei Jing '
-                t = self.standardize_chars(t).strip()
+                t = self.standardize_chars(t)
 
                 if normalization_type is NormalizationType.LOWER:
                     t = t.casefold()
@@ -179,7 +178,8 @@ class BasicRevMappedTokenizer:
 def standardize_chars_unidecode(text):
     # This seems to be a superset of `standardize_chars_basic`, and may be too aggressive for some use-cases.
     # E.g. this will convert 'μ-meter' to 'm-meter'
-    text = unidecode(text)
+    # Strip(), as Standardization may add SPACE, e.g. standardize_chars_unidecode('北亰') = 'Bei Jing '
+    text = unidecode(text).strip()
     return text
 
 

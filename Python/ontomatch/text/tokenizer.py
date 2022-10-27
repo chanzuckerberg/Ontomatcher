@@ -80,7 +80,8 @@ class BasicRevMappedTokenizer:
         # Character-standardization style
         "char_standardization": CharacterStandardization.UNIDECODE,
 
-        # Pattern used for tokenization. Default is None (uses self.TOKEN_PATT).
+        # Pattern used for tokenization (do not use capturing parentheses in the pattern).
+        # Default is None (uses self.TOKEN_PATT).
         "token_pattern": None
     }
 

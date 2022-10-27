@@ -3,13 +3,13 @@ A basic string tokenizer that provides mapping back to the source string.
 """
 
 from enum import Enum, IntEnum, unique, auto
-from typing import Any, Dict, List, NamedTuple
+from typing import Any, Dict, List, NamedTuple, Optional
 import unicodedata
 
 import regex
 from unidecode import unidecode
 
-from nltk.stem import SnowballStemmer, WordNetLemmatizer
+from nltk.stem import PorterStemmer, SnowballStemmer, WordNetLemmatizer
 
 
 # -----------------------------------------------------------------------------
@@ -69,6 +69,9 @@ class BasicRevMappedTokenizer:
     """
     Splits a source string into standardized and normalized tokens,
     and maps each token to its character position in the source string.
+
+    The Lemmatization is VERY conservative: it pretends everything is an Noun.
+    This is much faster than having to POS-tag each word.
     """
 
     # Token consists of a sequence of:
@@ -80,6 +83,9 @@ class BasicRevMappedTokenizer:
         # Character-standardization style
         "char_standardization": CharacterStandardization.UNIDECODE,
 
+        # Values: "Snowball" (Default), "Porter"
+        "stemmer": None,
+
         # Pattern used for tokenization (do not use capturing parentheses in the pattern).
         # Default is None (uses self.TOKEN_PATT).
         "token_pattern": None
@@ -88,14 +94,17 @@ class BasicRevMappedTokenizer:
     def __init__(self, params: Dict[str, Any] = None):
 
         # Parameters set in `_set_params()`
-        self.params = None
+        self.params : Optional[Dict[str, Any]] = None
         self.char_standardization = CharacterStandardization.UNIDECODE
         self.token_patt = self.TOKEN_PATT
         #
         self._set_params(params)
 
-        # SnowballStemmer('english') is less aggressive than PorterStemmer
-        self.stemmer = SnowballStemmer("english", ignore_stopwords=True)
+        if (stemmer := self.params.get("stemmer")) is None or stemmer.lower() == "snowball":
+            # SnowballStemmer('english') is less aggressive than PorterStemmer
+            self.stemmer = SnowballStemmer("english", ignore_stopwords=True)
+        else:
+            self.stemmer = PorterStemmer()
 
         # For LEMMATIZED, more conservative than Stemming
         self.wnl = WordNetLemmatizer()
@@ -123,6 +132,11 @@ class BasicRevMappedTokenizer:
         if (token_pattern := self.params.get("token_pattern")) is not None:
             assert isinstance(token_pattern, str), f"Param 'token_pattern' must be a str"
             self.token_patt = regex.compile(token_pattern)
+
+        # Stemmer
+        if (stemmer := self.params.get("stemmer")) is not None:
+            assert stemmer.lower() in ["snowball", "porter"], \
+                f"Parameter {stemmer=} unrecognized. Must be `None`, 'Snowball' or 'Porter'."
 
         return
 
@@ -153,7 +167,9 @@ class BasicRevMappedTokenizer:
                 elif normalization_type is NormalizationType.STEMMED:
                     t = self.stemmer.stem(t)
                 elif normalization_type is NormalizationType.LEMMATIZED:
-                    t = self.wnl.lemmatize(t).casefold()
+                    # “n” for nouns, “v” for verbs, “a” for adjectives, “r” for adverbs and “s” for satellite adjectives
+                    # Simplified here by pretending everything is an Noun
+                    t = self.wnl.lemmatize(t, pos="n").casefold()
 
                 tokens.append(Token(t, s, e))
                 s = e

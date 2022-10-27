@@ -21,9 +21,9 @@ Here is one way to install the Ontomatcher package and all its dependencies, in 
 1. Create a new virtual environment in `$VENV_BASE/Ontom`, and activate it
 
 	```shell
-	$> cd $VENV_BASE
-	$> python -m venv --system-site-packages Ontom
-	$> . Ontom/bin/activate
+	$ cd $VENV_BASE
+	$ python -m venv --system-site-packages Ontom
+	$ . Ontom/bin/activate
 	```
 
 2. Clone the Ontomatcher repo into path `$ONTO_BASE/Ontomatcher`
